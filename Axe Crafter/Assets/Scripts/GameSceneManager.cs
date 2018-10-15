@@ -30,4 +30,8 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.LoadScene("Woodcutting Screen");
     }
 
+    public void LoadBattle()
+    {
+        SceneManager.LoadScene("Battle Screen");
+    }
 }
