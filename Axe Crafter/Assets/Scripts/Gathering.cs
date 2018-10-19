@@ -13,4 +13,14 @@ public class Gathering : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void MovePickaxe()
+    {
+        transform.Rotate(Vector3.forward * -90);
+    }
+
+    void MoveAxe()
+    {
+
+    }
 }
