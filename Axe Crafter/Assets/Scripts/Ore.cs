@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Ore : MonoBehaviour {
 
     // TODO organize SerializeFields, and remove what shouldn't be there.
@@ -32,6 +33,7 @@ public class Ore : MonoBehaviour {
         print(CurrentHealth);
         if (CurrentHealth <= 0)
         {
+            FindObjectOfType<GameSession>().CountMinedOre();
             StartCoroutine(DestroyAndSpawn());
         }
     }

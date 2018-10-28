@@ -20,10 +20,57 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void LoadMining()
+    // MINING
+    public void LoadMining1()
     {
-        SceneManager.LoadScene("Mining Screen");
+        SceneManager.LoadScene("Mine1");
     }
+
+    public void LoadMining2()
+    {
+        SceneManager.LoadScene("Mine2");
+    }
+
+    public void LoadMining3()
+    {
+        SceneManager.LoadScene("Mine3");
+    }
+
+    public void LoadMining4()
+    {
+        SceneManager.LoadScene("Mine4");
+    }
+
+    public void LoadMining5()
+    {
+        SceneManager.LoadScene("Mine5");
+    }
+
+    public void LoadMining6()
+    {
+        SceneManager.LoadScene("Mine6");
+    }
+
+    public void LoadMining7()
+    {
+        SceneManager.LoadScene("Mine7");
+    }
+
+    public void LoadMining8()
+    {
+        SceneManager.LoadScene("Mine8");
+    }
+
+    public void LoadMining9()
+    {
+        SceneManager.LoadScene("Mine9");
+    }
+
+    public void LoadMining10()
+    {
+        SceneManager.LoadScene("Mine10");
+    }
+    // MINING
 
     public void LoadWoodcutting()
     {
