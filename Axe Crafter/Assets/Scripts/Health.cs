@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
+    /*
 
     [SerializeField] float FullHealth = 100.0f;
     [SerializeField] float OnClickDamage = 10.0f;
@@ -35,4 +36,5 @@ public class Health : MonoBehaviour {
     }
 
     // There has to be animation of destroying current tree / boss / ore
+    */
 }

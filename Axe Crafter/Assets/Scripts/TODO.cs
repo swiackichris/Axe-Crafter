@@ -1,7 +1,11 @@
 ﻿// TODO
 
-// 1. Make it so that the ores you have mined save.
+// 1. Make a shop where you could buy pickaxes for resources, to start with they would only have different sprite
+// 2. Add Damage to Pickaxe
+// 3. Add Different Resource Cost
+// 4. Add Woodcutting
 
+// Z. Format the code.
 
 // X. Add small randomization to the time, size and rotation of ores. Possibly could add color randomization to make them rare etc.
 // Size could be proportional to the time waited?
@@ -11,3 +15,8 @@
 // X. Walking in the mountains you encounter a nice looking stone, while picking it up you find more of them, You carry as much as you can home
 // X. You buy a pickaxe with your last money to get the rest of nice looking stones, and so your adventure begins.
 // X. You start with your hand not pickaxe.
+
+// Z. Should Different Mines be unlocked from the start?
+
+// X - Do these in the end
+// Z - Important things to figure out

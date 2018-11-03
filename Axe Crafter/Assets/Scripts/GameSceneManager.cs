@@ -5,16 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // START AND UPDATE DELETED
 
+    // MENU
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
@@ -70,13 +63,14 @@ public class GameSceneManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Mine10");
     }
-    // MINING
 
+    // WOODCUTTING
     public void LoadWoodcutting()
     {
         SceneManager.LoadScene("Woodcutting Screen");
     }
 
+    // BATTLE
     public void LoadBattle()
     {
         SceneManager.LoadScene("Battle Screen");
