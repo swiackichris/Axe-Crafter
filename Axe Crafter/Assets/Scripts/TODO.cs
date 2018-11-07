@@ -1,6 +1,10 @@
 ﻿// TODO
 
+// 0. Click 10x Enhance, each time it writes Axe +1 , Axe +2, etc.
 // 1. Make a shop where you could buy pickaxes for resources, to start with they would only have different sprite
+// 1.1 Make everything savable
+// 1.2 Make 2 new sprites
+// 1.3 Make 10 new working sprites
 // 2. Add Damage to Pickaxe
 // 3. Add Different Resource Cost
 // 4. Add Woodcutting
