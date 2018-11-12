@@ -35,6 +35,8 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
+        // Possibly to be deleted later
+        /*
         int gameStatusCount = FindObjectsOfType<GameSession>().Length;
         if (gameStatusCount > 1)
         {
@@ -43,7 +45,7 @@ public class GameSession : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
-        }
+        }*/
     }
 
     // Use this for initialization
@@ -61,6 +63,7 @@ public class GameSession : MonoBehaviour
         OreMinedText10.text = MinedOreCounter10.ToString();
     }
 
+    // Displays amount of ore mined
     public void CountMinedOre1()
     {
         MinedOreCounter1 += 1;
@@ -119,6 +122,12 @@ public class GameSession : MonoBehaviour
     {
         MinedOreCounter10 += 1;
         OreMinedText10.text = MinedOreCounter10.ToString();
+    }
+
+    // Updates amount of ores after Purchasing items in the market
+    public void UpdateOreAmount()
+    {
+        MinedOreCounter1 -= 1;
     }
 
     // Data saving related below:
