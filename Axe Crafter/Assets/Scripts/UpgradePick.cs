@@ -62,6 +62,9 @@ public class UpgradePick : MonoBehaviour {
             PickUpgradeLevelText.text = PickUpgradeCounter.ToString();
 
             PickUpgradePriceText.text = null;
+
+            // Updating Price
+            FindObjectOfType<GameSession>().UpdateOreAmount1();
         }
     }
 

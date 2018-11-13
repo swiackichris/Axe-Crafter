@@ -10,7 +10,7 @@ using System.IO;
 public class GameSession : MonoBehaviour
 {
     // TODO - Change this possibly to an Array?
-    [SerializeField] TextMeshProUGUI OreMinedText1;
+    /*[SerializeField] TextMeshProUGUI OreMinedText1;
     [SerializeField] TextMeshProUGUI OreMinedText2;
     [SerializeField] TextMeshProUGUI OreMinedText3;
     [SerializeField] TextMeshProUGUI OreMinedText4;
@@ -19,10 +19,13 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI OreMinedText7;
     [SerializeField] TextMeshProUGUI OreMinedText8;
     [SerializeField] TextMeshProUGUI OreMinedText9;
-    [SerializeField] TextMeshProUGUI OreMinedText10;
+    [SerializeField] TextMeshProUGUI OreMinedText10;*/
+
+    [SerializeField] TextMeshProUGUI[] OreMinedText;
+    [SerializeField] int[] MinedOreCounter;
 
     // TODO - Change this possibly to an Array
-    [SerializeField] int MinedOreCounter1 = 0;
+    /*[SerializeField] int MinedOreCounter1 = 0;
     [SerializeField] int MinedOreCounter2 = 0;
     [SerializeField] int MinedOreCounter3 = 0;
     [SerializeField] int MinedOreCounter4 = 0;
@@ -31,7 +34,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int MinedOreCounter7 = 0;
     [SerializeField] int MinedOreCounter8 = 0;
     [SerializeField] int MinedOreCounter9 = 0;
-    [SerializeField] int MinedOreCounter10 = 0;
+    [SerializeField] int MinedOreCounter10 = 0;*/
 
     private void Awake()
     {
@@ -51,19 +54,13 @@ public class GameSession : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        OreMinedText1.text = MinedOreCounter1.ToString();
-        OreMinedText2.text = MinedOreCounter2.ToString();
-        OreMinedText3.text = MinedOreCounter3.ToString();
-        OreMinedText4.text = MinedOreCounter4.ToString();
-        OreMinedText5.text = MinedOreCounter5.ToString();
-        OreMinedText6.text = MinedOreCounter6.ToString();
-        OreMinedText7.text = MinedOreCounter7.ToString();
-        OreMinedText8.text = MinedOreCounter8.ToString();
-        OreMinedText9.text = MinedOreCounter9.ToString();
-        OreMinedText10.text = MinedOreCounter10.ToString();
+        for(int i=0; i<= MinedOreCounter.Length; i++)
+        {
+            OreMinedText[i].text = MinedOreCounter[i].ToString();
+        }
     }
 
-    // Displays amount of ore mined
+    // Displays and updates the amount of ore mined
     public void CountMinedOre1()
     {
         MinedOreCounter1 += 1;
@@ -124,10 +121,65 @@ public class GameSession : MonoBehaviour
         OreMinedText10.text = MinedOreCounter10.ToString();
     }
 
-    // Updates amount of ores after Purchasing items in the market
-    public void UpdateOreAmount()
+    // Updates the amount of ores after purchasing items in the market
+    public void UpdateOreAmount1()
     {
         MinedOreCounter1 -= 1;
+        OreMinedText1.text = MinedOreCounter1.ToString();
+    }
+
+    public void UpdateOreAmount2()
+    {
+        MinedOreCounter2 -= 1;
+        OreMinedText2.text = MinedOreCounter2.ToString();
+    }
+
+    public void UpdateOreAmount3()
+    {
+        MinedOreCounter3 -= 1;
+        OreMinedText3.text = MinedOreCounter3.ToString();
+    }
+
+    public void UpdateOreAmount4()
+    {
+        MinedOreCounter4 -= 1;
+        OreMinedText4.text = MinedOreCounter4.ToString();
+    }
+
+    public void UpdateOreAmount5()
+    {
+        MinedOreCounter5 -= 1;
+        OreMinedText5.text = MinedOreCounter5.ToString();
+    }
+
+    public void UpdateOreAmount6()
+    {
+        MinedOreCounter6 -= 1;
+        OreMinedText6.text = MinedOreCounter6.ToString();
+    }
+
+    public void UpdateOreAmount7()
+    {
+        MinedOreCounter7 -= 1;
+        OreMinedText7.text = MinedOreCounter7.ToString();
+    }
+
+    public void UpdateOreAmount8()
+    {
+        MinedOreCounter8 -= 1;
+        OreMinedText8.text = MinedOreCounter8.ToString();
+    }
+
+    public void UpdateOreAmount9()
+    {
+        MinedOreCounter9 -= 1;
+        OreMinedText9.text = MinedOreCounter9.ToString();
+    }
+
+    public void UpdateOreAmount10()
+    {
+        MinedOreCounter10 -= 1;
+        OreMinedText10.text = MinedOreCounter10.ToString();
     }
 
     // Data saving related below:
