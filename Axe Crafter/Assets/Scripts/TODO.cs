@@ -1,24 +1,20 @@
 ﻿// TODO
 
-// 1. Make a shop where you could buy pickaxes for resources, to start with they would only have different sprite
-// 2. Figure out a way to display pickaxe cost for each different pickaxe.
 // 3. Optimize TODO & UpgradePick Script
+// 4. Make so you can't buy if price doesn't match
+// 5. Add 4 different sprites to each price.
 
 // Main focus: When Button hits +9 -> Show resources required for an upgrade.
 
 // Amount of Ores owned should be displayed on the bottom.
 
-// 1.1 Make everything savable
-// 1.2 Make 2 new sprites
-// 1.3 Make 10 new working sprites
-// 2. Add Damage to Pickaxe
+// 2. Add Damage to Pickaxe as in Laser Defender.
+// 2.1 Add Pickaxe Cost as in Laser Defender?
 // 3. Add Different Resource Cost
 // 4. Add Woodcutting
 
 // IFNO:
 // If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
-
-// Z. Format the code.
 
 // X. Add small randomization to the time, size and rotation of ores. Possibly could add color randomization to make them rare etc.
 // Size could be proportional to the time waited?
@@ -33,6 +29,8 @@
 
 // X - Do these in the end
 // Z - Important things to figure out
+// XX - Save Current Pickaxe Sprite
 
 
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
+/// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
