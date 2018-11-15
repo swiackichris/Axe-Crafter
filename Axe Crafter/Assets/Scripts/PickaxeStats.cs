@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class PickaxeStats : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] int PickaxeDamage = 10;
+
+    public int GetPickaxeDamage()
+    {
+        return PickaxeDamage;
+    }
 }

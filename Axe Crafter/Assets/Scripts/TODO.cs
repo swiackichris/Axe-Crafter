@@ -1,19 +1,18 @@
 ﻿// TODO
 
+// Work at OreStats.
+
 // 3. Optimize TODO & UpgradePick Script
 // 4. Make so you can't buy if price doesn't match
 // 5. Add 4 different sprites to each price.
-
-// Main focus: When Button hits +9 -> Show resources required for an upgrade.
-
-// Amount of Ores owned should be displayed on the bottom.
+// SerializePickaxe Cost somewhere.
 
 // 2. Add Damage to Pickaxe as in Laser Defender.
 // 2.1 Add Pickaxe Cost as in Laser Defender?
 // 3. Add Different Resource Cost
 // 4. Add Woodcutting
 
-// IFNO:
+// INFO:
 // If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
 
 // X. Add small randomization to the time, size and rotation of ores. Possibly could add color randomization to make them rare etc.
@@ -26,10 +25,7 @@
 // X. You start with your hand not pickaxe.
 
 // Z. Should Different Mines be unlocked from the start?
-
-// X - Do these in the end
-// Z - Important things to figure out
-// XX - Save Current Pickaxe Sprite
+// X - Save Current Pickaxe Sprite
 
 
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.

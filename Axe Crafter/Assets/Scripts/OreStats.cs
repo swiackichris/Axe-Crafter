@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class OreStats : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] int OreHealth;
+
+    public int GetOreHealth()
+    {
+        return OreHealth;
+    }  
 }

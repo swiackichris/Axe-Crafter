@@ -11,6 +11,7 @@ public class Ore : MonoBehaviour {
 
     [SerializeField] float FullPickaxeDamage = 10.0f;
     [SerializeField] float CurrentPickaxeDamage = 10.0f;
+
     [SerializeField] GameObject OrePrefab;
     GameObject ore; // Required for Button to know which object should be destroyed.
 
@@ -49,9 +50,9 @@ public class Ore : MonoBehaviour {
 
     // MINING
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
-    public void MineOre1()
+    public void MineOre1() // (PickaxeStats pickaxeStats) /// NEW FUNCTION FORMAT
     {
-        CurrentHealth -= CurrentPickaxeDamage;
+        CurrentHealth -= CurrentPickaxeDamage; // pickaxeStats.GetPickaxeDamage(); /// NEW FUNCTION FORMAT
         print(CurrentHealth);
         if (CurrentHealth <= 0)
         {
