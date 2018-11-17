@@ -1,23 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Ore : MonoBehaviour {
 
-    // TODO organize SerializeFields, and remove what shouldn't be there.
-    [SerializeField] float FullHealth = 100.0f;
-    [SerializeField] float CurrentHealth = 100f;
+    [SerializeField] private OreStats oreStatsScript; // Should be the same as OrePrefab
+    [SerializeField] private PickaxeStats pickaxeStatsScript; // Should be the same as PickaxePrefab
 
-    [SerializeField] float FullPickaxeDamage = 10.0f;
-    [SerializeField] float CurrentPickaxeDamage = 10.0f;
+    [SerializeField] public float CurrentHealth = 100f;
+    [SerializeField] public float CurrentPickaxeDamage = 10f;
 
     [SerializeField] GameObject OrePrefab;
+    [SerializeField] GameObject PickaxePrefab;
     GameObject ore; // Required for Button to know which object should be destroyed.
 
-    // Awake is before Start to avoid possible late ore spawn.
-    private void Awake()
+    private void Start()
     {
+        CurrentHealth = oreStatsScript.GetOreHealth();
+        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
+
         // Spawning First Ore
         ore = Instantiate(
             OrePrefab,
@@ -28,17 +30,17 @@ public class Ore : MonoBehaviour {
     // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
-        Destroy(ore); // Destroys ore created in void Awake()
+        Destroy(ore); // Destroys ore created in void Start();
         print("Destroy(ore)");
 
-        CurrentHealth = FullHealth; // Resets health for new ore
+        CurrentHealth = oreStatsScript.GetOreHealth(); // Resets health for new ore
         print("CurrentHealth = FullHealth");
 
         CurrentPickaxeDamage = 0;
 
         yield return new WaitForSeconds(1); // Wait time before new ore spawns, you could randomize it in the future
 
-        CurrentPickaxeDamage = FullPickaxeDamage;
+        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
 
         // Spawn new ore
         ore = Instantiate(
@@ -50,13 +52,13 @@ public class Ore : MonoBehaviour {
 
     // MINING
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
-    public void MineOre1() // (PickaxeStats pickaxeStats) /// NEW FUNCTION FORMAT
+    public void MineOre1()
     {
-        CurrentHealth -= CurrentPickaxeDamage; // pickaxeStats.GetPickaxeDamage(); /// NEW FUNCTION FORMAT
-        print(CurrentHealth);
+        CurrentHealth -= CurrentPickaxeDamage;
+        print("CurrentHealth=" +CurrentHealth);
         if (CurrentHealth <= 0)
         {
-            FindObjectOfType<GameSession>().CountMinedOre1(); // Calls a function from a different class 
+            FindObjectOfType<GameSession>().CountMinedOre1();
             StartCoroutine(DestroyAndSpawn());
         }
     }

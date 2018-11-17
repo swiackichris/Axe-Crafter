@@ -33,21 +33,6 @@ public class GameSession : MonoBehaviour
     [SerializeField] int MinedOreCounter9 = 0;
     [SerializeField] int MinedOreCounter10 = 0;
 
-    private void Awake()
-    {
-        // Possibly to be deleted later
-        /*
-        int gameStatusCount = FindObjectsOfType<GameSession>().Length;
-        if (gameStatusCount > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }*/
-    }
-
     // Use this for initialization
     void Start()
     {

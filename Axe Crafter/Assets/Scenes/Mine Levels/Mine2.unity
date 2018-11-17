@@ -597,11 +597,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce824868e995a74a8fb48077e305695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FullHealth: 100
-  CurrentHealth: 100
-  FullPickaxeDamage: 10
-  CurrentPickaxeDamage: 10
+  oreStatsScript: {fileID: 114378033895684544, guid: 41474224f37cabf4cbb351d3d1bcc8ee,
+    type: 2}
+  pickaxeStatsScript: {fileID: 114758870350696418, guid: d35fa428cef335346949409b011270d0,
+    type: 2}
+  CurrentHealth: 1
+  CurrentPickaxeDamage: 1
   OrePrefab: {fileID: 1974061870735104, guid: 435fcbec5085c6f43ba221a67c25bf5e, type: 2}
+  PickaxePrefab: {fileID: 1477298614649322, guid: 623aee54823348a4baef996558e62c21,
+    type: 2}
 --- !u!4 &605596050
 Transform:
   m_ObjectHideFlags: 0

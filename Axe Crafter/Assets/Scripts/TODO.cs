@@ -1,8 +1,5 @@
 ﻿// TODO
 
-// Work at OreStats.
-
-// 3. Optimize TODO & UpgradePick Script
 // 4. Make so you can't buy if price doesn't match
 // 5. Add 4 different sprites to each price.
 // SerializePickaxe Cost somewhere.

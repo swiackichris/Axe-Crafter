@@ -25,8 +25,7 @@ public class UpgradePick : MonoBehaviour {
     [SerializeField] GameObject[] PickaxeSprite;
     [SerializeField] GameObject[] SmallOreSprite;
 
-
-    private void Awake()
+    private void Start()
     {
         // Spawning First Pickaxe
         Pickaxe = Instantiate(PickaxeSprite[PickaxeLevel], new Vector2(9, 9), Quaternion.identity) as GameObject;
