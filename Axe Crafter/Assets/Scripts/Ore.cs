@@ -19,35 +19,7 @@ public class Ore : MonoBehaviour {
     {
         CurrentHealth = oreStatsScript.GetOreHealth();
         CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
-
-        // Spawning First Ore
-        ore = Instantiate(
-            OrePrefab,
-            new Vector2(9, 9), // Change later the position of new ore spawned to be posibly random
-            Quaternion.identity) as GameObject;
-    }
-
-    // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
-    IEnumerator DestroyAndSpawn()
-    {
-        Destroy(ore); // Destroys ore created in void Start();
-        print("Destroy(ore)");
-
-        CurrentHealth = oreStatsScript.GetOreHealth(); // Resets health for new ore
-        print("CurrentHealth = FullHealth");
-
-        CurrentPickaxeDamage = 0;
-
-        yield return new WaitForSeconds(1); // Wait time before new ore spawns, you could randomize it in the future
-
-        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
-
-        // Spawn new ore
-        ore = Instantiate(
-        OrePrefab,
-        new Vector2(9, 9),
-        Quaternion.identity) as GameObject;
-        print("ore = Instantiate");
+        OreInstatiate();
     }
 
     // MINING
@@ -160,5 +132,32 @@ public class Ore : MonoBehaviour {
             FindObjectOfType<GameSession>().CountMinedOre10();
             StartCoroutine(DestroyAndSpawn());
         }
+    }
+
+    public void OreInstatiate()
+    {
+        // Spawn new ore
+        ore = Instantiate(
+        OrePrefab,
+        new Vector2(9, 9), // Change later the position of new ore spawned to be posibly random
+        Quaternion.identity) as GameObject;
+        print("ore = Instantiate");
+    }
+
+    // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
+    IEnumerator DestroyAndSpawn()
+    {
+        Destroy(ore); // Destroys ore created in void Start();
+        print("Destroy(ore)");
+
+        CurrentHealth = oreStatsScript.GetOreHealth(); // Resets health for new ore
+        print("CurrentHealth = FullHealth");
+
+        CurrentPickaxeDamage = 0;
+
+        yield return new WaitForSeconds(1); // Wait time before new ore spawns, you could randomize it in the future
+
+        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
+        OreInstatiate();
     }
 }

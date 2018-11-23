@@ -7,6 +7,8 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+using UnityEngine.UI;
+
 public class UpgradePick : MonoBehaviour {
 
     [SerializeField] TextMeshProUGUI PickUpgradeLevelText;
@@ -14,6 +16,8 @@ public class UpgradePick : MonoBehaviour {
     [SerializeField] TextMeshProUGUI PickUpgradePriceText2;
     [SerializeField] TextMeshProUGUI PickUpgradePriceText3;
     [SerializeField] TextMeshProUGUI PickUpgradePriceText4;
+
+    [SerializeField] GameObject UpgradePickaxeButton;
 
     int PickUpgradeCounter = 0;
     int PickUpgradeClicks = 0;
@@ -40,6 +44,11 @@ public class UpgradePick : MonoBehaviour {
         // NewPickaxe 1
         if(PickUpgradeClicks == 9)
         {
+            if (FindObjectOfType<GameSession>().GetMinedOreCounter1() < 1)
+            {
+                // UpgradePickaxeButton.GetComponent<Button>();
+                // UpgradePickaxeButton.button.interactable = false;
+            }
             DisplayUpgradePriceSprite1();
             PickUpgradePriceText1.text = 1.ToString();
             PickUpgradePriceText2.text = 1.ToString();

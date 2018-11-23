@@ -1,9 +1,13 @@
 ﻿// TODO
 
-// 4. Make so you can't buy if price doesn't match
+// GetCountMinedOre
+// If(CountMinedOre<1) { insufficient materials }
+
+// 4. Make so you can't buy if price doesn't match and "Insufficient Materials" message appears.
 // 5. Add 4 different sprites to each price.
 // SerializePickaxe Cost somewhere.
 
+// 1. Add Things to array and save them to save programming space
 // 2. Add Damage to Pickaxe as in Laser Defender.
 // 2.1 Add Pickaxe Cost as in Laser Defender?
 // 3. Add Different Resource Cost
@@ -27,3 +31,5 @@
 
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
 /// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
+/// 
+
