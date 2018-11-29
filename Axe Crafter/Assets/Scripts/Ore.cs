@@ -17,6 +17,9 @@ public class Ore : MonoBehaviour {
 
     private void Start()
     {
+        print(9 / 10);
+        print(19 / 10);
+        print(29 / 10);
         CurrentHealth = oreStatsScript.GetOreHealth();
         CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
         OreInstatiate();
@@ -24,112 +27,13 @@ public class Ore : MonoBehaviour {
 
     // MINING
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
-    public void MineOre1()
+    public void MineOre(int i)
     {
         CurrentHealth -= CurrentPickaxeDamage;
         print("CurrentHealth=" +CurrentHealth);
         if (CurrentHealth <= 0)
         {
-            FindObjectOfType<GameSession>().CountMinedOre1();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre2()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre2();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre3()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre3();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre4()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre4();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre5()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre5();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre6()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre6();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre7()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre7();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre8()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre8();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre9()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre9();
-            StartCoroutine(DestroyAndSpawn());
-        }
-    }
-
-    public void MineOre10()
-    {
-        CurrentHealth -= CurrentPickaxeDamage;
-        print(CurrentHealth);
-        if (CurrentHealth <= 0)
-        {
-            FindObjectOfType<GameSession>().CountMinedOre10();
+            FindObjectOfType<GameSession>().CountMinedOre(i);
             StartCoroutine(DestroyAndSpawn());
         }
     }

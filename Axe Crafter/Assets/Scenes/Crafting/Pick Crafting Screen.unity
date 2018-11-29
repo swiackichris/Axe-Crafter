@@ -1473,26 +1473,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InsufficientMaterialsText: {fileID: 1751725368}
-  OreMinedText1: {fileID: 1065986550}
-  OreMinedText2: {fileID: 1729097287}
-  OreMinedText3: {fileID: 676380578}
-  OreMinedText4: {fileID: 1915944661}
-  OreMinedText5: {fileID: 1531025854}
-  OreMinedText6: {fileID: 1827961992}
-  OreMinedText7: {fileID: 1107494767}
-  OreMinedText8: {fileID: 1907039786}
-  OreMinedText9: {fileID: 315927261}
-  OreMinedText10: {fileID: 1204630148}
-  MinedOreCounter1: 0
-  MinedOreCounter2: 0
-  MinedOreCounter3: 0
-  MinedOreCounter4: 0
-  MinedOreCounter5: 0
-  MinedOreCounter6: 0
-  MinedOreCounter7: 0
-  MinedOreCounter8: 0
-  MinedOreCounter9: 0
-  MinedOreCounter10: 0
+  OreMinedText:
+  - {fileID: 1065986550}
+  - {fileID: 1729097287}
+  - {fileID: 676380578}
+  - {fileID: 1915944661}
+  - {fileID: 1531025854}
+  - {fileID: 1827961992}
+  - {fileID: 1107494767}
+  - {fileID: 1907039786}
+  - {fileID: 315927261}
+  - {fileID: 1204630148}
+  MinedOreCounter: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &767005751
 Transform:
   m_ObjectHideFlags: 0
@@ -3250,6 +3242,7 @@ MonoBehaviour:
   - {fileID: 1051948606736246, guid: f0dc2d00edb4ad840a658c1dac4b2957, type: 2}
   - {fileID: 1028405849391178, guid: ef966b945b978024480a822ecfb22e18, type: 2}
   - {fileID: 1606025563144786, guid: e7eb20721039d56409bef7de99c8ab46, type: 2}
+  gameSessionScript: {fileID: 767005750}
 --- !u!4 &1861526243
 Transform:
   m_ObjectHideFlags: 0

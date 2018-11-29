@@ -1,5 +1,6 @@
 ﻿// TODO
 
+// Make UpgradePick Easier to read.
 // GetCountMinedOre
 // If(CountMinedOre<1) { insufficient materials }
 
