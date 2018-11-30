@@ -17,9 +17,6 @@ public class Ore : MonoBehaviour {
 
     private void Start()
     {
-        print(9 / 10);
-        print(19 / 10);
-        print(29 / 10);
         CurrentHealth = oreStatsScript.GetOreHealth();
         CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
         OreInstatiate();

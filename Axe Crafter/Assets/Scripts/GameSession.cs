@@ -9,8 +9,6 @@ using System.IO;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI InsufficientMaterialsText;
-
     [SerializeField] TextMeshProUGUI[] OreMinedText;
     [SerializeField] int[] MinedOreCounter;
 
@@ -38,13 +36,8 @@ public class GameSession : MonoBehaviour
     {
         if (MinedOreCounter[i] >= 1)
         {
-            InsufficientMaterialsText.text = null;
             MinedOreCounter[i] -= 1;
             OreMinedText[i].text = MinedOreCounter[i].ToString();
-        }
-        else
-        {
-            InsufficientMaterialsText.text = "Insufficient Materials";
         }
     }
 
