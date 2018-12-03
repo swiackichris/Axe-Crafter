@@ -11,6 +11,9 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI[] OreMinedText;
     [SerializeField] int[] MinedOreCounter;
+    int PickLevel = 0;
+    int PickUpgradeCounter = 0;
+    
 
     // Use this for initialization
     void Start()
@@ -41,7 +44,14 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    // UpgradePickClass
     public int GetMinedOreCounter(int i) { return MinedOreCounter[i]; }
+    public int GetPickLevel() { return PickLevel; }
+    public int GetPickUpgradeCounter() { return PickUpgradeCounter; }
+    public void IncreasePickLevel() { PickLevel++; }
+    public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
+    public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
+    
 
     // Data saving related below:
     void OnDisable()
@@ -50,10 +60,9 @@ public class GameSession : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat"); // Creates a data file in DataPath with name specified in "XXX"
         PlayerData data = new PlayerData();
 
-        for(int i=0; i<OreMinedText.Length; i++)
-        {
-            data.MinedOreCounterData[i] = MinedOreCounter[i];
-        }
+        for(int i=0; i<OreMinedText.Length; i++) { data.MinedOreCounterData[i] = MinedOreCounter[i]; }
+        data.PickUpgradeCounterData = PickUpgradeCounter;
+        data.PickLevelData = PickLevel;
         bf.Serialize(file, data);
         file.Close();
     }
@@ -67,10 +76,9 @@ public class GameSession : MonoBehaviour
             PlayerData data = bf.Deserialize(file) as PlayerData; // You could also cast is as PlayerData by putting (PlayerData) in front like: PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
-            for (int i = 0; i < OreMinedText.Length; i++)
-            {
-                MinedOreCounter[i] = data.MinedOreCounterData[i];
-            }
+            for (int i = 0; i < OreMinedText.Length; i++) { MinedOreCounter[i] = data.MinedOreCounterData[i]; }
+            PickUpgradeCounter = data.PickUpgradeCounterData;
+            PickLevel = data.PickLevelData;
         }
     }
 
@@ -78,5 +86,7 @@ public class GameSession : MonoBehaviour
     class PlayerData
     {
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
+        public int PickUpgradeCounterData;
+        public int PickLevelData;
     }
 }

@@ -1,8 +1,6 @@
 ﻿// TODO
 
-// Serialize Pick Prices // 2.1 Add Pickaxe Cost as in Laser Defender?
-// Upgrade Pick Level Should Save
-
+// Think what you should work on
 // 4. Add Woodcutting
 
 // INFO:

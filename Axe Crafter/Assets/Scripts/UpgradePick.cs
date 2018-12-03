@@ -18,13 +18,8 @@ public class UpgradePick : MonoBehaviour
 
     [SerializeField] GameObject UpgradePickaxeButton;
 
-    int PickUpgradeCounter = 0; // You can upgrade an item to +9 before you can buy a new one
-    int PickUpgradeClicks = 0; // Possibly to be deleted later
-    int PickaxeLevel = 0;
-    int UpgradePriceParameter = 0; // Parameter needed to know which function number to call
-
     GameObject Pickaxe;
-    GameObject SmallOre;
+    GameObject[] SmallOre;
 
     [SerializeField] GameObject[] PickaxeSprite;
     [SerializeField] GameObject[] SmallOreSprite;
@@ -36,66 +31,64 @@ public class UpgradePick : MonoBehaviour
     private void Start()
     {
         // Spawning First Pickaxe
-        Pickaxe = Instantiate(PickaxeSprite[PickaxeLevel], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScript.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
+        if(gameSessionScript.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
+        SmallOre = new GameObject[4];
     }
 
     public void UpgradePickaxe()
     {
-        PickUpgradeCounter += 1;
-        PickUpgradeClicks += 1;
-        PickUpgradeLevelText.text = PickUpgradeCounter.ToString();
+        gameSessionScript.IncreasePickUpgradeCounter();
+        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
+        if (gameSessionScript.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
 
-        // NewPickaxe 1
-        if (PickUpgradeClicks % 10 == 9) // There should be x instead of 9
+        if (gameSessionScript.GetPickUpgradeCounter() == 9) // There should be x instead of 9
         {
-            DisplayUpgradePriceSprite(UpgradePriceParameter);
+            DisplayUpgradePriceSprite(gameSessionScript.GetPickLevel());
             PickUpgradePriceText[0].text = 1.ToString();
             PickUpgradePriceText[1].text = 1.ToString();
             PickUpgradePriceText[2].text = 1.ToString();
-            PickUpgradePriceText[3].text = 1.ToString();            
-            if (gameSessionScript.GetMinedOreCounter(UpgradePriceParameter) < 1) // TODO 1 Should be Replaced with some ugprade cost
+            PickUpgradePriceText[3].text = 1.ToString();
+            if (gameSessionScript.GetMinedOreCounter(gameSessionScript.GetPickLevel()) < 1) // TODO 1 Should be Replaced with some ugprade cost
             {
-                InsufficientMaterialsText.text = "Insufficient Materials"; // This has to be somewhere else
+                InsufficientMaterialsText.text = "Insufficient Materials";
                 UpgradeButton.interactable = false;
             }
             else
             {
-                InsufficientMaterialsText.text = null;               
-            } 
+                InsufficientMaterialsText.text = null;
+            }
         }
 
-        if (PickUpgradeClicks > 1 && PickUpgradeClicks % 10 == 0)
+        if (gameSessionScript.GetPickUpgradeCounter() == 10)
         {
             DestroyAndInstantiatePickaxe();
-            FindObjectOfType<GameSession>().BuyPickaxe(UpgradePriceParameter); // Deducts the cost of a pickaxe
-            UpgradePriceParameter++;
+            gameSessionScript.BuyPickaxe(gameSessionScript.GetPickLevel()); // Deducts the cost of a pickaxe
         }
     }
 
     public void DestroyAndInstantiatePickaxe()
     {
         Destroy(Pickaxe);
-        Destroy(SmallOre);
+        for(int i = 0; i<=3; i++) { Destroy(SmallOre[i]); }
 
         // PickaxeLevel is required for the game to know which pickaxe you currently have.
-        PickaxeLevel += 1;
-        Pickaxe = Instantiate(PickaxeSprite[PickaxeLevel], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        gameSessionScript.IncreasePickLevel();
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScript.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
 
-        PickUpgradeCounter = 0;
-        PickUpgradeLevelText.text = PickUpgradeCounter.ToString();
+        gameSessionScript.ResetPickUpgradeCounter();
+        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
 
         // Removes upgrade price
-        PickUpgradePriceText[0].text = null;
-        PickUpgradePriceText[1].text = null;
-        PickUpgradePriceText[2].text = null;
-        PickUpgradePriceText[3].text = null;
+        for (int i = 0; i <= 3; i++) { PickUpgradePriceText[i].text = null; }
     }
 
-    public void DisplayUpgradePriceSprite(int i)
+    public void DisplayUpgradePriceSprite(int i) // TODO improve this function
     {
-        SmallOre = Instantiate(SmallOreSprite[i], new Vector2(12, 12), Quaternion.identity) as GameObject;
-        SmallOre = Instantiate(SmallOreSprite[i], new Vector2(13, 12), Quaternion.identity) as GameObject;
-        SmallOre = Instantiate(SmallOreSprite[i], new Vector2(14, 12), Quaternion.identity) as GameObject;
-        SmallOre = Instantiate(SmallOreSprite[i], new Vector2(15, 12), Quaternion.identity) as GameObject;
+        SmallOre[0] = Instantiate(SmallOreSprite[i], new Vector2(12, 12), Quaternion.identity) as GameObject;
+        SmallOre[1] = Instantiate(SmallOreSprite[i], new Vector2(13, 12), Quaternion.identity) as GameObject;
+        SmallOre[2] = Instantiate(SmallOreSprite[i], new Vector2(14, 12), Quaternion.identity) as GameObject;
+        SmallOre[3] = Instantiate(SmallOreSprite[i], new Vector2(15, 12), Quaternion.identity) as GameObject;
     }
 }
