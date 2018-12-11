@@ -14,54 +14,14 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     // MINING
-    public void LoadMining1()
+    public void LoadMining(int i)
     {
-        SceneManager.LoadScene("Mine1");
+        SceneManager.LoadScene("Mine" + i);
     }
 
-    public void LoadMining2()
+    public void LoadMiningSelection()
     {
-        SceneManager.LoadScene("Mine2");
-    }
-
-    public void LoadMining3()
-    {
-        SceneManager.LoadScene("Mine3");
-    }
-
-    public void LoadMining4()
-    {
-        SceneManager.LoadScene("Mine4");
-    }
-
-    public void LoadMining5()
-    {
-        SceneManager.LoadScene("Mine5");
-    }
-
-    public void LoadMining6()
-    {
-        SceneManager.LoadScene("Mine6");
-    }
-
-    public void LoadMining7()
-    {
-        SceneManager.LoadScene("Mine7");
-    }
-
-    public void LoadMining8()
-    {
-        SceneManager.LoadScene("Mine8");
-    }
-
-    public void LoadMining9()
-    {
-        SceneManager.LoadScene("Mine9");
-    }
-
-    public void LoadMining10()
-    {
-        SceneManager.LoadScene("Mine10");
+        SceneManager.LoadScene("MineSelectionScreen");
     }
 
     // WOODCUTTING
@@ -71,9 +31,14 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     // BATTLE
-    public void LoadBattle()
+    public void LoadBattle(int i)
     {
-        SceneManager.LoadScene("Battle Screen");
+        SceneManager.LoadScene("Battle" + i);
+    }
+
+    public void LoadBattleSelectionScreen()
+    {
+        SceneManager.LoadScene("BattleSelectionScreen");
     }
 
     // CRAFTING SELECTION
