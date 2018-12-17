@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
-    [SerializeField] private OreStats oreStatsScript; // Should be the same as OrePrefab
-    [SerializeField] private PickaxeStats pickaxeStatsScript; // Should be the same as PickaxePrefab
+    [SerializeField] private OreStats oreStatsScriptPrefab; // Should be the same as OrePrefab
+    [SerializeField] private PickaxeStats pickaxeStatsScriptPrefab; // Should be the same as PickaxePrefab
 
     [SerializeField] public float CurrentHealth = 100f;
     [SerializeField] public float CurrentPickaxeDamage = 10f;
@@ -17,19 +17,20 @@ public class Ore : MonoBehaviour {
 
     private void Start()
     {
-        CurrentHealth = oreStatsScript.GetOreHealth();
-        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
+        CurrentHealth = oreStatsScriptPrefab.GetOreHealth();
+        CurrentPickaxeDamage = pickaxeStatsScriptPrefab.GetPickaxeDamage();
         OreInstatiate();
     }
 
     // MINING
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
-    public void MineOre(int i)
+    public void MineOre(int i, GameSession gameSession)
     {
         CurrentHealth -= CurrentPickaxeDamage;
         print("CurrentHealth=" +CurrentHealth);
         if (CurrentHealth <= 0)
         {
+            gameSession.CountMinedOre(i);
             FindObjectOfType<GameSession>().CountMinedOre(i);
             StartCoroutine(DestroyAndSpawn());
         }
@@ -51,14 +52,14 @@ public class Ore : MonoBehaviour {
         Destroy(ore); // Destroys ore created in void Start();
         print("Destroy(ore)");
 
-        CurrentHealth = oreStatsScript.GetOreHealth(); // Resets health for new ore
+        CurrentHealth = oreStatsScriptPrefab.GetOreHealth(); // Resets health for new ore
         print("CurrentHealth = FullHealth");
 
         CurrentPickaxeDamage = 0;
 
         yield return new WaitForSeconds(1); // Wait time before new ore spawns, you could randomize it in the future
 
-        CurrentPickaxeDamage = pickaxeStatsScript.GetPickaxeDamage();
+        CurrentPickaxeDamage = pickaxeStatsScriptPrefab.GetPickaxeDamage();
         OreInstatiate();
     }
 }

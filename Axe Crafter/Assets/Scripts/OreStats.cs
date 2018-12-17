@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class OreStats : MonoBehaviour {
 
-    [SerializeField] float OreHealth = 10;
+    [SerializeField] int OreHealth = 10;
 
-    public float GetOreHealth()
+    public int GetOreHealth()
     {
         return OreHealth;
     }

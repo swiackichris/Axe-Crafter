@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PickaxeStats : MonoBehaviour {
 
-    [SerializeField] float PickaxeDamage = 10f;
+    [SerializeField] int PickaxeDamage = 10;
 
-    public float GetPickaxeDamage()
+    public int GetPickaxeDamage()
     {
         return PickaxeDamage;
     }

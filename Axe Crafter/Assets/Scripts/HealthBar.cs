@@ -11,14 +11,26 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] AxeStats axeStatsScriptPrefab;
     [SerializeField] MobStats mobStatsScriptPrefab;
 
-    private void Start()
+    [SerializeField] private GameSession gameSessionScriptPrefab;
+
+    private void Start(MobStats mobStats)
     {
-        health = mobStatsScriptPrefab.GetMaxHealth();
+        health = mobStats.GetMaxHealth();
+        // health = mobStatsScriptPrefab.GetMaxHealth();
     }
 
     public void UpdateHealth()
     {
         health -= axeStatsScriptPrefab.GetAxeDamage();
         healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
+        if(health <= 0)
+        {
+            if(health <= -10)
+            {
+                gameSessionScriptPrefab.CountGold();
+                health = mobStatsScriptPrefab.GetMaxHealth();
+                healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
+            }
+        }
     }
 }

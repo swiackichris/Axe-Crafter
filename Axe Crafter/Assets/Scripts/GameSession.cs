@@ -13,6 +13,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] int[] MinedOreCounter;
     int PickLevel = 0;
     int PickUpgradeCounter = 0;
+
+    [SerializeField] MobStats mobStatsScriptPrefab;
+    float Gold = 0;
     
 
     // Use this for initialization
@@ -52,8 +55,14 @@ public class GameSession : MonoBehaviour
     public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
     public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
     
+    // BATTLE
+    public void CountGold()
+    {
+        Gold += mobStatsScriptPrefab.GetGoldReward();
+        print("Gold =" + Gold);
+    }
 
-    // Data saving related below:
+    // DATA saving related below:
     void OnDisable()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -63,6 +72,7 @@ public class GameSession : MonoBehaviour
         for(int i=0; i<OreMinedText.Length; i++) { data.MinedOreCounterData[i] = MinedOreCounter[i]; }
         data.PickUpgradeCounterData = PickUpgradeCounter;
         data.PickLevelData = PickLevel;
+        data.GoldData = Gold;
         bf.Serialize(file, data);
         file.Close();
     }
@@ -79,6 +89,7 @@ public class GameSession : MonoBehaviour
             for (int i = 0; i < OreMinedText.Length; i++) { MinedOreCounter[i] = data.MinedOreCounterData[i]; }
             PickUpgradeCounter = data.PickUpgradeCounterData;
             PickLevel = data.PickLevelData;
+            Gold = data.GoldData;
         }
     }
 
@@ -88,5 +99,6 @@ public class GameSession : MonoBehaviour
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int PickUpgradeCounterData;
         public int PickLevelData;
+        public float GoldData;
     }
 }

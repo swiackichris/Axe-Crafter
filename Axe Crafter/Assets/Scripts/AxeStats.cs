@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AxeStats : MonoBehaviour {
 
-    [SerializeField] float AxeDamage = 10f;
+    [SerializeField] int AxeDamage = 10;
 
-    public float GetAxeDamage()
+    public int GetAxeDamage()
     {
         return AxeDamage;
     }

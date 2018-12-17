@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading Screen.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 0ea690a9e6c9c2441b5ccca4fd6ff14a
+  - enabled: 1
+    path: Assets/Scenes/BattleSelectionScreen.unity
+    guid: 55030bf9a0e030441b971829a62ac4a4
+  - enabled: 1
+    path: Assets/Scenes/MineSelectionScreen.unity
+    guid: dc9c2eb695e5e0b48979700129acf6ab
+  - enabled: 1
     path: Assets/Scenes/Crafting/Crafting Selection.unity
     guid: a261863dc6110c74ab0d933bea77b6d0
   - enabled: 1
     path: Assets/Scenes/Crafting/Pick Crafting Screen.unity
     guid: 8664dcb7955c43f4791f618cd0db5fcb
-  - enabled: 1
-    path: Assets/Scenes/Loading Screen.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/MineSelectionScreen.unity
-    guid: dc9c2eb695e5e0b48979700129acf6ab
-  - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 0ea690a9e6c9c2441b5ccca4fd6ff14a
   - enabled: 1
     path: Assets/Scenes/Woodcutting Screen.unity
     guid: 5ed3efb8412b29c479cdec879408c50c
@@ -28,31 +31,31 @@ EditorBuildSettings:
     guid: dec89002afa0a0e4487063e7ddc8ac2d
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle1.unity
-    guid: ae38d23faafd409419e747068414c2ed
+    guid: 49bc18e0ddbe1e84ba3e0d658e5fa2a8
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle2.unity
-    guid: 7942f4b5533562142b15af631cc0e3ff
+    guid: 4348b7b4a781d2a43893b62154b2fcd2
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle3.unity
-    guid: 4eb9150d1ab33904eb191341d6e4f17f
+    guid: 148d0a24e53444041beb0ea179f7218a
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle4.unity
-    guid: 6962a957df1bd724b8d4b6d10f349355
+    guid: 15ab8b49fe8cd1046914ceecf0ff69a1
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle5.unity
-    guid: e947827caec1bb643ba0e36f86a57157
+    guid: f48e2ca158d714c4c8b716d1eb24829f
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle6.unity
-    guid: a0c30249144e4f140902117e0e2933aa
+    guid: 5230e038f29624c4c93b1b66584f3b70
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle7.unity
-    guid: c89c26380f20f354baad67c6a2265bc2
+    guid: 92db3e330895b834b93e1ecc9ee1b8b3
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle8.unity
-    guid: 028b17d44e2038648bd2e1feb2726549
+    guid: b02ed46c25bde1f4bafa6d88b788ed36
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle9.unity
-    guid: 223f45fd10bc4be4ca037ba4f52b14f2
+    guid: 84aeb29869371294086f04533b11504d
   - enabled: 1
     path: Assets/Scenes/Mine Levels/Mine0.unity
     guid: 4768bb739273f884d98c139419f36973

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4901016233199326}
   - component: {fileID: 212146936128970698}
   - component: {fileID: 114510769116328566}
+  - component: {fileID: 114798700549155716}
   m_Layer: 0
   m_Name: pick5
   m_TagString: Untagged
@@ -53,6 +54,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickaxeDamage: 30
+--- !u!114 &114798700549155716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421629672991440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1d13ae02b64004b8d3dd932134ca47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OreRequired: 00000000000000000100000001000000000000000000000001000000000000000100000000000000
+  WoodRequired: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  GoldRequired: 50
 --- !u!212 &212146936128970698
 SpriteRenderer:
   m_ObjectHideFlags: 1

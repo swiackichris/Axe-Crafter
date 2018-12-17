@@ -24,33 +24,56 @@ public class UpgradePick : MonoBehaviour
     [SerializeField] GameObject[] PickaxeSprite;
     [SerializeField] GameObject[] SmallOreSprite;
 
-    [SerializeField] private GameSession gameSessionScript;
+    [SerializeField] private GameSession gameSessionScriptPrefab;
+    // [SerializeField] private PickaxePrices pickaxePricesScriptPrefab; // Possibly Delete, We need either an Array of Function or Array of Scripts?
 
     [SerializeField] Button UpgradeButton;
+
+    int P = 0; // Needed to make a for function with PickUpgradePriceText
 
     private void Start()
     {
         // Spawning First Pickaxe
-        Pickaxe = Instantiate(PickaxeSprite[gameSessionScript.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
-        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
-        if(gameSessionScript.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
+        if(gameSessionScriptPrefab.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
         SmallOre = new GameObject[4];
+
+        if (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetPickLevel()) < 1) // TODO 1 Should be Replaced with some ugprade cost
+        {
+            InsufficientMaterialsText.text = "Insufficient Materials";
+            UpgradeButton.interactable = false;
+        }
     }
 
     public void UpgradePickaxe()
     {
-        gameSessionScript.IncreasePickUpgradeCounter();
-        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
-        if (gameSessionScript.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
+        gameSessionScriptPrefab.IncreasePickUpgradeCounter();
+        PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
+        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
 
-        if (gameSessionScript.GetPickUpgradeCounter() == 9) // There should be x instead of 9
+        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 9) // There should be x instead of 9
         {
-            DisplayUpgradePriceSprite(gameSessionScript.GetPickLevel());
+            DisplayUpgradePriceSprite(gameSessionScriptPrefab.GetPickLevel());
             PickUpgradePriceText[0].text = 1.ToString();
             PickUpgradePriceText[1].text = 1.ToString();
             PickUpgradePriceText[2].text = 1.ToString();
             PickUpgradePriceText[3].text = 1.ToString();
-            if (gameSessionScript.GetMinedOreCounter(gameSessionScript.GetPickLevel()) < 1) // TODO 1 Should be Replaced with some ugprade cost
+            for(int i = 0; i<4; i++)
+            {
+                for(int ii = P; ii<10; ii++) // Possibly add .Length method instead of 10 later
+                {
+                    if (FindObjectOfType<PickaxePrices>().GetOreRequired(ii) > 0)
+                    {
+                        PickUpgradePriceText[i].text = FindObjectOfType<PickaxePrices>().GetOreRequired(ii).ToString();
+                        P = ii + 1;
+                        break;
+                    }
+                }
+            }
+
+            // PickUpgradePriceText[0-4] = PickaxePrices[0-10].ToString(); Each different pickaxe prefab has to be included
+            if (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetPickLevel()) < 1) // TODO 1 Should be Replaced with some ugprade cost
             {
                 InsufficientMaterialsText.text = "Insufficient Materials";
                 UpgradeButton.interactable = false;
@@ -61,10 +84,10 @@ public class UpgradePick : MonoBehaviour
             }
         }
 
-        if (gameSessionScript.GetPickUpgradeCounter() == 10)
+        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 10)
         {
             DestroyAndInstantiatePickaxe();
-            gameSessionScript.BuyPickaxe(gameSessionScript.GetPickLevel()); // Deducts the cost of a pickaxe
+            gameSessionScriptPrefab.BuyPickaxe(gameSessionScriptPrefab.GetPickLevel()); // Deducts the cost of a pickaxe
         }
     }
 
@@ -74,11 +97,11 @@ public class UpgradePick : MonoBehaviour
         for(int i = 0; i<=3; i++) { Destroy(SmallOre[i]); }
 
         // PickaxeLevel is required for the game to know which pickaxe you currently have.
-        gameSessionScript.IncreasePickLevel();
-        Pickaxe = Instantiate(PickaxeSprite[gameSessionScript.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        gameSessionScriptPrefab.IncreasePickLevel();
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
 
-        gameSessionScript.ResetPickUpgradeCounter();
-        PickUpgradeLevelText.text = gameSessionScript.GetPickUpgradeCounter().ToString();
+        gameSessionScriptPrefab.ResetPickUpgradeCounter();
+        PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
 
         // Removes upgrade price
         for (int i = 0; i <= 3; i++) { PickUpgradePriceText[i].text = null; }
@@ -90,5 +113,34 @@ public class UpgradePick : MonoBehaviour
         SmallOre[1] = Instantiate(SmallOreSprite[i], new Vector2(13, 12), Quaternion.identity) as GameObject;
         SmallOre[2] = Instantiate(SmallOreSprite[i], new Vector2(14, 12), Quaternion.identity) as GameObject;
         SmallOre[3] = Instantiate(SmallOreSprite[i], new Vector2(15, 12), Quaternion.identity) as GameObject;
+    }
+
+    public void CheckA()
+    {
+        /*if x[1] > 0
+        {
+            A = x[1]
+            if A > 0; break;
+        }
+        else if x[2] > 0
+        {
+            A = x[2]
+        }
+        */
+    }
+
+    public void CheckB()
+    {
+        //
+    }
+
+    public void CheckC()
+    {
+        //
+    }
+
+    public void CheckD()
+    {
+        //
     }
 }

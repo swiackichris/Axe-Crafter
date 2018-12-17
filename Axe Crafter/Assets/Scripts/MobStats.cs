@@ -6,14 +6,19 @@ using UnityEngine.UI;
 public class MobStats : MonoBehaviour {
 
     // Health
-    [SerializeField] float MaxHealth = 100f;
+    [SerializeField] int MaxHealth = 100;
 
     // Loot
-    [SerializeField] float GoldReward = 10f;
+    [SerializeField] int GoldReward = 10;
 
-    public float GetMaxHealth()
+    public int GetMaxHealth()
     {
         return MaxHealth;
+    }
+
+    public int GetGoldReward()
+    {
+        return GoldReward;
     }
 }
 
