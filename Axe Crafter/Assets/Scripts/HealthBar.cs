@@ -6,31 +6,37 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
 
     [SerializeField] Image healthBar;
-    static public float health;
+    static public float health; // Doesn't work with Int
 
     [SerializeField] AxeStats axeStatsScriptPrefab;
     [SerializeField] MobStats mobStatsScriptPrefab;
 
     [SerializeField] private GameSession gameSessionScriptPrefab;
 
-    private void Start(MobStats mobStats)
+    private void Start()
     {
-        health = mobStats.GetMaxHealth();
-        // health = mobStatsScriptPrefab.GetMaxHealth();
+        health = mobStatsScriptPrefab.GetMaxHealth();
     }
 
     public void UpdateHealth()
     {
+        Attack();
+        if (health <= -10)
+        {
+            EarnGoldAndReset();
+        }
+    }
+
+    private void EarnGoldAndReset()
+    {
+        gameSessionScriptPrefab.CountGold();
+        health = mobStatsScriptPrefab.GetMaxHealth();
+        healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
+    }
+
+    private void Attack()
+    {
         health -= axeStatsScriptPrefab.GetAxeDamage();
         healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
-        if(health <= 0)
-        {
-            if(health <= -10)
-            {
-                gameSessionScriptPrefab.CountGold();
-                health = mobStatsScriptPrefab.GetMaxHealth();
-                healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
-            }
-        }
     }
 }

@@ -9,19 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1161099585877320}
+  m_RootGameObject: {fileID: 1112096234949454}
   m_IsPrefabAsset: 1
---- !u!1 &1161099585877320
+--- !u!1 &1112096234949454
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4916677814253914}
-  - component: {fileID: 212465622141554966}
-  - component: {fileID: 114823244920851744}
-  - component: {fileID: 114862487027825776}
+  - component: {fileID: 4391235757197696}
+  - component: {fileID: 212362241705988246}
+  - component: {fileID: 114954756622481840}
+  - component: {fileID: 114783290321161460}
   m_Layer: 0
   m_Name: pick8
   m_TagString: Untagged
@@ -29,12 +29,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4916677814253914
+--- !u!4 &4391235757197696
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161099585877320}
+  m_GameObject: {fileID: 1112096234949454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.4343095, y: -16.350847, z: -11.886719}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -42,24 +42,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114823244920851744
+--- !u!114 &114783290321161460
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161099585877320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5ef254057df884ba4238f8cef299ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickaxeDamage: 50
---- !u!114 &114862487027825776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161099585877320}
+  m_GameObject: {fileID: 1112096234949454}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf1d13ae02b64004b8d3dd932134ca47, type: 3}
@@ -68,12 +56,24 @@ MonoBehaviour:
   OreRequired: 00000000000000000100000001000000000000000000000001000000000000000100000000000000
   WoodRequired: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   GoldRequired: 50
---- !u!212 &212465622141554966
+--- !u!114 &114954756622481840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112096234949454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ef254057df884ba4238f8cef299ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickaxeDamage: 55
+--- !u!212 &212362241705988246
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1161099585877320}
+  m_GameObject: {fileID: 1112096234949454}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -103,12 +103,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 77141299dd09a0f4f8d6830643f84f3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdbcf23c0ccc2b3449b8b8322a831a5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.36, y: 13.86}
+  m_Size: {x: 9, y: 9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

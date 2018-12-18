@@ -1,14 +1,15 @@
 ﻿// TODO NOW:
 
-// Need a function that could check if the value > 0;
-// Figure out a way to Add only those prices that aren't 0
-// Add Pickaxe Prices Serialize them or something
+// Make code easier to read by replacing complicated code with functions with a description
+// Deduct Materials for Buying
 // Add Woodcutting
 // Add Prices for Different Axes
-// Think about what TODO next, possibly just polish the game and release
 // Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
 // Display UpgradePriceSprite has to be done the same way.
-// Fix all the functions with a function like: private void ProcessHit(DamageDealer damageDealer);
+// Use array of scripts to know which axe is being used to attack a monster and which pickaxe is being used to mine ores.
+// 2 January -> format the PC
+// There needs to be CheckForErrors() function that runs in start
+// Remove CurrentHealth and CurrentPickaxeDamage
 
 // TODO LATER:
 // If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
@@ -44,6 +45,8 @@
 // X. Change Floats that don't need to be floats to int
 
 // X. Remove unneccessary xxxscript for findobjectsoftype<SCRIPT>
+
+// X. You could possibly make the code easier to read by replacing some lines with functions
 
 // ADD gold to game Screen??
 

@@ -15,7 +15,7 @@ public class GameSession : MonoBehaviour
     int PickUpgradeCounter = 0;
 
     [SerializeField] MobStats mobStatsScriptPrefab;
-    float Gold = 0;
+    int Gold = 0;
     
 
     // Use this for initialization
@@ -99,6 +99,6 @@ public class GameSession : MonoBehaviour
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int PickUpgradeCounterData;
         public int PickLevelData;
-        public float GoldData;
+        public int GoldData;
     }
 }

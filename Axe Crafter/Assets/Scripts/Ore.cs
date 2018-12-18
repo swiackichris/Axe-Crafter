@@ -8,8 +8,8 @@ public class Ore : MonoBehaviour {
     [SerializeField] private OreStats oreStatsScriptPrefab; // Should be the same as OrePrefab
     [SerializeField] private PickaxeStats pickaxeStatsScriptPrefab; // Should be the same as PickaxePrefab
 
-    [SerializeField] public float CurrentHealth = 100f;
-    [SerializeField] public float CurrentPickaxeDamage = 10f;
+    [SerializeField] public int CurrentHealth = 100;
+    [SerializeField] public int CurrentPickaxeDamage = 10;
 
     [SerializeField] GameObject OrePrefab;
     [SerializeField] GameObject PickaxePrefab;
@@ -17,6 +17,7 @@ public class Ore : MonoBehaviour {
 
     private void Start()
     {
+        // You could possibly remove CurrentHealth and CurrentPickaxeDamage
         CurrentHealth = oreStatsScriptPrefab.GetOreHealth();
         CurrentPickaxeDamage = pickaxeStatsScriptPrefab.GetPickaxeDamage();
         OreInstatiate();
@@ -24,13 +25,12 @@ public class Ore : MonoBehaviour {
 
     // MINING
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
-    public void MineOre(int i, GameSession gameSession)
+    public void MineOre(int i)
     {
         CurrentHealth -= CurrentPickaxeDamage;
         print("CurrentHealth=" +CurrentHealth);
         if (CurrentHealth <= 0)
         {
-            gameSession.CountMinedOre(i);
             FindObjectOfType<GameSession>().CountMinedOre(i);
             StartCoroutine(DestroyAndSpawn());
         }

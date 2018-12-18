@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour {
 
-    // START AND UPDATE DELETED
-
     // MENU
     public void LoadMainMenu()
     {
