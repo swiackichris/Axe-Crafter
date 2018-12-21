@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
-    [SerializeField] private OreStats oreStatsScriptPrefab; // Should be the same as OrePrefab
-    [SerializeField] private PickaxeStats pickaxeStatsScriptPrefab; // Should be the same as PickaxePrefab
+    [SerializeField] private OreStats oreStatsScriptPrefab;                 // Should be the same as OrePrefab
+    [SerializeField] private PickaxeStats pickaxeStatsScriptPrefab;         // Should be the same as PickaxePrefab
 
-    [SerializeField] public int CurrentHealth = 100;
-    [SerializeField] public int CurrentPickaxeDamage = 10;
+    private int CurrentHealth;                                              // How much health currently mined ore has
+    private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore
 
-    [SerializeField] GameObject OrePrefab;
-    [SerializeField] GameObject PickaxePrefab;
-    GameObject ore; // Required for Button to know which object should be destroyed.
+    [SerializeField] GameObject OrePrefab;                                  // Ore prefab to be instatiated and mined
+    [SerializeField] GameObject PickaxePrefab;                              // Pickaxe prefab to be instatiated and mined with
+    GameObject ore;                                                         // Required for Button to know which object should be destroyed.
 
     private void Start()
     {

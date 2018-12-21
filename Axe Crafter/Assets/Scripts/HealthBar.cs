@@ -5,23 +5,24 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
 
-    [SerializeField] Image healthBar;
-    static public float health; // Doesn't work with Int
+    [SerializeField] Image healthBar;                                       // Health bar to appear above the monster in battle scene
+    static public float CurrentHealth;                                      // Doesn't work with Int
 
     [SerializeField] AxeStats axeStatsScriptPrefab;
     [SerializeField] MobStats mobStatsScriptPrefab;
 
-    [SerializeField] private GameSession gameSessionScriptPrefab;
+    [SerializeField] private GameSession gameSessionScriptPrefab;           //   
 
     private void Start()
     {
-        health = mobStatsScriptPrefab.GetMaxHealth();
+        // CurrentHealth initialisation
+        CurrentHealth = mobStatsScriptPrefab.GetMaxHealth();
     }
 
     public void UpdateHealth()
     {
         Attack();
-        if (health <= -10)
+        if (CurrentHealth <= -10)
         {
             EarnGoldAndReset();
         }
@@ -29,14 +30,22 @@ public class HealthBar : MonoBehaviour {
 
     private void EarnGoldAndReset()
     {
+        // Adds gold after killing a monster
         gameSessionScriptPrefab.CountGold();
-        health = mobStatsScriptPrefab.GetMaxHealth();
-        healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
+
+        // Resets health after monster has died so a new monster is at full health
+        CurrentHealth = mobStatsScriptPrefab.GetMaxHealth();
+
+        // Updates health amount on healthbar sprite to full health
+        healthBar.fillAmount = CurrentHealth / mobStatsScriptPrefab.GetMaxHealth();
     }
 
     private void Attack()
     {
-        health -= axeStatsScriptPrefab.GetAxeDamage();
-        healthBar.fillAmount = health / mobStatsScriptPrefab.GetMaxHealth();
+        // Updates health
+        CurrentHealth -= axeStatsScriptPrefab.GetAxeDamage();
+
+        // Updates health amount on healthbar sprite
+        healthBar.fillAmount = CurrentHealth / mobStatsScriptPrefab.GetMaxHealth();
     }
 }

@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcfa91c8edc3e14c80faa833e8c4035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPickaxe: {fileID: 0}
   OreMinedText:
   - {fileID: 1065986550}
   - {fileID: 1729097287}
@@ -1484,7 +1485,17 @@ MonoBehaviour:
   - {fileID: 315927261}
   - {fileID: 1204630148}
   MinedOreCounter: 05000000050000000500000005000000050000000500000005000000050000000500000005000000
-  mobStatsScriptPrefab: {fileID: 0}
+  pickaxePricesScriptPrefab:
+  - {fileID: 114513527522593558, guid: 623aee54823348a4baef996558e62c21, type: 2}
+  - {fileID: 114513527522593558, guid: d8ccca71df7a01640a468400bbf38f98, type: 2}
+  - {fileID: 114338742600893016, guid: d35fa428cef335346949409b011270d0, type: 2}
+  - {fileID: 114298857500948766, guid: b0806a16b98e10849a0574899fa3fe1b, type: 2}
+  - {fileID: 114330783908788724, guid: f9aba3dd2721e5f4baaff9bd5b59d30e, type: 2}
+  - {fileID: 114798700549155716, guid: 1b5ca9aee8a00e84a965ba54e23f2867, type: 2}
+  - {fileID: 114035780978748678, guid: 580066116a7b4bb45a7367bc9e847ae7, type: 2}
+  - {fileID: 114605001981204886, guid: b504e5b23e688b34bbff9d79a0427659, type: 2}
+  - {fileID: 114862487027825776, guid: 8e15301b2fabe7a4aad2c94144690fdd, type: 2}
+  - {fileID: 114783290321161460, guid: e221fd34d90942448a1a394c85d898b3, type: 2}
 --- !u!4 &767005751
 Transform:
   m_ObjectHideFlags: 0
@@ -3246,6 +3257,7 @@ MonoBehaviour:
   gameSessionScriptPrefab: {fileID: 767005750}
   pickaxePricesScriptPrefab:
   - {fileID: 114513527522593558, guid: 623aee54823348a4baef996558e62c21, type: 2}
+  - {fileID: 114513527522593558, guid: d8ccca71df7a01640a468400bbf38f98, type: 2}
   - {fileID: 114338742600893016, guid: d35fa428cef335346949409b011270d0, type: 2}
   - {fileID: 114298857500948766, guid: b0806a16b98e10849a0574899fa3fe1b, type: 2}
   - {fileID: 114330783908788724, guid: f9aba3dd2721e5f4baaff9bd5b59d30e, type: 2}

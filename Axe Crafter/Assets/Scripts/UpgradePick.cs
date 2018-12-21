@@ -11,21 +11,21 @@ using UnityEngine.UI;
 
 public class UpgradePick : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI PickUpgradeLevelText;
-    [SerializeField] TextMeshProUGUI[] PickUpgradePriceText;
+    [SerializeField] TextMeshProUGUI PickUpgradeLevelText;                          // Displays current pick upgrade
+    [SerializeField] TextMeshProUGUI[] PickUpgradePriceText;                        // Displays price required to ugprade pickaxe once upgrade hits +9
 
-    [SerializeField] TextMeshProUGUI InsufficientMaterialsText;
+    [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
-    [SerializeField] GameObject UpgradePickaxeButton;
+    [SerializeField] GameObject UpgradePickaxeButton;                               // Required to disable a button if we don't have enough materials to ugprade
 
-    GameObject Pickaxe;
-    GameObject[] SmallOre;
+    GameObject Pickaxe;                                                             // Required to destroy Pickaxe sprites
+    GameObject[] SmallOre;                                                          // Required to destroy SmallOre sprites
 
-    [SerializeField] GameObject[] PickaxeSprite;
-    [SerializeField] GameObject[] SmallOreSprite;
+    [SerializeField] GameObject[] PickaxeSprite;                                    // Array of Pickaxe prefabs to instatiate
+    [SerializeField] GameObject[] SmallOreSprite;                                   // Array of SmallOre prefabs to instatiate
 
-    [SerializeField] private GameSession gameSessionScriptPrefab;
-    [SerializeField] private PickaxePrices [] pickaxePricesScriptPrefab;
+    [SerializeField] private GameSession gameSessionScriptPrefab;                   // GameSession prefab required for it's attributes
+    [SerializeField] private PickaxePrices [] pickaxePricesScriptPrefab;            // Pickaxe prefabs required to get their attributes
 
     [SerializeField] Button UpgradeButton;
 
@@ -114,13 +114,16 @@ public class UpgradePick : MonoBehaviour
         }
     }
 
+    // Possibly Change Function Name
     private void UpgradePickaxeSprite()
     {
-        // UpgradePickaxeSprite
         if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 10)
         {
+            // UpgradePickaxeSprite
             DestroyAndInstantiatePickaxe();
-            gameSessionScriptPrefab.BuyPickaxe(gameSessionScriptPrefab.GetPickLevel()); // Deducts the cost of a pickaxe
+
+            // Pay Pickaxe Cost
+            gameSessionScriptPrefab.BuyPickaxe(gameSessionScriptPrefab.GetPickLevel());
         }
     }
 

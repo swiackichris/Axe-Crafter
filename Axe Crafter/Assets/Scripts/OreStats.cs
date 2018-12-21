@@ -6,8 +6,6 @@ public class OreStats : MonoBehaviour {
 
     [SerializeField] int OreHealth = 10;
 
-    public int GetOreHealth()
-    {
-        return OreHealth;
-    }
+    // Returns OreHealth
+    public int GetOreHealth() { return OreHealth; }
 }

@@ -1,18 +1,42 @@
 ﻿// TODO NOW:
 
-// Make code easier to read by replacing complicated code with functions with a description
-// Deduct Materials for Buying
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// The same variables in multiple classes like damage and health should be made into different class
+// possibly prices of pickaxe etc should be made as well
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+// WHEN EVERYTHING IS FINISHED OPTIMALISE THE CODE AGAIN
+
+// Figure out what do you need to know for which pickaxe you are using What for do I need to know which pickaxe im using?
+// PROBLEM: Game needs to know which pickaxe you are using -> Make it so 
+// 
+
+
+// Work on Optimlaisation until the code is as clear and as good as possible
+// Find a way to Attach Current Pickaxe Prefab to GameSession
+// I think there should be current Pickaxe Serialized in GameSession and current Axe
+// Maybe you should make things like in DamageDealer Class?
+// Make a separate script for gold and for damage?
+// Think what you could do with this:
+// Figure out a proper way to Deduct Materials for Buying
+// Display UpgradePriceSprite has to be done the same way.
+// There needs to be CheckForErrors() function that runs in start
+// Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
+
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Add Woodcutting
 // Add Prices for Different Axes
-// Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
-// Display UpgradePriceSprite has to be done the same way.
 // Use array of scripts to know which axe is being used to attack a monster and which pickaxe is being used to mine ores.
 // 2 January -> format the PC
-// There needs to be CheckForErrors() function that runs in start
 // Remove CurrentHealth and CurrentPickaxeDamage
+// Make code easier to read by replacing complicated code with functions with a description
 
 // TODO LATER:
 // If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
+
+// X. Mine Levels Should be looking like in classic digger games, the deeper you go the more dark and evil the mine looks
 
 // X. Add small randomization to the time, size and rotation of ores. Possibly could add color randomization to make them rare etc.
 // Size could be proportional to the time waited?
@@ -54,64 +78,8 @@
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
 /// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
 
-/*public class Program
-{
-
-    public static void Main()
-    {
-
-        int[] XXX = { 0, 1, 0, 3, 0, 5, 0, 7, 0, 9 };
-        int A = 0;
-        int B = 0;
-        int C = 0;
-        int D = 0;
-        int X = 0;
-
-        for (int i = 0; i < 10; i++)
-        {
-            if (XXX[i] > 0)
-            {
-                A = XXX[i];
-                X = i + 1;
-                break;
-            }
-        }
-
-        for (int i = X; i < 10; i++)
-        {
-            if (XXX[i] > 0)
-            {
-                B = XXX[i];
-                X = i + 1;
-                break;
-            }
-        }
-
-        for (int i = X; i < 10; i++)
-        {
-            if (XXX[i] > 0)
-            {
-                C = XXX[i];
-                X = i + 1;
-                break;
-            }
-        }
-
-        for (int i = X; i < 10; i++)
-        {
-            if (XXX[i] > 0)
-            {
-                D = XXX[i];
-                X = i + 1;
-                break;
-            }
-        }
-
-        Console.WriteLine("A =" + A);
-        Console.WriteLine("B =" + B);
-        Console.WriteLine("C =" + C);
-        Console.WriteLine("D =" + D);
-        Console.WriteLine("X =" + X);
-    }
-}*/
+// THINGS TO LEARN AFTER YOU FINISH THIS PROJECT:
+// - CODE STRUCTURE
+// - C# and C++ Course
+// - Unity Course
 

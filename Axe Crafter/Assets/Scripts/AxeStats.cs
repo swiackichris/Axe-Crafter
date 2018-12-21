@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class AxeStats : MonoBehaviour {
 
-    [SerializeField] int AxeDamage = 10;
+    [SerializeField] int AxeDamage = 10;            // Damage that each click of axe does to a monster or a tree
 
-    public int GetAxeDamage()
-    {
-        return AxeDamage;
-    }
+    // Returns AxeDamage
+    public int GetAxeDamage() { return AxeDamage; }
 }

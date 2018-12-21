@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour {
 
-    // MENU
+    // MAIN MENU
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
@@ -45,7 +45,7 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.LoadScene("Crafting Selection");
     }
 
-    // PICKAXE CRAFT
+    // CRAFTING PICKAXES
     public void LoadPickCraftingScreen()
     {
         SceneManager.LoadScene("Pick Crafting Screen");

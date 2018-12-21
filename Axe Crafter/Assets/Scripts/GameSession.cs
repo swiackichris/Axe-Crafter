@@ -9,14 +9,16 @@ using System.IO;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI[] OreMinedText;
-    [SerializeField] int[] MinedOreCounter;
-    int PickLevel = 0;
-    int PickUpgradeCounter = 0;
+    // [SerializeField] GameObject CurrentPickaxe;
+    [SerializeField] TextMeshProUGUI[] OreMinedText;                            // Displays amount of ore currently owned
+    [SerializeField] int[] MinedOreCounter;                                     // Amount of ore currently owwned
+    [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;         // Temporary Solution
+    int PickLevel = 0;                                                          // Current pick level
+    int PickUpgradeCounter = 0;                                                 // Current upgrade level (max is +9 for each pick)
 
-    [SerializeField] MobStats mobStatsScriptPrefab;
-    int Gold = 0;
-    
+    int Gold = 0;                                                               // Amount of gold owned
+
+    int P = 0;                                                                  // Required for BuyPickaxe() function
 
     // Use this for initialization
     void Start()
@@ -36,14 +38,25 @@ public class GameSession : MonoBehaviour
         OreMinedText[i].text = MinedOreCounter[i].ToString();
     }
 
-    // Updates the amount of ores after purchasing items in the market
-    // TODO Prices added later
     public void BuyPickaxe(int i)
     {
+        /// TODO Add Remove Gold
         if (MinedOreCounter[i] >= 1)
         {
-            MinedOreCounter[i] -= 1;
-            OreMinedText[i].text = MinedOreCounter[i].ToString();
+            for (int j = 0; j < 4; j++) // You might not need it
+            {
+                for (int jj = P; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+                {
+                    if (FindObjectOfType<PickaxePrices>().GetOreRequired(jj) > 0)
+                    {
+                        MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj);
+                        /// TODO Add Remove Wood
+                        OreMinedText[jj].text = MinedOreCounter[jj].ToString();
+                        P = jj + 1;
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -55,10 +68,10 @@ public class GameSession : MonoBehaviour
     public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
     public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
     
-    // BATTLE
+    // Increases gold owned by the amount dropped by a mosnter
     public void CountGold()
     {
-        Gold += mobStatsScriptPrefab.GetGoldReward();
+        Gold += FindObjectOfType<MobStats>().GetGoldReward();
         print("Gold =" + Gold);
     }
 

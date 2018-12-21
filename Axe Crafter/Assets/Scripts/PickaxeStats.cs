@@ -6,8 +6,6 @@ public class PickaxeStats : MonoBehaviour {
 
     [SerializeField] int PickaxeDamage = 10;
 
-    public int GetPickaxeDamage()
-    {
-        return PickaxeDamage;
-    }
+    // Returns PickaxeDamage
+    public int GetPickaxeDamage() { return PickaxeDamage; }
 }

@@ -11,14 +11,10 @@ public class MobStats : MonoBehaviour {
     // Loot
     [SerializeField] int GoldReward = 10;
 
-    public int GetMaxHealth()
-    {
-        return MaxHealth;
-    }
+    // Returns MaxHealth
+    public int GetMaxHealth() { return MaxHealth; }
 
-    public int GetGoldReward()
-    {
-        return GoldReward;
-    }
+    // Returns GoldReward
+    public int GetGoldReward() { return GoldReward; }
 }
 
