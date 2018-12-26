@@ -13,10 +13,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] OreMinedText;                            // Displays amount of ore currently owned
     [SerializeField] int[] MinedOreCounter;                                     // Amount of ore currently owwned
     [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;         // Temporary Solution
-    int PickLevel = 0;                                                          // Current pick level
-    int PickUpgradeCounter = 0;                                                 // Current upgrade level (max is +9 for each pick)
-
-    int Gold = 0;                                                               // Amount of gold owned
+    [SerializeField] int PickLevel = 0;                                         // Current pick level
+    [SerializeField] int PickUpgradeCounter = 0;                                // Current upgrade level (max is +9 for each pick)
+    [SerializeField] int Gold = 0;                                                               // Amount of gold owned
 
     int P = 0;                                                                  // Required for BuyPickaxe() function
 
@@ -38,7 +37,7 @@ public class GameSession : MonoBehaviour
         OreMinedText[i].text = MinedOreCounter[i].ToString();
     }
 
-    public void BuyPickaxe(int i)
+    /*public void BuyPickaxe(int i)
     {
         /// TODO Add Remove Gold
         if (MinedOreCounter[i] >= 1)
@@ -55,6 +54,31 @@ public class GameSession : MonoBehaviour
                         P = jj + 1;
                         break;
                     }
+                }
+            }
+        }
+    }*/
+
+    public void BuyPickaxe()
+    {
+        /// TODO Add Remove Gold
+        for (int j = 0; j < 4; j++) // You might not need it
+        {
+            for (int jj = P; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+            {
+                if (MinedOreCounter[jj] < pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj))
+                {
+                    // Insufficient Materials
+                    // Button Disable?
+                    // Move The Insufficient Materials Check to UpgradePick
+                }
+                else
+                {
+                    MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj);
+                    /// TODO Add Remove Wood
+                    OreMinedText[jj].text = MinedOreCounter[jj].ToString();
+                    P = jj + 1;
+                    break;
                 }
             }
         }

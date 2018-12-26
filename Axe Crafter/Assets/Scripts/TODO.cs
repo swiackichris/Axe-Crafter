@@ -1,25 +1,19 @@
 ﻿// TODO NOW:
 
-// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-// The same variables in multiple classes like damage and health should be made into different class
-// possibly prices of pickaxe etc should be made as well
-// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-
-// WHEN EVERYTHING IS FINISHED OPTIMALISE THE CODE AGAIN
-
+// Check if buypickaxe is working properly
+// = Insufficient Materials has to appear 
+// - Displays proper Sprites
+// - Deducts proper values
+// - think about where to store the info that you pay the current pickaxe cost in order to upgrade to the next one (current pickaxe has upgrade next cost)
+// Work on BUYPICKAXE FUCNTION
+// Add Text when +9 upgrade
 // Figure out what do you need to know for which pickaxe you are using What for do I need to know which pickaxe im using?
 // PROBLEM: Game needs to know which pickaxe you are using -> Make it so 
 // 
-
+// Improve the function to show proper required sprites in upgrade pick
 
 // Work on Optimlaisation until the code is as clear and as good as possible
-// Find a way to Attach Current Pickaxe Prefab to GameSession
-// I think there should be current Pickaxe Serialized in GameSession and current Axe
 // Maybe you should make things like in DamageDealer Class?
-// Make a separate script for gold and for damage?
-// Think what you could do with this:
-// Figure out a proper way to Deduct Materials for Buying
 // Display UpgradePriceSprite has to be done the same way.
 // There needs to be CheckForErrors() function that runs in start
 // Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
@@ -33,8 +27,9 @@
 // Remove CurrentHealth and CurrentPickaxeDamage
 // Make code easier to read by replacing complicated code with functions with a description
 
+
 // TODO LATER:
-// If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
+// X. If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
 
 // X. Mine Levels Should be looking like in classic digger games, the deeper you go the more dark and evil the mine looks
 
@@ -71,6 +66,8 @@
 // X. Remove unneccessary xxxscript for findobjectsoftype<SCRIPT>
 
 // X. You could possibly make the code easier to read by replacing some lines with functions
+
+// X. Damage and Health etc should be made into each different class?
 
 // ADD gold to game Screen??
 
