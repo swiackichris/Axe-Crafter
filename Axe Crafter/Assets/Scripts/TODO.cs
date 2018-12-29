@@ -1,20 +1,6 @@
 ﻿// TODO NOW:
 
-// Check if buypickaxe is working properly
-// = Insufficient Materials has to appear 
-// - Displays proper Sprites
-// - Deducts proper values
-// - think about where to store the info that you pay the current pickaxe cost in order to upgrade to the next one (current pickaxe has upgrade next cost)
-// Work on BUYPICKAXE FUCNTION
-// Add Text when +9 upgrade
-// Figure out what do you need to know for which pickaxe you are using What for do I need to know which pickaxe im using?
-// PROBLEM: Game needs to know which pickaxe you are using -> Make it so 
-// 
-// Improve the function to show proper required sprites in upgrade pick
-
 // Work on Optimlaisation until the code is as clear and as good as possible
-// Maybe you should make things like in DamageDealer Class?
-// Display UpgradePriceSprite has to be done the same way.
 // There needs to be CheckForErrors() function that runs in start
 // Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
 
@@ -23,7 +9,7 @@
 // Add Woodcutting
 // Add Prices for Different Axes
 // Use array of scripts to know which axe is being used to attack a monster and which pickaxe is being used to mine ores.
-// 2 January -> format the PC
+// 2 January -> format the PC?
 // Remove CurrentHealth and CurrentPickaxeDamage
 // Make code easier to read by replacing complicated code with functions with a description
 
@@ -68,6 +54,8 @@
 // X. You could possibly make the code easier to read by replacing some lines with functions
 
 // X. Damage and Health etc should be made into each different class?
+
+// X. Possibly you will need to make Button.interactable.true after you gather ores. but for now it seems to work fine
 
 // ADD gold to game Screen??
 

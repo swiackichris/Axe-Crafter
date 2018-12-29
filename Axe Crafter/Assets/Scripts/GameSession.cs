@@ -15,9 +15,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;         // Temporary Solution
     [SerializeField] int PickLevel = 0;                                         // Current pick level
     [SerializeField] int PickUpgradeCounter = 0;                                // Current upgrade level (max is +9 for each pick)
-    [SerializeField] int Gold = 0;                                                               // Amount of gold owned
+    [SerializeField] int Gold = 0;                                              // Amount of gold owned
 
-    int P = 0;                                                                  // Required for BuyPickaxe() function
+    int PARAMETER = 0;                                                          // Required for BuyPickaxe() function
 
     // Use this for initialization
     void Start()
@@ -37,48 +37,30 @@ public class GameSession : MonoBehaviour
         OreMinedText[i].text = MinedOreCounter[i].ToString();
     }
 
-    /*public void BuyPickaxe(int i)
-    {
-        /// TODO Add Remove Gold
-        if (MinedOreCounter[i] >= 1)
-        {
-            for (int j = 0; j < 4; j++) // You might not need it
-            {
-                for (int jj = P; jj < 10; jj++) // Possibly add .Length method instead of 10 later
-                {
-                    if (FindObjectOfType<PickaxePrices>().GetOreRequired(jj) > 0)
-                    {
-                        MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj);
-                        /// TODO Add Remove Wood
-                        OreMinedText[jj].text = MinedOreCounter[jj].ToString();
-                        P = jj + 1;
-                        break;
-                    }
-                }
-            }
-        }
-    }*/
-
     public void BuyPickaxe()
     {
-        /// TODO Add Remove Gold
+        PARAMETER = 0;
+
+        // Deducts gold required for upgrade
+        Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired();
+
+        /// TODO Add Remove Gold for each different upgrade which means it has to be a separate function
         for (int j = 0; j < 4; j++) // You might not need it
         {
-            for (int jj = P; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+            for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
-                if (MinedOreCounter[jj] < pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj))
+                if (MinedOreCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) && pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj)>0)
                 {
-                    // Insufficient Materials
-                    // Button Disable?
-                    // Move The Insufficient Materials Check to UpgradePick
-                }
-                else
-                {
+                    print("MinedOreCounter[jj]: " +MinedOreCounter[jj] +" -= " +pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) + " jj = " +jj);
+                    
+                    // Deducts materials
                     MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj);
-                    /// TODO Add Remove Wood
+
+                    // Updates material count as a string
                     OreMinedText[jj].text = MinedOreCounter[jj].ToString();
-                    P = jj + 1;
+                    PARAMETER = jj + 1;
                     break;
+                    /// TODO Add Remove Wood
                 }
             }
         }
@@ -88,6 +70,7 @@ public class GameSession : MonoBehaviour
     public int GetMinedOreCounter(int i) { return MinedOreCounter[i]; }
     public int GetPickLevel() { return PickLevel; }
     public int GetPickUpgradeCounter() { return PickUpgradeCounter; }
+    public int GetCurrentGold() { return Gold; }
     public void IncreasePickLevel() { PickLevel++; }
     public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
     public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
