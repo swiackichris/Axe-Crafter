@@ -1,7 +1,6 @@
 ﻿// TODO NOW:
 
 // Work on Optimlaisation until the code is as clear and as good as possible
-// There needs to be CheckForErrors() function that runs in start
 // Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -10,11 +9,16 @@
 // Add Prices for Different Axes
 // Use array of scripts to know which axe is being used to attack a monster and which pickaxe is being used to mine ores.
 // 2 January -> format the PC?
-// Remove CurrentHealth and CurrentPickaxeDamage
 // Make code easier to read by replacing complicated code with functions with a description
 
+// TODO LATER: There needs to be CheckForErrors() function that runs in start
+// What needs to be finished for the game to be finished:
+// Added Woodcutting, Added Axe Shop -> Possibly connect them together?
+// Goal of this game is simply killing further Boss and Gathering Further Ore, 
+// Add your own graphics for everything
+// but there should be a way that a person has to choose which one he wants to master. Like Skills? You can add skills later.
 
-// TODO LATER:
+// TODO MUCH LATER:
 // X. If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
 
 // X. Mine Levels Should be looking like in classic digger games, the deeper you go the more dark and evil the mine looks

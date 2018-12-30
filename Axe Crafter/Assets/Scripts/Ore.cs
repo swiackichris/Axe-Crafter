@@ -27,18 +27,20 @@ public class Ore : MonoBehaviour {
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void MineOre(int i)
     {
+        // Deducts ore health
         CurrentHealth -= CurrentPickaxeDamage;
         print("CurrentHealth=" +CurrentHealth);
         if (CurrentHealth <= 0)
         {
+            // If ore is mined, add it
             FindObjectOfType<GameSession>().CountMinedOre(i);
             StartCoroutine(DestroyAndSpawn());
         }
     }
 
+    // Spawn ore at a position
     public void OreInstatiate()
     {
-        // Spawn new ore
         ore = Instantiate(
         OrePrefab,
         new Vector2(9, 9), // Change later the position of new ore spawned to be posibly random
@@ -49,17 +51,23 @@ public class Ore : MonoBehaviour {
     // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
-        Destroy(ore); // Destroys ore created in void Start();
+        // Destroys ore created in void Start();
+        Destroy(ore);
         print("Destroy(ore)");
 
-        CurrentHealth = oreStatsScriptPrefab.GetOreHealth(); // Resets health for new ore
+        // Resets health for new ore
+        CurrentHealth = oreStatsScriptPrefab.GetOreHealth();
         print("CurrentHealth = FullHealth");
 
+        // Wait time before new ore spawns, so that it can't be damaged while it hasn't spawned
+        // TODO you could randomize it in the future
         CurrentPickaxeDamage = 0;
+        yield return new WaitForSeconds(1);
 
-        yield return new WaitForSeconds(1); // Wait time before new ore spawns, you could randomize it in the future
-
+        // Initializes pick damage after it has been reduced to 0
         CurrentPickaxeDamage = pickaxeStatsScriptPrefab.GetPickaxeDamage();
+
+        // Spawns ore
         OreInstatiate();
     }
 }

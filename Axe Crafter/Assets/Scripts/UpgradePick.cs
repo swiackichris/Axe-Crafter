@@ -59,6 +59,7 @@ public class UpgradePick : MonoBehaviour
 
     public void DestroyAndInstantiatePickaxe()
     {
+        // Destroys old pickaxe to make place for a new one
         Destroy(Pickaxe);
         for(int i = 0; i<=3; i++) { Destroy(SmallOre[i]); }
 
@@ -121,9 +122,7 @@ public class UpgradePick : MonoBehaviour
     // Checks if there are enough materials to upgrade
     private void InsufficientMaterials()
     {
-        // for (int j = 0; j < 4; j++)
-        //{
-        for (int jj = 0 /*PARAMETER*/; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(jj))
             {
@@ -132,11 +131,8 @@ public class UpgradePick : MonoBehaviour
 
                 // Disables button
                 UpgradeButton.interactable = false;
-
-                // PARAMETER = jj + 1; If everything works properly delete this
             }
         }
-        //}
     }
 
     // Possibly Change Function Name
@@ -171,6 +167,9 @@ public class UpgradePick : MonoBehaviour
         }
         else
         {
+            // Deducts gold for upgrading
+            gameSessionScriptPrefab.PayGoldForUpgrade();
+
             // Increases Upgrade Counter (+X) and Displays it as a String
             gameSessionScriptPrefab.IncreasePickUpgradeCounter();
             PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
