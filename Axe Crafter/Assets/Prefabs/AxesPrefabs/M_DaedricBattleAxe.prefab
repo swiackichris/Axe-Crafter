@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4087565017040480}
   - component: {fileID: 212890255946988694}
   - component: {fileID: 114601487532426482}
+  - component: {fileID: 114855189283650478}
   m_Layer: 0
   m_Name: M_DaedricBattleAxe
   m_TagString: Untagged
@@ -53,6 +54,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AxeDamage: 10
+--- !u!114 &114855189283650478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759680842330456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f91b7288744a744393cbf47c5ba769d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OreRequired: 01000000020000000000000001000000010000000000000000000000000000000000000000000000
+  WoodRequired: 01000000020000000000000001000000010000000000000000000000000000000000000000000000
+  GoldRequired: 10
 --- !u!212 &212890255946988694
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -87,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e54788efd0c1d64783a4bf0ad39f1f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

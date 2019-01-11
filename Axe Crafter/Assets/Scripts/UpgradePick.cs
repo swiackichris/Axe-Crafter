@@ -168,7 +168,7 @@ public class UpgradePick : MonoBehaviour
         else
         {
             // Deducts gold for upgrading
-            gameSessionScriptPrefab.PayGoldForUpgrade();
+            gameSessionScriptPrefab.PayGoldForPickUpgrade();
 
             // Increases Upgrade Counter (+X) and Displays it as a String
             gameSessionScriptPrefab.IncreasePickUpgradeCounter();

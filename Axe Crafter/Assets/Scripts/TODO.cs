@@ -1,13 +1,27 @@
 ﻿// TODO NOW:
 
-// Work on Optimlaisation until the code is as clear and as good as possible
+// Make a detailed TODO plan
+
+// Fixing a problem with saving both ore and wood, and should you be having OreMinedText.Size = 0? Remove 
+// That Warning and possibly replace it with some other warning. MinedOreCounterShould be 0
+// 1. Copy everything wood related to gameSessionScript
+// CurrentAxeDamage in Wood
+// - Copy Scripts
+// - Add GameSessionScripts for axes
+// 2. Add Axe Shop
+// 3. Add Wood Cost
+// - You were editing scenes, to copy wood1 -> wood10
+// Fix Comments in Wood
 // Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
+// - Figure out to display all resources available at the moment, possibly make it scrollable?
+// - By clicking a button inside pick crafter you should make an illusion of switching "button would be marked as Woodcutting from Pickaxe" but in fact it would switch scene instead.
+// - Axes and Pickaxes should maybe cost 2 different ore and 2 different wood?
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// Add Gold Count
 // Add Woodcutting
 // Add Prices for Different Axes
-// Use array of scripts to know which axe is being used to attack a monster and which pickaxe is being used to mine ores.
 // 2 January -> format the PC?
 // Make code easier to read by replacing complicated code with functions with a description
 
@@ -60,6 +74,8 @@
 // X. Damage and Health etc should be made into each different class?
 
 // X. Possibly you will need to make Button.interactable.true after you gather ores. but for now it seems to work fine
+
+// X. -1 Make a fluid rotation of pickaxe while pressing the button ( for example rotate 45 degrees during 1 second)
 
 // ADD gold to game Screen??
 

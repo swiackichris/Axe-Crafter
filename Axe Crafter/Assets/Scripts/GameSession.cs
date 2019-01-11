@@ -9,12 +9,20 @@ using System.IO;
 
 public class GameSession : MonoBehaviour
 {
-    // [SerializeField] GameObject CurrentPickaxe;
+    // Pickaxe variables
     [SerializeField] TextMeshProUGUI[] OreMinedText;                            // Displays amount of ore currently owned
-    [SerializeField] int[] MinedOreCounter;                                     // Amount of ore currently owwned
+    [SerializeField] int[] MinedOreCounter;                                     // Amount of ore currently owned
     [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;         // Temporary Solution
     [SerializeField] int PickLevel = 0;                                         // Current pick level
-    [SerializeField] int PickUpgradeCounter = 0;                                // Current upgrade level (max is +9 for each pick)
+    [SerializeField] int PickUpgradeCounter = 0;                                // Current pick upgrade level (max is +9 for each pick)
+
+    // Axe variables
+    [SerializeField] TextMeshProUGUI[] WoodChoppedText;
+    [SerializeField] int[] ChoppedWoodCounter;                                  // Amount of wood currently owned
+    [SerializeField] private PickaxePrices[] axePricesScriptPrefab;             // Temporary Solution
+    [SerializeField] int AxeLevel = 0;                                          // Current axe level
+    [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
+
     [SerializeField] int Gold = 0;                                              // Amount of gold owned
 
     int PARAMETER = 0;                                                          // Required for BuyPickaxe() function
@@ -26,9 +34,18 @@ public class GameSession : MonoBehaviour
         if (MinedOreCounter.Length != OreMinedText.Length) { Debug.LogError("MinedOreCounter.Length should be equal to OreMinedText.Length"); }
 
         // Initialization of displayed text
-        for(int i=0; i<OreMinedText.Length; i++)
+        for (int i=0; i<OreMinedText.Length; i++)
         {
             OreMinedText[i].text = MinedOreCounter[i].ToString();
+        }
+
+        // Checks if both arrays are of equal size, it's necessary to save properly.
+        if (ChoppedWoodCounter.Length != WoodChoppedText.Length) { Debug.LogError("ChoppedWoodCounter.Length should be equal to WoodChoppedText.Length"); }
+
+        // Initialization of displayed text
+        for (int i = 0; i < WoodChoppedText.Length; i++)
+        {
+            WoodChoppedText[i].text = ChoppedWoodCounter[i].ToString();
         }
     }
 
@@ -40,6 +57,16 @@ public class GameSession : MonoBehaviour
 
         // Updates ore mined text
         OreMinedText[i].text = MinedOreCounter[i].ToString();
+    }
+
+    // Displays and updates the amount of ore mined
+    public void CountChoppedWood(int i)
+    {
+        // Increments ore mined
+        ChoppedWoodCounter[i] += 1;
+
+        // Updates ore mined text
+        WoodChoppedText[i].text = ChoppedWoodCounter[i].ToString();
     }
 
     public void BuyPickaxe()
@@ -67,21 +94,63 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public void PayGoldForUpgrade()
+    // TODO buy axe function might need to use different parameter, but i dont think so
+    public void BuyAxe()
+    {
+        // Resets PARAMETER required for "for" functions
+        PARAMETER = 0;
+
+        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        {
+            // Checks if we have enough supplies to upgrade
+            if (ChoppedWoodCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj)
+                && axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj) > 0)
+            {
+                print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj) + " jj = " + jj);
+
+                // Deducts materials
+                ChoppedWoodCounter[jj] -= axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj);
+
+                // Updates material count as a string
+                WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
+                PARAMETER = jj + 1;
+                break;
+                /// TODO Add Remove Wood
+            }
+        }
+    }
+
+    public void PayGoldForPickUpgrade()
     {
         // Deducts gold required for upgrade
         Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired();
     }
 
+    public void PayGoldForAxeUpgrade()
+    {
+        // Deducts gold required for upgrade
+        Gold -= axePricesScriptPrefab[AxeLevel].GetGoldRequired();
+    }
+
+    // Gold
+    public int GetCurrentGold() { return Gold; }
+
     // UpgradePickClass
     public int GetMinedOreCounter(int i) { return MinedOreCounter[i]; }
     public int GetPickLevel() { return PickLevel; }
     public int GetPickUpgradeCounter() { return PickUpgradeCounter; }
-    public int GetCurrentGold() { return Gold; }
     public void IncreasePickLevel() { PickLevel++; }
     public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
     public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
-    
+
+    // UpgradeAxeClass
+    public int GetChoppedWoodCounter(int i) { return ChoppedWoodCounter[i]; }
+    public int GetAxeLevel() { return AxeLevel; }
+    public int GetAxeUpgradeCounter() { return AxeUpgradeCounter; }
+    public void IncreaseAxeLevel() { AxeLevel++; }
+    public void IncreaseAxeUpgradeCounter() { AxeUpgradeCounter++; }
+    public void ResetAxeUpgradeCounter() { AxeUpgradeCounter = 0; }
+
     // Increases gold owned by the amount dropped by a mosnter
     public void CountGold()
     {
@@ -100,6 +169,11 @@ public class GameSession : MonoBehaviour
         for(int i=0; i<OreMinedText.Length; i++) { data.MinedOreCounterData[i] = MinedOreCounter[i]; }
         data.PickUpgradeCounterData = PickUpgradeCounter;
         data.PickLevelData = PickLevel;
+
+        for (int i = 0; i < WoodChoppedText.Length; i++) { data.ChoppedWoodCounterData[i] = ChoppedWoodCounter[i]; }
+        data.AxeUpgradeCounterData = AxeUpgradeCounter;
+        data.AxeLevelData = AxeLevel;
+
         data.GoldData = Gold;
         bf.Serialize(file, data);
         file.Close();
@@ -118,6 +192,10 @@ public class GameSession : MonoBehaviour
             for (int i = 0; i < OreMinedText.Length; i++) { MinedOreCounter[i] = data.MinedOreCounterData[i]; }
             PickUpgradeCounter = data.PickUpgradeCounterData;
             PickLevel = data.PickLevelData;
+
+            for (int i = 0; i < WoodChoppedText.Length; i++) { ChoppedWoodCounter[i] = data.ChoppedWoodCounterData[i]; }
+            AxeUpgradeCounter = data.AxeUpgradeCounterData;
+            AxeLevel = data.AxeLevelData;
             Gold = data.GoldData;
         }
     }
@@ -129,6 +207,9 @@ public class GameSession : MonoBehaviour
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int PickUpgradeCounterData;
         public int PickLevelData;
+        public int[] ChoppedWoodCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
+        public int AxeUpgradeCounterData;
+        public int AxeLevelData;
         public int GoldData;
     }
 }

@@ -23,9 +23,14 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     // WOODCUTTING
-    public void LoadWoodcutting()
+    public void LoadWoodcutting(int i)
     {
-        SceneManager.LoadScene("Woodcutting Screen");
+        SceneManager.LoadScene("Wood" + i);
+    }
+
+    public void LoadWoodSelection()
+    {
+        SceneManager.LoadScene("WoodSelectionScreen");
     }
 
     // BATTLE
