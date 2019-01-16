@@ -2,26 +2,15 @@
 
 // Make a detailed TODO plan
 
-// Fixing a problem with saving both ore and wood, and should you be having OreMinedText.Size = 0? Remove 
-// That Warning and possibly replace it with some other warning. MinedOreCounterShould be 0
-// 1. Copy everything wood related to gameSessionScript
-// CurrentAxeDamage in Wood
-// - Copy Scripts
-// - Add GameSessionScripts for axes
-// 2. Add Axe Shop
-// 3. Add Wood Cost
-// - You were editing scenes, to copy wood1 -> wood10
-// Fix Comments in Wood
-// Add warnings to pickaxeprices script: if Pickaxeprices[] isn't equal to OreMinedcounter[] Also WoodRequired[].Length has to be equal to OreRequired[]
-// - Figure out to display all resources available at the moment, possibly make it scrollable?
-// - By clicking a button inside pick crafter you should make an illusion of switching "button would be marked as Woodcutting from Pickaxe" but in fact it would switch scene instead.
-// - Axes and Pickaxes should maybe cost 2 different ore and 2 different wood?
+// You were fixing Axe Crafting Screen so that Axe appears instead of a hand etc etc.
+// - Axes and Pickaxes cost should be 2 wood and 2 ore for now.
+// There are 2 [SerializeField] buttons in Axe Upgrade and Pick Upgrade you need to remove 1
+
+// If everything is fixed copy wood1 -> wood10
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Add Gold Count
-// Add Woodcutting
-// Add Prices for Different Axes
 // 2 January -> format the PC?
 // Make code easier to read by replacing complicated code with functions with a description
 

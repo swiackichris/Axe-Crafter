@@ -5,23 +5,22 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour {
 
-    [SerializeField] private WoodStats woodStatsScriptPrefab;                 // Should be the same as OrePrefab
+    [SerializeField] private WoodStats woodStatsScriptPrefab;               // Should be the same as WoodPrefab
     [SerializeField] private GameSession gameSessionStatsScriptPrefab;
-    [SerializeField] private AxeStats[] axeStatsScriptPrefabs;         // Should be the same as AxePrefab TODO these could be deleted
+    [SerializeField] private AxeStats[] axeStatsScriptPrefabs;              // Should be the same as AxePrefab TODO these could be deleted
 
-    private int CurrentHealth;                                              // How much health currently mined ore has
-    private int CurrentAxeDamage;                                       // How much damage we apply to currently mined ore
+    private int CurrentHealth;                                              // How much health currently chopped wood has
+    private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
-    [SerializeField] GameObject WoodPrefab;                                  // Ore prefab to be instatiated and mined
-    [SerializeField] GameObject[] AxePrefabs;                          // Axe prefab to be instatiated and mined with
-    GameObject wood;                                                         // Required for Button to know which object should be destroyed.
+    [SerializeField] GameObject WoodPrefab;                                 // Wood prefab to be instatiated and chopped
+    [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
+    GameObject wood;                                                        // Required for Button to know which object should be destroyed.
     GameObject axe;
 
-    bool isRotated = false;                                                 // Reuqired for proper Axe animation
+    bool isRotated = false;                                                 // Required for proper Axe animation
 
     private void Start()
     {
-        // You could possibly remove CurrentHealth and CurrentAxeDamage
         CurrentHealth = woodStatsScriptPrefab.GetWoodHealth();
         CurrentAxeDamage = axeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()].GetAxeDamage();
         WoodInstantiate();
@@ -38,23 +37,23 @@ public class Wood : MonoBehaviour {
         // Rotates axe to starting position
         StartCoroutine(ResetToolRotation());
 
-        // Deducts ore health
+        // Deducts wood health
         CurrentHealth -= CurrentAxeDamage;
         print("CurrentHealth=" + CurrentHealth);
         if (CurrentHealth <= 0)
         {
-            // If ore is mined, add it
+            // If wood is mined, add it
             FindObjectOfType<GameSession>().CountChoppedWood(i);
             StartCoroutine(DestroyAndSpawn());
         }
     }
 
-    // Spawn ore at a position
+    // Spawn wood at a position
     public void WoodInstantiate()
     {
         wood = Instantiate(
         WoodPrefab,
-        new Vector2(9, 9), // Change later the position of new ore spawned to be posibly random
+        new Vector2(9, 9), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("wood = Instantiate");
     }
@@ -64,7 +63,7 @@ public class Wood : MonoBehaviour {
     {
         axe = Instantiate(
         AxePrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()],
-        new Vector2(14, 7), // Change later the position of new ore spawned to be posibly random
+        new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("axe = Instantiate");
     }
@@ -76,18 +75,18 @@ public class Wood : MonoBehaviour {
         isRotated = true;
     }
 
-    // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
+    // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
-        // Destroys ore created in void Start();
+        // Destroys wood created in void Start();
         Destroy(wood);
-        print("Destroy(ore)");
+        print("Destroy(wood)");
 
-        // Resets health for new ore
+        // Resets health for new wood
         CurrentHealth = woodStatsScriptPrefab.GetWoodHealth();
         print("CurrentHealth = FullHealth");
 
-        // Wait time before new ore spawns, so that it can't be damaged while it hasn't spawned
+        // Wait time before new wood spawns, so that it can't be damaged while it hasn't spawned
         // TODO you could randomize it in the future
         CurrentAxeDamage = 0;
         yield return new WaitForSeconds(1);
@@ -95,7 +94,7 @@ public class Wood : MonoBehaviour {
         // Initializes axe damage after it has been reduced to 0
         CurrentAxeDamage = axeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()].GetAxeDamage();
 
-        // Spawns ore
+        // Spawns wood
         WoodInstantiate();
     }
 

@@ -55,4 +55,10 @@ public class GameSceneManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Pick Crafting Screen");
     }
+
+    // CRAFTING AXES
+    public void LoadAxeCraftingSCreen()
+    {
+        SceneManager.LoadScene("Axe Crafting Screen");
+    }
 }

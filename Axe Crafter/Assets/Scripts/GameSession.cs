@@ -19,7 +19,7 @@ public class GameSession : MonoBehaviour
     // Axe variables
     [SerializeField] TextMeshProUGUI[] WoodChoppedText;
     [SerializeField] int[] ChoppedWoodCounter;                                  // Amount of wood currently owned
-    [SerializeField] private PickaxePrices[] axePricesScriptPrefab;             // Temporary Solution
+    [SerializeField] private AxePrices[] axePricesScriptPrefab;             // Temporary Solution
     [SerializeField] int AxeLevel = 0;                                          // Current axe level
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
@@ -30,6 +30,8 @@ public class GameSession : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        /// TODO if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
+
         // Checks if both arrays are of equal size, it's necessary to save properly.
         if (MinedOreCounter.Length != OreMinedText.Length) { Debug.LogError("MinedOreCounter.Length should be equal to OreMinedText.Length"); }
 
@@ -38,6 +40,8 @@ public class GameSession : MonoBehaviour
         {
             OreMinedText[i].text = MinedOreCounter[i].ToString();
         }
+
+        /// TODO if (axePricesScriptPrefab.Length != ChoppedWoodCounter.Length) { Debug.LogError("axePricesScriptPrefab.Length != ChoppedWoodCounter.Length"); }
 
         // Checks if both arrays are of equal size, it's necessary to save properly.
         if (ChoppedWoodCounter.Length != WoodChoppedText.Length) { Debug.LogError("ChoppedWoodCounter.Length should be equal to WoodChoppedText.Length"); }
@@ -175,6 +179,7 @@ public class GameSession : MonoBehaviour
         data.AxeLevelData = AxeLevel;
 
         data.GoldData = Gold;
+
         bf.Serialize(file, data);
         file.Close();
     }
@@ -196,6 +201,7 @@ public class GameSession : MonoBehaviour
             for (int i = 0; i < WoodChoppedText.Length; i++) { ChoppedWoodCounter[i] = data.ChoppedWoodCounterData[i]; }
             AxeUpgradeCounter = data.AxeUpgradeCounterData;
             AxeLevel = data.AxeLevelData;
+
             Gold = data.GoldData;
         }
     }
@@ -207,9 +213,11 @@ public class GameSession : MonoBehaviour
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int PickUpgradeCounterData;
         public int PickLevelData;
+
         public int[] ChoppedWoodCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int AxeUpgradeCounterData;
         public int AxeLevelData;
+
         public int GoldData;
     }
 }
