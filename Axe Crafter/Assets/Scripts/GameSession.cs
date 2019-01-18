@@ -19,17 +19,21 @@ public class GameSession : MonoBehaviour
     // Axe variables
     [SerializeField] TextMeshProUGUI[] WoodChoppedText;
     [SerializeField] int[] ChoppedWoodCounter;                                  // Amount of wood currently owned
-    [SerializeField] private AxePrices[] axePricesScriptPrefab;             // Temporary Solution
+    [SerializeField] private AxePrices[] axePricesScriptPrefab;                 // Temporary Solution
     [SerializeField] int AxeLevel = 0;                                          // Current axe level
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
     [SerializeField] int Gold = 0;                                              // Amount of gold owned
+    [SerializeField] TextMeshProUGUI GoldText;
 
     int PARAMETER = 0;                                                          // Required for BuyPickaxe() function
 
     // Use this for initialization
     void Start()
     {
+        // Initialization of displayed text
+        GoldText.text = Gold.ToString();
+
         /// TODO if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
 
         // Checks if both arrays are of equal size, it's necessary to save properly.
@@ -78,6 +82,7 @@ public class GameSession : MonoBehaviour
         // Resets PARAMETER required for "for" functions
         PARAMETER = 0;
 
+        // For Ore Prices
         for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
@@ -91,9 +96,28 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();
-                PARAMETER = jj + 1;
-                break;
-                /// TODO Add Remove Wood
+                // PARAMETER = jj + 1;
+            }
+        }
+
+        // Resets PARAMETER required for "for" functions
+        PARAMETER = 0;
+
+        // For Wood Prices
+        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        {
+            // Checks if we have enough supplies to upgrade
+            if (ChoppedWoodCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj)
+                && pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj) > 0)
+            {
+                print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj) + " jj = " + jj);
+
+                // Deducts materials
+                ChoppedWoodCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj);
+
+                // Updates material count as a string
+                WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
+                // PARAMETER = jj + 1;
             }
         }
     }
@@ -101,6 +125,26 @@ public class GameSession : MonoBehaviour
     // TODO buy axe function might need to use different parameter, but i dont think so
     public void BuyAxe()
     {
+        // Resets PARAMETER required for "for" functions
+        PARAMETER = 0;
+
+        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        {
+            // Checks if we have enough supplies to upgrade
+            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetOreRequired(jj)
+                && axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) > 0)
+            {
+                print("MinedOreCounter[jj]: " + MinedOreCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) + " jj = " + jj);
+
+                // Deducts materials
+                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel].GetOreRequired(jj);
+
+                // Updates material count as a string
+                OreMinedText[jj].text = MinedOreCounter[jj].ToString();
+                // PARAMETER = jj + 1;
+            }
+        }
+
         // Resets PARAMETER required for "for" functions
         PARAMETER = 0;
 
@@ -117,9 +161,7 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
-                PARAMETER = jj + 1;
-                break;
-                /// TODO Add Remove Wood
+                // PARAMETER = jj + 1;
             }
         }
     }
@@ -128,12 +170,18 @@ public class GameSession : MonoBehaviour
     {
         // Deducts gold required for upgrade
         Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired();
+
+        // Updates amount of gold text
+        GoldText.text = Gold.ToString();
     }
 
     public void PayGoldForAxeUpgrade()
     {
         // Deducts gold required for upgrade
         Gold -= axePricesScriptPrefab[AxeLevel].GetGoldRequired();
+
+        // Updates amount of gold text
+        GoldText.text = Gold.ToString();
     }
 
     // Gold
@@ -155,11 +203,14 @@ public class GameSession : MonoBehaviour
     public void IncreaseAxeUpgradeCounter() { AxeUpgradeCounter++; }
     public void ResetAxeUpgradeCounter() { AxeUpgradeCounter = 0; }
 
-    // Increases gold owned by the amount dropped by a mosnter
+    // Increases gold owned by the amount dropped by a monster
     public void CountGold()
     {
         Gold += FindObjectOfType<MobStats>().GetGoldReward();
         print("Gold =" + Gold);
+
+        // Updates amount of gold text
+        GoldText.text = Gold.ToString();
     }
 
     // DATA saving related below:

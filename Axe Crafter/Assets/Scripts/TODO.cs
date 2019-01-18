@@ -1,17 +1,5 @@
 ﻿// TODO NOW:
 
-// Make a detailed TODO plan
-
-// You were fixing Axe Crafting Screen so that Axe appears instead of a hand etc etc.
-// - Axes and Pickaxes cost should be 2 wood and 2 ore for now.
-// There are 2 [SerializeField] buttons in Axe Upgrade and Pick Upgrade you need to remove 1
-
-// If everything is fixed copy wood1 -> wood10
-
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// Add Gold Count
-// 2 January -> format the PC?
 // Make code easier to read by replacing complicated code with functions with a description
 
 // TODO LATER: There needs to be CheckForErrors() function that runs in start
@@ -20,6 +8,9 @@
 // Goal of this game is simply killing further Boss and Gathering Further Ore, 
 // Add your own graphics for everything
 // but there should be a way that a person has to choose which one he wants to master. Like Skills? You can add skills later.
+
+// Remove Parameter from game session
+// Think if you can remove parameter from Upgrade Axe and Upgrade Pick
 
 // TODO MUCH LATER:
 // X. If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.

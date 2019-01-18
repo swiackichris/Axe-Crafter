@@ -16,12 +16,12 @@ public class UpgradePick : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
-    [SerializeField] GameObject UpgradePickaxeButton;                               // Required to disable a button if we don't have enough materials to ugprade
-
     GameObject Pickaxe;                                                             // Required to destroy Pickaxe sprites
+    GameObject[] SmallWood;
     GameObject[] SmallOre;                                                          // Required to destroy SmallOre sprites
 
     [SerializeField] GameObject[] PickaxeSprite;                                    // Array of Pickaxe prefabs to instatiate
+    [SerializeField] GameObject[] SmallWoodSprite;
     [SerializeField] GameObject[] SmallOreSprite;                                   // Array of SmallOre prefabs to instatiate
 
     [SerializeField] private GameSession gameSessionScriptPrefab;                   // GameSession prefab required for it's attributes
@@ -42,8 +42,11 @@ public class UpgradePick : MonoBehaviour
         // Removes text for +0 upgrade
         RemovePickUpgradeCounterText();
 
+        // Initialise SmallWood Array Size
+        SmallWood = new GameObject[2];
+
         // Initialise SmallOre Array Size
-        SmallOre = new GameObject[4];
+        SmallOre = new GameObject[2];
 
         // Shows Upgrade Cost in Numbers
         MaterialCost();
@@ -61,7 +64,8 @@ public class UpgradePick : MonoBehaviour
     {
         // Destroys old pickaxe to make place for a new one
         Destroy(Pickaxe);
-        for(int i = 0; i<=3; i++) { Destroy(SmallOre[i]); }
+        for (int i = 0; i <= 1; i++) { Destroy(SmallWood[i]); }
+        for (int i = 0; i <= 1; i++) { Destroy(SmallOre[i]); }
 
         // PickaxeLevel is required for the game to know which pickaxe you currently have.
         gameSessionScriptPrefab.IncreasePickLevel();
@@ -77,16 +81,33 @@ public class UpgradePick : MonoBehaviour
     // Shows visual representation of types of ores required to upgrade
     public void DisplayUpgradePriceSprite() // TODO improve this function
     {
+        // For Wood Prices
         PARAMETER = 0;
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < 2; j++)
+        {
+            for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+            {
+                // If resource price of a pickaxe is bigger than 1, displays visual sprite of ore required.
+                if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(jj) > 0)
+                {
+                    SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(12+j, 12), Quaternion.identity) as GameObject;
+                    PARAMETER = jj + 1; // If the loop has found a price > 0, it shows that as a price and parameter becomes higher so that we don't show the same sprite price twice
+                    break;
+                }
+            }
+        }
+
+        // For Ore Prices
+        PARAMETER = 0;
+        for (int j = 0; j < 2; j++)
         {
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
                 // If resource price of a pickaxe is bigger than 1, displays visual sprite of ore required.
                 if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(jj) > 0)
                 {
-                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(12+j, 12), Quaternion.identity) as GameObject;
-                    PARAMETER = jj + 1;
+                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(12 + j+2, 12), Quaternion.identity) as GameObject;
+                    PARAMETER = jj + 1; // If the loop has found a price > 0, it shows that as a price and parameter becomes higher so that we don't show the same sprite price twice
                     break;
                 }
             }
@@ -100,21 +121,38 @@ public class UpgradePick : MonoBehaviour
         if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 9) // There should be x instead of 9
         {
             DisplayUpgradePriceSprite();
+
+            // For Wood Prices
             PARAMETER = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
+            {
+                for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
+                {
+                    if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(ii) > 0)
+                    {
+                        PickUpgradePriceText[i].text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(ii).ToString();
+                        print("ii: " + ii + " = " + pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(ii));
+                        PARAMETER = ii + 1;
+                        break;
+                    }
+                }
+            }
+
+            // For Ore Prices
+            PARAMETER = 0;
+            for (int i = 0; i < 2; i++)
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
                     if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(ii) > 0)
                     {
-                        PickUpgradePriceText[i].text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(ii).ToString();
+                        PickUpgradePriceText[i+2].text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(ii).ToString();
                         print("ii: " + ii + " = " + pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(ii));
                         PARAMETER = ii + 1;
                         break;
                     }
                 }
             }
-            PARAMETER = 0;
             InsufficientMaterials();
         }
     }
@@ -124,7 +162,9 @@ public class UpgradePick : MonoBehaviour
     {
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
-            if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(jj))
+            // Checks if we have enough materials to perform an upgrade
+            if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(jj)
+                || gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(jj))
             {
                 // Inssufficient Materials Text
                 InsufficientMaterialsText.text = "Insufficient Materials";

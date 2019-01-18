@@ -16,13 +16,13 @@ public class UpgradeAxe : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
-    [SerializeField] GameObject UpgradeAxeButton;                               // Required to disable a button if we don't have enough materials to ugprade
-
     GameObject Axe;                                                             // Required to destroy Axe sprites
     GameObject[] SmallWood;                                                          // Required to destroy SmallWood sprites
+    GameObject[] SmallOre;
 
     [SerializeField] GameObject[] AxeSprite;                                    // Array of Axe prefabs to instatiate
     [SerializeField] GameObject[] SmallWoodSprite;                                   // Array of SmallWood prefabs to instatiate
+    [SerializeField] GameObject[] SmallOreSprite;
 
     [SerializeField] private GameSession gameSessionScriptPrefab;                   // GameSession prefab required for it's attributes
     [SerializeField] private AxePrices[] AxePricesScriptPrefab;            // Axe prefabs required to get their attributes
@@ -43,7 +43,10 @@ public class UpgradeAxe : MonoBehaviour
         RemoveAxeUpgradeCounterText();
 
         // Initialise SmallWood Array Size
-        SmallWood = new GameObject[4];
+        SmallWood = new GameObject[2];
+
+        // Initialise SmallOre Array Size
+        SmallOre = new GameObject[2];
 
         // Shows Upgrade Cost in Numbers
         MaterialCost();
@@ -61,7 +64,8 @@ public class UpgradeAxe : MonoBehaviour
     {
         // Destroys old Axe to make place for a new one
         Destroy(Axe);
-        for (int i = 0; i <= 3; i++) { Destroy(SmallWood[i]); }
+        for (int i = 0; i <= 1; i++) { Destroy(SmallWood[i]); }
+        for (int i = 0; i <= 1; i++) { Destroy(SmallOre[i]); }
 
         // AxeLevel is required for the game to know which Axe you currently have.
         gameSessionScriptPrefab.IncreaseAxeLevel();
@@ -77,8 +81,9 @@ public class UpgradeAxe : MonoBehaviour
     // Shows visual representation of types of Wood required to upgrade
     public void DisplayUpgradePriceSprite() // TODO improve this function
     {
+        // For Wood Prices
         PARAMETER = 0;
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < 2; j++)
         {
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
@@ -86,6 +91,22 @@ public class UpgradeAxe : MonoBehaviour
                 if (AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetWoodRequired(jj) > 0)
                 {
                     SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(12 + j, 12), Quaternion.identity) as GameObject;
+                    PARAMETER = jj + 1;
+                    break;
+                }
+            }
+        }
+
+        // For Ore Prices
+        PARAMETER = 0;
+        for (int j = 0; j < 2; j++)
+        {
+            for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+            {
+                // If resource price of a Axe is bigger than 1, displays visual sprite of Mine required.
+                if (AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(jj) > 0)
+                {
+                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(12 + j + 2, 12), Quaternion.identity) as GameObject;
                     PARAMETER = jj + 1;
                     break;
                 }
@@ -100,8 +121,10 @@ public class UpgradeAxe : MonoBehaviour
         if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 9) // There should be x instead of 9
         {
             DisplayUpgradePriceSprite();
+
+            // For Wood Prices
             PARAMETER = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
@@ -114,7 +137,22 @@ public class UpgradeAxe : MonoBehaviour
                     }
                 }
             }
+
+            // For Ore Prices
             PARAMETER = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
+                {
+                    if (AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(ii) > 0)
+                    {
+                        AxeUpgradePriceText[i+2].text = AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(ii).ToString();
+                        print("ii: " + ii + " = " + AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(ii));
+                        PARAMETER = ii + 1;
+                        break;
+                    }
+                }
+            }
             InsufficientMaterials();
         }
     }
@@ -124,7 +162,9 @@ public class UpgradeAxe : MonoBehaviour
     {
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
-            if (gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetWoodRequired(jj))
+            // Checks if we have enough materials to perform an upgrade
+            if (gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetWoodRequired(jj) 
+                || gameSessionScriptPrefab.GetMinedOreCounter(jj) < AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(jj))
             {
                 // Inssufficient Materials Text
                 InsufficientMaterialsText.text = "Insufficient Materials";
