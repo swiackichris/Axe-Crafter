@@ -1,18 +1,28 @@
 ﻿// TODO NOW:
 
-// Make code easier to read by replacing complicated code with functions with a description
+// Work on Mine Level Manager
+
+// Material Deduct must work properly
+
+// - Levels unlocked need to be saved in GameSession
+// - All other levels are locked (disabled) unless payment in resources is done
+// - The closest level (enabled level + 1 should have another button enabled with enabled text and sprite of resource required as long as it doesn't reach 200/300 you can't press a button)
+// - All the other disabled buttons should be disabled with LOCK Sprite on them that would be instatiated from script and removed from script.
+
+// - Buttons should have different sprite which shows upgrade price, and shows current materials and gold let's say Gold Required: 1150/2000 etc
+// - For this you need to figure out sprite changing for buttons in c#
 
 // TODO LATER: There needs to be CheckForErrors() function that runs in start
-// What needs to be finished for the game to be finished:
-// Added Woodcutting, Added Axe Shop -> Possibly connect them together?
-// Goal of this game is simply killing further Boss and Gathering Further Ore, 
-// Add your own graphics for everything
-// but there should be a way that a person has to choose which one he wants to master. Like Skills? You can add skills later.
-
-// Remove Parameter from game session
 // Think if you can remove parameter from Upgrade Axe and Upgrade Pick
 
+// Add your own graphics for everything
+
 // TODO MUCH LATER:
+
+// X. You can add locks as other buttons who are children of buttons in level selection.
+
+// X. There should be a way that a person has to choose which one he wants to master. Like Skills? You can add skills later.
+
 // X. If you upgrade weapon to lvl 10 - the button should be a little bigger to properly display the amount of resources required to upgrade.
 
 // X. Mine Levels Should be looking like in classic digger games, the deeper you go the more dark and evil the mine looks

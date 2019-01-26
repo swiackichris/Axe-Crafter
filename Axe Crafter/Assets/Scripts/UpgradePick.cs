@@ -90,7 +90,7 @@ public class UpgradePick : MonoBehaviour
                 // If resource price of a pickaxe is bigger than 1, displays visual sprite of ore required.
                 if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetWoodRequired(jj) > 0)
                 {
-                    SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(12+j, 12), Quaternion.identity) as GameObject;
+                    SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(14-j+2, 12), Quaternion.identity) as GameObject;
                     PARAMETER = jj + 1; // If the loop has found a price > 0, it shows that as a price and parameter becomes higher so that we don't show the same sprite price twice
                     break;
                 }
@@ -106,7 +106,7 @@ public class UpgradePick : MonoBehaviour
                 // If resource price of a pickaxe is bigger than 1, displays visual sprite of ore required.
                 if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetOreRequired(jj) > 0)
                 {
-                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(12 + j+2, 12), Quaternion.identity) as GameObject;
+                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(14 - j, 12), Quaternion.identity) as GameObject;
                     PARAMETER = jj + 1; // If the loop has found a price > 0, it shows that as a price and parameter becomes higher so that we don't show the same sprite price twice
                     break;
                 }

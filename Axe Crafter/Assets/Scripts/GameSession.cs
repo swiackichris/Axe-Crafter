@@ -24,9 +24,16 @@ public class GameSession : MonoBehaviour
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
     [SerializeField] int Gold = 0;                                              // Amount of gold owned
-    [SerializeField] TextMeshProUGUI GoldText;
+    [SerializeField] TextMeshProUGUI GoldText;                                  // Text to display amount of gold owned
 
-    int PARAMETER = 0;                                                          // Required for BuyPickaxe() function
+    // Level variables
+    [SerializeField] MineLevelManager mineLevelManagerScriptPrefab;
+    // [SerializeField] WoodLevelManager forestLevelManagerScriptPrefab;
+    // [SerializeField] BattleLevelManager battleLevelManagerScriptPrefab;
+    [SerializeField] int CurrentMineLevel = 0;
+    [SerializeField] int CurrentForestLevel = 0;
+    [SerializeField] int CurrentBattleLevel = 0;
+
 
     // Use this for initialization
     void Start()
@@ -79,11 +86,9 @@ public class GameSession : MonoBehaviour
 
     public void BuyPickaxe()
     {
-        // Resets PARAMETER required for "for" functions
-        PARAMETER = 0;
 
         // For Ore Prices
-        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
             if (MinedOreCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) 
@@ -96,15 +101,11 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();
-                // PARAMETER = jj + 1;
             }
         }
 
-        // Resets PARAMETER required for "for" functions
-        PARAMETER = 0;
-
         // For Wood Prices
-        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
             if (ChoppedWoodCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj)
@@ -117,18 +118,14 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
-                // PARAMETER = jj + 1;
             }
         }
     }
 
-    // TODO buy axe function might need to use different parameter, but i dont think so
     public void BuyAxe()
     {
-        // Resets PARAMETER required for "for" functions
-        PARAMETER = 0;
 
-        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
             if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetOreRequired(jj)
@@ -141,14 +138,10 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();
-                // PARAMETER = jj + 1;
             }
         }
 
-        // Resets PARAMETER required for "for" functions
-        PARAMETER = 0;
-
-        for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
             if (ChoppedWoodCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj)
@@ -161,7 +154,6 @@ public class GameSession : MonoBehaviour
 
                 // Updates material count as a string
                 WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
-                // PARAMETER = jj + 1;
             }
         }
     }
@@ -184,10 +176,28 @@ public class GameSession : MonoBehaviour
         GoldText.text = Gold.ToString();
     }
 
+    public void PayMaterialsForMineUnlock(int i)
+    {
+        CurrentMineLevel += 1;
+        MinedOreCounter[i] -= mineLevelManagerScriptPrefab.GetLevelUnlockOre(i);
+    }
+
+    public void PayMaterialsForForestUnlock(int i)
+    {
+        CurrentForestLevel += 1;
+        // ChoppedWoodCounter[i] -= forestLevelManagerScriptPrefab.GetLevelUnlockWood(i);
+    }   
+
+    public void PayGoldForBattleUnlock(int i)
+    {
+        CurrentBattleLevel += 1;
+        // MinedOreCounter[i] -= mineLevelManagerScriptPrefab.GetLevelUnlockOre(i);
+    }
+
     // Gold
     public int GetCurrentGold() { return Gold; }
 
-    // UpgradePickClass
+    // UpgradePick Class
     public int GetMinedOreCounter(int i) { return MinedOreCounter[i]; }
     public int GetPickLevel() { return PickLevel; }
     public int GetPickUpgradeCounter() { return PickUpgradeCounter; }
@@ -195,13 +205,18 @@ public class GameSession : MonoBehaviour
     public void IncreasePickUpgradeCounter() { PickUpgradeCounter++; }
     public void ResetPickUpgradeCounter() { PickUpgradeCounter = 0; }
 
-    // UpgradeAxeClass
+    // UpgradeAxe Class
     public int GetChoppedWoodCounter(int i) { return ChoppedWoodCounter[i]; }
     public int GetAxeLevel() { return AxeLevel; }
     public int GetAxeUpgradeCounter() { return AxeUpgradeCounter; }
     public void IncreaseAxeLevel() { AxeLevel++; }
     public void IncreaseAxeUpgradeCounter() { AxeUpgradeCounter++; }
     public void ResetAxeUpgradeCounter() { AxeUpgradeCounter = 0; }
+
+    // LevelManager Classes
+    public int GetCurrentMineLevel() { return CurrentMineLevel; }
+    public int GetCurrentForestLevel() { return CurrentForestLevel; }
+    public int GetCurrentBattleLevel() { return CurrentBattleLevel; }
 
     // Increases gold owned by the amount dropped by a monster
     public void CountGold()
@@ -231,6 +246,10 @@ public class GameSession : MonoBehaviour
 
         data.GoldData = Gold;
 
+        data.CurrentMineLevelData = CurrentMineLevel;
+        data.CurrentForestLevelData = CurrentForestLevel;
+        data.CurrentBattleLevelData = CurrentBattleLevel;
+
         bf.Serialize(file, data);
         file.Close();
     }
@@ -254,6 +273,10 @@ public class GameSession : MonoBehaviour
             AxeLevel = data.AxeLevelData;
 
             Gold = data.GoldData;
+
+            CurrentMineLevel = data.CurrentMineLevelData;
+            CurrentForestLevel = data.CurrentForestLevelData;
+            CurrentBattleLevel = data.CurrentBattleLevelData;
         }
     }
 
@@ -270,5 +293,9 @@ public class GameSession : MonoBehaviour
         public int AxeLevelData;
 
         public int GoldData;
+
+        public int CurrentMineLevelData;
+        public int CurrentForestLevelData;
+        public int CurrentBattleLevelData;
     }
 }

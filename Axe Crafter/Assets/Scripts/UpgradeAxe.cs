@@ -90,7 +90,7 @@ public class UpgradeAxe : MonoBehaviour
                 // If resource price of a Axe is bigger than 1, displays visual sprite of Wood required.
                 if (AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetWoodRequired(jj) > 0)
                 {
-                    SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(12 + j, 12), Quaternion.identity) as GameObject;
+                    SmallWood[j] = Instantiate(SmallWoodSprite[jj], new Vector2(14 - j+2, 12), Quaternion.identity) as GameObject;
                     PARAMETER = jj + 1;
                     break;
                 }
@@ -106,7 +106,7 @@ public class UpgradeAxe : MonoBehaviour
                 // If resource price of a Axe is bigger than 1, displays visual sprite of Mine required.
                 if (AxePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetOreRequired(jj) > 0)
                 {
-                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(12 + j + 2, 12), Quaternion.identity) as GameObject;
+                    SmallOre[j] = Instantiate(SmallOreSprite[jj], new Vector2(14 - j, 12), Quaternion.identity) as GameObject;
                     PARAMETER = jj + 1;
                     break;
                 }
