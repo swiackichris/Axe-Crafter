@@ -28,8 +28,8 @@ public class GameSession : MonoBehaviour
 
     // Level variables
     [SerializeField] MineLevelManager mineLevelManagerScriptPrefab;
-    // [SerializeField] WoodLevelManager forestLevelManagerScriptPrefab;
-    // [SerializeField] BattleLevelManager battleLevelManagerScriptPrefab;
+    [SerializeField] ForestLevelManager forestLevelManagerScriptPrefab;
+    [SerializeField] BattleLevelManager battleLevelManagerScriptPrefab;
     [SerializeField] int CurrentMineLevel = 0;
     [SerializeField] int CurrentForestLevel = 0;
     [SerializeField] int CurrentBattleLevel = 0;
@@ -185,13 +185,13 @@ public class GameSession : MonoBehaviour
     public void PayMaterialsForForestUnlock(int i)
     {
         CurrentForestLevel += 1;
-        // ChoppedWoodCounter[i] -= forestLevelManagerScriptPrefab.GetLevelUnlockWood(i);
+        ChoppedWoodCounter[i] -= forestLevelManagerScriptPrefab.GetLevelUnlockWood(i);
     }   
 
-    public void PayGoldForBattleUnlock(int i)
+    public void PayMaterialsForBattleUnlock(int i)
     {
         CurrentBattleLevel += 1;
-        // MinedOreCounter[i] -= mineLevelManagerScriptPrefab.GetLevelUnlockOre(i);
+        Gold -= battleLevelManagerScriptPrefab.GetLevelUnlockGold(i);
     }
 
     // Gold

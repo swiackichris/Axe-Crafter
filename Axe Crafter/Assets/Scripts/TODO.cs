@@ -1,13 +1,11 @@
 ﻿// TODO NOW:
 
-// Work on Mine Level Manager
+// - Hide the prices so that buttons look like in pickcrafter
 
-// Material Deduct must work properly
+// price Buttons need to be disabled, and only one should be enabled from script
 
-// - Levels unlocked need to be saved in GameSession
-// - All other levels are locked (disabled) unless payment in resources is done
-// - The closest level (enabled level + 1 should have another button enabled with enabled text and sprite of resource required as long as it doesn't reach 200/300 you can't press a button)
-// - All the other disabled buttons should be disabled with LOCK Sprite on them that would be instatiated from script and removed from script.
+
+// Add an assertion so you can't buy 2 levels above and not buy current one
 
 // - Buttons should have different sprite which shows upgrade price, and shows current materials and gold let's say Gold Required: 1150/2000 etc
 // - For this you need to figure out sprite changing for buttons in c#

@@ -17,16 +17,17 @@ public class MineLevelManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < LevelUnlockOre.Length; i++)
-        {
-            MineResourceText[i].text = (gameSessionScriptPrefab.GetMinedOreCounter(i).ToString() + "/" + LevelUnlockOre[i].ToString());
-        }
+        // Displays resources required text for next level
+        DisplayMineResourceText();
+
+        // Displays button to pay resources for next level
+        DisplayMineResourceButton();
 
         for (int i = 0; i <= gameSessionScriptPrefab.GetCurrentMineLevel(); i++)
         {
             MineLevelsButton[i].interactable = true;
             MineLevelsResourceButton[i].interactable = false;
-            MineResourceText[i].text = null;
+            MineResourceText[i].text = null; // You might want to delete this later
         }
     }
 
@@ -46,8 +47,29 @@ public class MineLevelManager : MonoBehaviour {
 
             // Disables upgrade cost text
             MineResourceText[i].text = null;
+
+            // Displays resources required text for next level
+            DisplayMineResourceText();
+
+            // Displays button to pay resources for next level
+            DisplayMineResourceButton();
         }
     }
 
+    // Displays resources required text for next level
+    void DisplayMineResourceText()
+    {
+        MineResourceText[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].text 
+            = (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetCurrentMineLevel() + 1).ToString() 
+            + "/" + LevelUnlockOre[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].ToString());
+    }
+
+    // Displays button to pay resources for next level
+    void DisplayMineResourceButton()
+    {
+        MineLevelsResourceButton[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].interactable = true;
+    }
+
     public int GetLevelUnlockOre(int i) { return LevelUnlockOre[i]; }
+
 }
