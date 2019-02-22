@@ -1,16 +1,16 @@
 ﻿// TODO NOW:
 
-// Add your own graphics for everything
+// Create different tree trunks to work with
 
-// Find coolest looking minerals
+// There should be a few different resources next to each other, and when one is chopped another one should appear,
+// so that we can have forests this way
+
+// - Tree Graphics x10
+// - Monster Graphics x10
+
+// Add different Scene for Each Minining.
 
 // Minecraft Like Graphics for mines by depth
-
-// You could use modified minecraft texture packs for that easily.
-
-// Figure Out Random Color Range in Photoshop so you can paint aluminum
-
-// Change some Scenes Horizontal Rotation by 180
 
 // Maybe make resources like this:http://www.textures4photoshop.com/tex/ground-dirt-and-sand/earth-ground-and-grass-cube-cross-section-isometric-free-stock-image.aspx
 // Camera could go down as you click next level, slowly so that you can see that you go deeper, but for that you would need to edit graphics a little and make them in creative mode minecraft
@@ -82,17 +82,6 @@
 // - Tiger
 // - Lion
 // - Elephant
-
-
-
-
-// - ETC ETC
-
-
-
-
-
-
 
 
 // Should Item Sprites be 8x8 or 16x16?
