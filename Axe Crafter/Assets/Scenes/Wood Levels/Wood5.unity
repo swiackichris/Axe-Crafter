@@ -399,9 +399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a488688cfe19ef40b9560a786ae48b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodStatsScriptPrefab: {fileID: 114629805457419048, guid: 3dd611e7e54804f41b556e8d9b5d5451,
+  woodStatsScriptPrefab: {fileID: 114549350543467880, guid: f61c49ab9f3ed444e800fad91d11b1cb,
     type: 2}
-  gameSessionStatsScriptPrefab: {fileID: 0}
+  gameSessionStatsScriptPrefab: {fileID: 2014816358}
   axeStatsScriptPrefabs:
   - {fileID: 114497364352623328, guid: 55bb7f7857dd3e549a87cc44a66950f4, type: 2}
   - {fileID: 114799168722531634, guid: 86e4383f5fe7b034c963eb2f6aeae167, type: 2}
@@ -413,7 +413,7 @@ MonoBehaviour:
   - {fileID: 114152983854354468, guid: f3ad7493a4bac4045971342e60e0a503, type: 2}
   - {fileID: 114601487532426482, guid: 1a191ef7a2b4ca94bbd65b7d851d1954, type: 2}
   - {fileID: 114739612313045216, guid: 7e090c1d89bfa4840840bd6fa5c9bbf3, type: 2}
-  WoodPrefab: {fileID: 1018435081981558, guid: 3dd611e7e54804f41b556e8d9b5d5451, type: 2}
+  WoodPrefab: {fileID: 1925698175793782, guid: f61c49ab9f3ed444e800fad91d11b1cb, type: 2}
   AxePrefabs:
   - {fileID: 1726604565427832, guid: 55bb7f7857dd3e549a87cc44a66950f4, type: 2}
   - {fileID: 1301863717304058, guid: 86e4383f5fe7b034c963eb2f6aeae167, type: 2}
@@ -1768,6 +1768,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0be79cc974e36d4d920f1f814a18675, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &2014816358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114027905389043260, guid: f0be79cc974e36d4d920f1f814a18675,
+    type: 2}
+  m_PrefabInternal: {fileID: 2014816357}
+  m_Script: {fileID: 11500000, guid: bbcfa91c8edc3e14c80faa833e8c4035, type: 3}
 --- !u!1 &2120584217
 GameObject:
   m_ObjectHideFlags: 0
