@@ -1,94 +1,32 @@
 ﻿// TODO NOW:
 
-// Create different tree trunks to work with
+// Try to find in unity free assets tools or anything useful :)
+
+// - Make Axes/Pickaxes: Wooden parts should be filled with texture of wood used, 
+// and steel parts should be filled with texture from google
+
+// - Add spawn points like in your spaceship project so that monsters/trees can randomly respawn on them
+
+// Graphics that need to be done:
+// - Pickaxes
+// - Axes
+// - Buttons
+// - Healthbar
+// - Shop Scene, Menu etc
+
+// Sound needed
+// - Pickaxe Sound
+// - Axe Sound
+// - Mine Scene Sound
+// - Forest Scene Sound
+// - Battle Scene Sound
+// - Sounds for each different monster?
 
 // There should be a few different resources next to each other, and when one is chopped another one should appear,
 // so that we can have forests this way
 
-// - Tree Graphics x10
-// - Monster Graphics x10
-
-// Add different Scene for Each Minining.
-
-// Minecraft Like Graphics for mines by depth
-
-// Maybe make resources like this:http://www.textures4photoshop.com/tex/ground-dirt-and-sand/earth-ground-and-grass-cube-cross-section-isometric-free-stock-image.aspx
-// Camera could go down as you click next level, slowly so that you can see that you go deeper, but for that you would need to edit graphics a little and make them in creative mode minecraft
-// Make it so that you see a tiny bit of previous level on the next one. As in Mine0 Scene
-// MAKE PNG VERSION OF JUST RESOURCES THAT WOULD SWITCH ROTATION SIZE AND PLACE CREATION (RANDOMIZE)
-// THEY WOULD APPEAR ON TOP OF ALREADY CREATED EMPTY TEMPLATE
-// MINES:
-// - Dirt
-// - Clay/Clay
-// - Deep Dirt/Bone
-// - Gravel/Flint
-// - Aluminium/Aluminium
-// - Iron/Iron
-// - Silver/Silver
-// - Gold/Gold
-// - Platinum/Platinum
-// - Titanium/Titanium
-// - Diamond/Diamond
-
-// - You could copy paste from albion and black desert online or other mmos as well
-
-
-
-
-/// Figure out where to put these
-// - Obsidian/Obsidian
-// - Emerald Pickaxe
-// - Gold
-// - Aluminium
-// - Iron
-// - Diamond
-// - Titanium
-// - Bismuth
-// - Silver
-// - Platinum
-// - Amethyst
-// - Ruby
-// - Saphhire
-
-
-
-
-// - Trees can be made by connecting Trunks with random internet Leaves from actual leaves.
-// - You can use any leaves png with minecraft trees
-// - USE PHOTOSHOP FOR THIS
-// - FOREST NEED TO LOOK LIKE FROM MINECRAFT WITH DIFFERENT COLORS :)
-// - BACKGROUND COULD BE A LITTLE DIFFERENT FOR EACH TREE.
-// - First 10 Forest should be whatever you think of first, doesn't have to make any sense, you can fix that later.
-// - Maybe make a tree sample that could be edited? or Pixelize existing trees?
-// - Balsa
-// - White Pine
-// - ChestNut
-// - Birch
-// - Oak
-// - Sycamore
-// - You could copy paste from albion and black desert online or other mmos as well
-
-
-// MONSTERS:
-// - You could copy paste from albion and black desert online or other mmos as well
-// THE MOST CLASSIC MONSTERS IN GAMES
-// - Orc
-// - Troll
-// - Elf
-// - Dragon
-// - Zuk
-// - Wolf
-// - Swine
-// - Dog
-// - Mouse
-// - Tiger
-// - Lion
-// - Elephant
-
-
 // Should Item Sprites be 8x8 or 16x16?
 // Maybe it should be a combination of both?
-
 
 // TODO MUCH LATER:
 
@@ -153,6 +91,12 @@
 
 // TODO LATER: There needs to be CheckForErrors() function that runs in start
 
+// Maybe make resources like this:http://www.textures4photoshop.com/tex/ground-dirt-and-sand/earth-ground-and-grass-cube-cross-section-isometric-free-stock-image.aspx
+// Camera could go down as you click next level, slowly so that you can see that you go deeper, but for that you would need to edit graphics a little and make them in creative mode minecraft
+// Make it so that you see a tiny bit of previous level on the next one. As in Mine0 Scene
+// MAKE PNG VERSION OF JUST RESOURCES THAT WOULD SWITCH ROTATION SIZE AND PLACE CREATION (RANDOMIZE)
+// THEY WOULD APPEAR ON TOP OF ALREADY CREATED EMPTY TEMPLATE
+
 
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
 /// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
@@ -162,3 +106,60 @@
 // - C# and C++ Course
 // - Unity Course
 
+// MINES:
+// - Dirt
+// - Clay/Clay
+// - Deep Dirt/Bone
+// - Gravel/Flint
+// - Aluminium/Aluminium
+// - Iron/Iron
+// - Silver/Silver
+// - Gold/Gold
+// - Platinum/Platinum
+// - Titanium/Titanium
+// - Diamond/Diamond
+
+// - You could copy paste resource types from albion and black desert online or other mmos as well
+
+/// Figure out where to put these
+// - Obsidian/Obsidian
+// - Emerald Pickaxe
+// - Gold
+// - Aluminium
+// - Iron
+// - Diamond
+// - Titanium
+// - Bismuth
+// - Silver
+// - Platinum
+// - Amethyst
+// - Ruby
+// - Saphhire
+
+// MONSTERS:
+// - You could copy paste from albion and black desert online or other mmos as well
+// THE MOST CLASSIC MONSTERS IN GAMES
+
+// - Cockroach
+// - Rat
+// - Snake
+// - Scorpion
+// - Tarantula
+// - Wolf
+// - Rhino
+// - Orc
+// - Golem
+// - Dragon
+
+// - Orc
+// - Troll
+// - Elf
+// - Dragon
+// - Zuk
+// - Wolf
+// - Swine
+// - Tiger
+// - Lion
+// - Elephant
+// - Hyaena
+// - Yeti
