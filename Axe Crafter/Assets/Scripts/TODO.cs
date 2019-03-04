@@ -1,5 +1,52 @@
 ﻿// TODO NOW:
 
+// Write Steps of getting pickaxes and axes
+// - Clay / Oak
+// - Bone / 
+
+// And Fix Wood Used accordingly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Pickaxes:
+// - Hand / Dirt
+// - Clay / Oak
+// - Bone / - Needs a Fix
+// - Stone /
+// - Gravel
+// - Alu
+// - Iron
+// - Silver
+// - Golden
+// - Platinum
+// - Titanium
+// - 
+
+// MINES:
+// - Dirt (Level -1) - With Hand Low Quality stone
+// - Clay/Clay - With Shovel Clay
+// - Deep Dirt/Bone - With Clay Pickaxe Bone
+// - Stone - With Bone Pickaxe Stone
+// - Gravel/Flint - With Stone Pickaxe Flint
+// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
+
+// You dig first dirt to find a sharp stone
+// You use first sharp stone to cut first tree and make wooden shovel
+// You use wooden shovel to dig deep dirt bones
+// Use bones + first wood to make a bone axe
+
 // Try to find in unity free assets tools or anything useful :)
 
 // - Make Axes/Pickaxes: Wooden parts should be filled with texture of wood used, 
@@ -107,11 +154,12 @@
 // - Unity Course
 
 // MINES:
-// - Dirt
-// - Clay/Clay
-// - Deep Dirt/Bone
-// - Gravel/Flint
-// - Aluminium/Aluminium
+// - Dirt (Level -1) - With Hand Low Quality stone
+// - Clay/Clay - With Shovel Clay
+// - Deep Dirt/Bone - With Clay Pickaxe Bone
+// - Stone - With Bone Pickaxe Stone
+// - Gravel/Flint - With Stone Pickaxe Flint
+// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
 // - Iron/Iron
 // - Silver/Silver
 // - Gold/Gold

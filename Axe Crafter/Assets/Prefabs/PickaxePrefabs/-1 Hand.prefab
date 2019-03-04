@@ -9,31 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1978852785887774}
+  m_RootGameObject: {fileID: 1247560287270828}
   m_IsPrefabAsset: 1
---- !u!1 &1978852785887774
+--- !u!1 &1247560287270828
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4287094349899432}
-  - component: {fileID: 212244227451623994}
-  - component: {fileID: 114555794446255456}
+  - component: {fileID: 4829033729645086}
+  - component: {fileID: 212003299447647576}
+  - component: {fileID: 114928748476197548}
+  - component: {fileID: 114335903639536254}
   m_Layer: 0
-  m_Name: Platinium
+  m_Name: -1 Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4287094349899432
+--- !u!4 &4829033729645086
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978852785887774}
+  m_GameObject: {fileID: 1247560287270828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,24 +42,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114555794446255456
+--- !u!114 &114335903639536254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978852785887774}
+  m_GameObject: {fileID: 1247560287270828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64f0e8be44433b419276827708aeaa1, type: 3}
+  m_Script: {fileID: 11500000, guid: cf1d13ae02b64004b8d3dd932134ca47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OreHealth: 10
---- !u!212 &212244227451623994
+  OreRequired: 
+  WoodRequired: 
+  GoldRequired: 10
+--- !u!114 &114928748476197548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247560287270828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ef254057df884ba4238f8cef299ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickaxeDamage: 10
+--- !u!212 &212003299447647576
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978852785887774}
+  m_GameObject: {fileID: 1247560287270828}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,13 +102,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 87a7348fd5ee8bd4e85e43486bf149b2, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: da96b718f5984924e80302781478a658, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.2, y: 5.55}
+  m_Size: {x: 10.99, y: 12.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
