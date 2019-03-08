@@ -1,62 +1,26 @@
 ﻿// TODO NOW:
 
-// Write Steps of getting pickaxes and axes
-// - Clay / Oak
-// - Bone / 
+// Change Back Buttons to Arrow Button
+// Add Mine Levels 3D Graphics - Resources would appear in the correct area not on whole screen (Make mine screenshot from inside)
+// generated dungeon
 
-// And Fix Wood Used accordingly
+// Add Graphics to all buttons
+// add texts to all buttons
 
+// Mine Button Graphics
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Pickaxes:
-// - Hand / Dirt
-// - Clay / Oak
-// - Bone / - Needs a Fix
-// - Stone /
-// - Gravel
-// - Alu
-// - Iron
-// - Silver
-// - Golden
-// - Platinum
-// - Titanium
-// - 
-
-// MINES:
-// - Dirt (Level -1) - With Hand Low Quality stone
-// - Clay/Clay - With Shovel Clay
-// - Deep Dirt/Bone - With Clay Pickaxe Bone
-// - Stone - With Bone Pickaxe Stone
-// - Gravel/Flint - With Stone Pickaxe Flint
-// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
+// Health of Ore Trees and Monsters
+// Damage of Pickaxes and Axes
+// Costs of Pickaxes and Axes
 
 // You dig first dirt to find a sharp stone
 // You use first sharp stone to cut first tree and make wooden shovel
 // You use wooden shovel to dig deep dirt bones
 // Use bones + first wood to make a bone axe
 
-// Try to find in unity free assets tools or anything useful :)
-
-// - Make Axes/Pickaxes: Wooden parts should be filled with texture of wood used, 
-// and steel parts should be filled with texture from google
-
 // - Add spawn points like in your spaceship project so that monsters/trees can randomly respawn on them
 
 // Graphics that need to be done:
-// - Pickaxes
-// - Axes
 // - Buttons
 // - Healthbar
 // - Shop Scene, Menu etc
@@ -67,15 +31,14 @@
 // - Mine Scene Sound
 // - Forest Scene Sound
 // - Battle Scene Sound
-// - Sounds for each different monster?
-
-// There should be a few different resources next to each other, and when one is chopped another one should appear,
-// so that we can have forests this way
+// - Sounds for each different monster? Just make a Axe Hit flesh sound instead
 
 // Should Item Sprites be 8x8 or 16x16?
 // Maybe it should be a combination of both?
 
 // TODO MUCH LATER:
+
+// X. Solve Button Selection Colors text not being affected by button color
 
 // X. Make Pickaxe crafting like in minecraft, gather materials, etc etc, and then you wait time to have it crafted in a forge and pay a blacksmith to do it.
 
@@ -138,7 +101,6 @@
 
 // TODO LATER: There needs to be CheckForErrors() function that runs in start
 
-// Maybe make resources like this:http://www.textures4photoshop.com/tex/ground-dirt-and-sand/earth-ground-and-grass-cube-cross-section-isometric-free-stock-image.aspx
 // Camera could go down as you click next level, slowly so that you can see that you go deeper, but for that you would need to edit graphics a little and make them in creative mode minecraft
 // Make it so that you see a tiny bit of previous level on the next one. As in Mine0 Scene
 // MAKE PNG VERSION OF JUST RESOURCES THAT WOULD SWITCH ROTATION SIZE AND PLACE CREATION (RANDOMIZE)
@@ -147,11 +109,6 @@
 
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
 /// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
-
-// THINGS TO LEARN AFTER YOU FINISH THIS PROJECT:
-// - CODE STRUCTURE
-// - C# and C++ Course
-// - Unity Course
 
 // MINES:
 // - Dirt (Level -1) - With Hand Low Quality stone
@@ -211,3 +168,30 @@
 // - Elephant
 // - Hyaena
 // - Yeti
+
+// Pickaxes:
+// - Hand / Dirt
+// - Clay / Oak
+// - Bone / - Needs a Fix
+// - Stone /
+// - Gravel
+// - Alu
+// - Iron
+// - Silver
+// - Golden
+// - Platinum
+// - Titanium
+// - 
+
+// MINES:
+// - Dirt (Level -1) - With Hand Low Quality stone
+// - Clay/Clay - With Shovel Clay
+// - Deep Dirt/Bone - With Clay Pickaxe Bone
+// - Stone - With Bone Pickaxe Stone
+// - Gravel/Flint - With Stone Pickaxe Flint
+// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
+
+// THINGS TO LEARN AFTER YOU FINISH THIS PROJECT:
+// - CODE STRUCTURE
+// - C# and C++ Course
+// - Unity Course
