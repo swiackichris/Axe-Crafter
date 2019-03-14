@@ -1,14 +1,12 @@
 ﻿// TODO NOW:
 
-// Change Back Buttons to Arrow Button
-// Add Mine Levels 3D Graphics - Resources would appear in the correct area not on whole screen (Make mine screenshot from inside)
-// generated dungeon
+// Make crafting scenes graphics and fix placements
+// - Currently owned axe has to be in a big square 
+// - Small Prefabs that resemble currently owned resources in circles
+// - 
 
-// Add Graphics to all buttons
-// add texts to all buttons
-
-// Mine Button Graphics
-
+// Display wood resources as a small log lying down
+ 
 // Health of Ore Trees and Monsters
 // Damage of Pickaxes and Axes
 // Costs of Pickaxes and Axes
@@ -37,6 +35,10 @@
 // Maybe it should be a combination of both?
 
 // TODO MUCH LATER:
+
+// X. Remove unsued graphics
+
+// X. What happens after maxing a game isn't much of a concern at the moment.
 
 // X. Solve Button Selection Colors text not being affected by button color
 
@@ -195,3 +197,8 @@
 // - CODE STRUCTURE
 // - C# and C++ Course
 // - Unity Course
+
+// You could make repeatable levels like in Idle Heroes in Campaign with forests battle and mines.
+// Maybe you can find some monster graphics in unity free assets
+
+// Check maybe there are some tools online to pixelise graphics to make them look like minecraft

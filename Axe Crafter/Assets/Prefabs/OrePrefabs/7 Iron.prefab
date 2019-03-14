@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64f0e8be44433b419276827708aeaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OreHealth: 500
+  OreHealth: 10
 --- !u!212 &212269631379792142
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,12 +88,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: fbb97affddddf70409820cdb4d72feea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 543636552c35ed84bb6c15163135dc3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.66, y: 5.33}
+  m_Size: {x: 5.72, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
