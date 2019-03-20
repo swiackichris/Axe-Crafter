@@ -34,7 +34,7 @@ public class UpgradeAxe : MonoBehaviour
     private void Start()
     {
         // Spawning First Axe
-        Axe = Instantiate(AxeSprite[gameSessionScriptPrefab.GetAxeLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        Axe = Instantiate(AxeSprite[gameSessionScriptPrefab.GetAxeLevel()], new Vector2(4, 22), Quaternion.identity) as GameObject;
 
         // Loading AxeUpgradeCounter from a file
         AxeUpgradeLevelText.text = gameSessionScriptPrefab.GetAxeUpgradeCounter().ToString();
@@ -69,7 +69,7 @@ public class UpgradeAxe : MonoBehaviour
 
         // AxeLevel is required for the game to know which Axe you currently have.
         gameSessionScriptPrefab.IncreaseAxeLevel();
-        Axe = Instantiate(AxeSprite[gameSessionScriptPrefab.GetAxeLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        Axe = Instantiate(AxeSprite[gameSessionScriptPrefab.GetAxeLevel()], new Vector2(4, 22), Quaternion.identity) as GameObject;
 
         gameSessionScriptPrefab.ResetAxeUpgradeCounter();
         AxeUpgradeLevelText.text = gameSessionScriptPrefab.GetAxeUpgradeCounter().ToString();

@@ -1,12 +1,14 @@
 ﻿// TODO NOW:
 
+// Add Current Pickaxe Hardness to Stats
+// Fix Upgrading Pickaxe
+// Insufficient Materials Text should appear on top of a button?
+
+// Make Upgrade Button Work Properly
 // Make crafting scenes graphics and fix placements
-// - Currently owned axe has to be in a big square 
-// - Small Prefabs that resemble currently owned resources in circles
-// - 
 
 // Display wood resources as a small log lying down
- 
+
 // Health of Ore Trees and Monsters
 // Damage of Pickaxes and Axes
 // Costs of Pickaxes and Axes
@@ -44,6 +46,9 @@
 
 // X. Make Pickaxe crafting like in minecraft, gather materials, etc etc, and then you wait time to have it crafted in a forge and pay a blacksmith to do it.
 
+// X. Increase Pick Upgrade Cost by 10% per each level of upgrade from a standard cost, and to buy a nerw pickaxe the cost should be 10x of initial.
+// X. Stats should increase 10% each and in final stage 50%~.
+
 // X. Each Pickaxe should have Hardness, Speed, Damage depending on the material it's made of
 
 // X. You can add locks as other buttons who are children of buttons in level selection.
@@ -73,6 +78,8 @@
 // X. Possibly some rare loot needed to craft/enchant/upgrade? better weapons in the future
 
 // X. Add Armor and Own Health because monsters should attack back? // Timer to kill a monster??
+
+// X. Add a way to upgrade a tool/weapon to unlimited +X
 
 // X. 5~ Different Monsters in each Battle Level
 // X. Modify and Improve Panel a Little

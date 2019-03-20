@@ -13,6 +13,11 @@ public class UpgradePick : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI PickUpgradeLevelText;                          // Displays current pick upgrade
     [SerializeField] TextMeshProUGUI[] PickUpgradePriceText;                        // Displays price required to ugprade pickaxe once upgrade hits +9
+    [SerializeField] TextMeshProUGUI PickUpgradeGoldCostText;
+    [SerializeField] TextMeshProUGUI HardnessText;
+
+    [SerializeField] TextMeshProUGUI ToolNameText;
+    [SerializeField] String[] ToolName;
 
     [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
@@ -25,7 +30,8 @@ public class UpgradePick : MonoBehaviour
     [SerializeField] GameObject[] SmallOreSprite;                                   // Array of SmallOre prefabs to instatiate
 
     [SerializeField] private GameSession gameSessionScriptPrefab;                   // GameSession prefab required for it's attributes
-    [SerializeField] private PickaxePrices [] pickaxePricesScriptPrefab;            // Pickaxe prefabs required to get their attributes
+    [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;             // Pickaxe prefabs required to get their attributes
+    [SerializeField] private PickaxeStats[] pickaxeStatsScriptPrefab;              // Pickaxe prefabs required to get their attributes
 
     [SerializeField] Button UpgradeButton;
 
@@ -34,10 +40,19 @@ public class UpgradePick : MonoBehaviour
     private void Start()
     {
         // Spawning First Pickaxe
-        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(4, 22), Quaternion.identity) as GameObject;
 
         // Loading PickUpgradeCounter from a file
         PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
+
+        // Initialises upgrade gold cost
+        PickUpgradeGoldCostText.text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired().ToString();
+
+        // Initialises Pickaxe name
+        ToolNameText.text = ToolName[gameSessionScriptPrefab.GetPickLevel()];
+
+        // Initialises Hardness text
+        HardnessText.text = pickaxeStatsScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetPickaxeDamage().ToString();
 
         // Removes text for +0 upgrade
         RemovePickUpgradeCounterText();
@@ -58,6 +73,13 @@ public class UpgradePick : MonoBehaviour
         RemovePickUpgradeCounterText();
         MaterialCost();
         UpgradePickaxeSprite();
+        UpdatePickaxeTexts();
+    }
+
+    public void UpdatePickaxeTexts()
+    {
+        ToolNameText.text = ToolName[gameSessionScriptPrefab.GetPickLevel()];
+        HardnessText.text = pickaxeStatsScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetPickaxeDamage().ToString();
     }
 
     public void DestroyAndInstantiatePickaxe()
@@ -69,7 +91,7 @@ public class UpgradePick : MonoBehaviour
 
         // PickaxeLevel is required for the game to know which pickaxe you currently have.
         gameSessionScriptPrefab.IncreasePickLevel();
-        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(9, 9), Quaternion.identity) as GameObject;
+        Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(4, 22), Quaternion.identity) as GameObject;
 
         gameSessionScriptPrefab.ResetPickUpgradeCounter();
         PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
