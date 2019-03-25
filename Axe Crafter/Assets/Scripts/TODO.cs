@@ -1,15 +1,13 @@
 ﻿// TODO NOW:
 
-// Add Current Pickaxe Hardness to Stats
-// Fix Upgrading Pickaxe
-// Insufficient Materials Text should appear on top of a button?
-
-// Make Upgrade Button Work Properly
-// Make crafting scenes graphics and fix placements
-
-// Display wood resources as a small log lying down
+// Add Gold Coin Under Upgrade Text on Upgrade Button
 
 // Health of Ore Trees and Monsters
+
+// - Basic Monster Health - 200
+// - Basic Ore Health - 100
+// - Basic Tool Hardness - 10
+
 // Damage of Pickaxes and Axes
 // Costs of Pickaxes and Axes
 
@@ -36,13 +34,22 @@
 // Should Item Sprites be 8x8 or 16x16?
 // Maybe it should be a combination of both?
 
+// After you finish everything and make sure PickCrafting is done properly copy the same for axe crafting.
+
 // TODO MUCH LATER:
+
+// X. Add Tool Hardness
+// - If Hardness isn't high enough, it takes (Hardness Required - Tool Hardness)^1.5 times longer to mine a resource
+
+// X. Make 2 Buttons on Upgrade button and see if you can change the sprite on each.
 
 // X. Remove unsued graphics
 
 // X. What happens after maxing a game isn't much of a concern at the moment.
 
 // X. Solve Button Selection Colors text not being affected by button color
+
+// X. Should Hardness Make it possible to mine harder ores?
 
 // X. Make Pickaxe crafting like in minecraft, gather materials, etc etc, and then you wait time to have it crafted in a forge and pay a blacksmith to do it.
 
