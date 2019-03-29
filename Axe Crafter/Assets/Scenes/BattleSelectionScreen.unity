@@ -1729,7 +1729,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 564209000}
   m_OnClick:
     m_PersistentCalls:
@@ -6132,37 +6132,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleLevelsButton:
   - {fileID: 564208999}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1499797679}
+  - {fileID: 1683508128}
+  - {fileID: 629179614}
+  - {fileID: 878630807}
+  - {fileID: 1289496840}
+  - {fileID: 272238453}
+  - {fileID: 1094705869}
+  - {fileID: 1578861516}
+  - {fileID: 1124559101}
   BattleLevelsResourceButton:
   - {fileID: 550312015}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1198328602}
+  - {fileID: 578195025}
+  - {fileID: 1156144735}
+  - {fileID: 2020120167}
+  - {fileID: 1320990109}
+  - {fileID: 749882813}
+  - {fileID: 2128377135}
+  - {fileID: 391282559}
+  - {fileID: 93084797}
   BattleResourceText:
   - {fileID: 1815060087}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1375730586}
+  - {fileID: 753090098}
+  - {fileID: 2022587553}
+  - {fileID: 1398012403}
+  - {fileID: 1893595560}
+  - {fileID: 827997098}
+  - {fileID: 2062638227}
+  - {fileID: 1893368467}
+  - {fileID: 1724560521}
   gameSessionScriptPrefab: {fileID: 1988490604}
   LevelUnlockGold: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
 --- !u!114 &1988490604 stripped

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9930789794096f74995ac2ea6f2f9669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AxeDamage: 10
+  AxeDamage: 114
 --- !u!114 &114460568940968082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f91b7288744a744393cbf47c5ba769d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OreRequired: 
-  WoodRequired: 
+  OreRequired: 00000000000000000000000000000000000000000000000028000000000000000000000000000000
+  WoodRequired: 00000000000000000000000000000000000000000000000028000000000000000000000000000000
   GoldRequired: 10
 --- !u!212 &212790134516238574
 SpriteRenderer:

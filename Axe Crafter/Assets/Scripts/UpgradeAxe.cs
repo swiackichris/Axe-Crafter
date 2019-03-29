@@ -191,7 +191,7 @@ public class UpgradeAxe : MonoBehaviour
     private void RemoveAxeUpgradeCounterText()
     {
         // If Upgrade Counter = 0, Don't show +0 Upgrade Counter Text
-        if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 0) { AxeUpgradeLevelText.text = null; }
+        if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 0) { AxeUpgradeLevelText.text = "0"; }
     }
 
     private void IncreaseUpgradeCounter()

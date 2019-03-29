@@ -8,8 +8,8 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] Image healthBar;                                       // Health bar to appear above the monster in battle scene
     // static public float CurrentHealth;                                   // Doesn't work with Int
     [SerializeField] public float CurrentHealth;
-
-    [SerializeField] AxeStats axeStatsScriptPrefab;
+    [SerializeField] int CurrentAxe;
+    [SerializeField] AxeStats[] axeStatsScriptPrefab;
     [SerializeField] MobStats mobStatsScriptPrefab;
 
     [SerializeField] private GameSession gameSessionScriptPrefab;
@@ -24,6 +24,7 @@ public class HealthBar : MonoBehaviour {
         // CurrentHealth initialisation
         CurrentHealth = mobStatsScriptPrefab.GetMaxHealth();
         MobInstatiate();
+        CurrentAxe = gameSessionScriptPrefab.GetAxeLevel();
     }
 
     public void UpdateHealth()
@@ -57,7 +58,7 @@ public class HealthBar : MonoBehaviour {
         if(CanAttack)
         {
             // Updates health
-            CurrentHealth -= axeStatsScriptPrefab.GetAxeDamage();
+            CurrentHealth -= axeStatsScriptPrefab[CurrentAxe].GetAxeDamage();
 
             // Updates health amount on healthbar sprite
             healthBar.fillAmount = CurrentHealth / mobStatsScriptPrefab.GetMaxHealth();

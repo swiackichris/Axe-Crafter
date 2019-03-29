@@ -206,7 +206,7 @@ public class UpgradePick : MonoBehaviour
     private void RemovePickUpgradeCounterText()
     {
         // If Upgrade Counter = 0, Don't show +0 Upgrade Counter Text
-        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = null; }
+        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 0) { PickUpgradeLevelText.text = "0"; }
     }
 
     private void IncreaseUpgradeCounter()

@@ -1,27 +1,20 @@
 ﻿// TODO NOW:
 
-// Add Gold Coin Under Upgrade Text on Upgrade Button
+// Check tesla and spaceX programming jobs, what languages etc.
 
-// Health of Ore Trees and Monsters
+// Make hand picture on your own green screen
+// Hand rotation when pressed needs to be fixed. (rotate prefab for that.)
 
-// - Basic Monster Health - 200
-// - Basic Ore Health - 100
-// - Basic Tool Hardness - 10
-
-// Damage of Pickaxes and Axes
-// Costs of Pickaxes and Axes
-
-// You dig first dirt to find a sharp stone
-// You use first sharp stone to cut first tree and make wooden shovel
-// You use wooden shovel to dig deep dirt bones
-// Use bones + first wood to make a bone axe
-
-// - Add spawn points like in your spaceship project so that monsters/trees can randomly respawn on them
+// Axe needs to appear on battle scene
+// - Use ore script from Pickaxe for that.
 
 // Graphics that need to be done:
 // - Buttons
-// - Healthbar
+// - Fix GameSession for all scenes.
 // - Shop Scene, Menu etc
+
+// - Resource Required to buy new levels Button Graphics
+// - Add amount of resources required to buy new levels. - 
 
 // Sound needed
 // - Pickaxe Sound
@@ -34,9 +27,18 @@
 // Should Item Sprites be 8x8 or 16x16?
 // Maybe it should be a combination of both?
 
-// After you finish everything and make sure PickCrafting is done properly copy the same for axe crafting.
+// After you finish everything and make sure PickCrafting is done properly copy the same for axe crafting.\
+
+// Remove unneccessary unused things from each scene, organize and name everything properly
 
 // TODO MUCH LATER:
+
+// You dig first dirt to find a sharp stone
+// You use first sharp stone to cut first tree and make wooden shovel
+
+// X. Add spawn points like in your spaceship project so that monsters/trees can randomly respawn on them
+
+// X. Add a way to choose a weapon
 
 // X. Add Tool Hardness
 // - If Hardness isn't high enough, it takes (Hardness Required - Tool Hardness)^1.5 times longer to mine a resource
