@@ -295,7 +295,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 4.78}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &115582387
@@ -370,7 +370,7 @@ SpriteRenderer:
   m_Size: {x: 11.82, y: 6.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &149856135
@@ -445,7 +445,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 5.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &194251733
@@ -909,7 +909,7 @@ SpriteRenderer:
   m_Size: {x: 5.72, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &322666112
@@ -1662,7 +1662,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 0.9625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &738711418
@@ -1737,7 +1737,7 @@ SpriteRenderer:
   m_Size: {x: 0.7, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &766654274
@@ -1947,7 +1947,19 @@ MonoBehaviour:
   - {fileID: 114783290321161460, guid: e221fd34d90942448a1a394c85d898b3, type: 2}
   PickLevel: 0
   PickUpgradeCounter: 0
+  WoodChoppedText: []
+  ChoppedWoodCounter: 
+  axePricesScriptPrefab: []
+  AxeLevel: 0
+  AxeUpgradeCounter: 0
   Gold: 0
+  GoldText: {fileID: 0}
+  mineLevelManagerScriptPrefab: {fileID: 0}
+  forestLevelManagerScriptPrefab: {fileID: 0}
+  battleLevelManagerScriptPrefab: {fileID: 0}
+  CurrentMineLevel: 0
+  CurrentForestLevel: 0
+  CurrentBattleLevel: 0
 --- !u!4 &767005751
 Transform:
   m_ObjectHideFlags: 0
@@ -2021,7 +2033,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 2.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &858688564
@@ -2355,7 +2367,7 @@ SpriteRenderer:
   m_Size: {x: 6.66, y: 5.33}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1101738894
@@ -2821,7 +2833,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1340526008
@@ -2909,7 +2921,7 @@ SpriteRenderer:
   m_Size: {x: 2.56, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1397833070
@@ -4020,8 +4032,11 @@ MonoBehaviour:
   - {fileID: 2064564557}
   - {fileID: 766654277}
   - {fileID: 515411561}
+  PickUpgradeGoldCostText: {fileID: 0}
+  HardnessText: {fileID: 0}
+  ToolNameText: {fileID: 0}
+  ToolName: []
   InsufficientMaterialsText: {fileID: 1751725368}
-  UpgradePickaxeButton: {fileID: 49688376}
   PickaxeSprite:
   - {fileID: 1477298614649322, guid: 623aee54823348a4baef996558e62c21, type: 2}
   - {fileID: 1477298614649322, guid: d8ccca71df7a01640a468400bbf38f98, type: 2}
@@ -4033,17 +4048,6 @@ MonoBehaviour:
   - {fileID: 1075301709274330, guid: b504e5b23e688b34bbff9d79a0427659, type: 2}
   - {fileID: 1161099585877320, guid: 8e15301b2fabe7a4aad2c94144690fdd, type: 2}
   - {fileID: 1112096234949454, guid: e221fd34d90942448a1a394c85d898b3, type: 2}
-  SmallOreSprite:
-  - {fileID: 1224944876965876, guid: 54f722bf03b57dd41aec3c19c040667a, type: 2}
-  - {fileID: 1436041375111962, guid: fde19665b3cf15f4483bdd99f4333413, type: 2}
-  - {fileID: 1413469944970998, guid: bc88369079da5234cb41768824af6d8e, type: 2}
-  - {fileID: 1113505204079578, guid: 9b87a095f98bc7e469d108f0c114235d, type: 2}
-  - {fileID: 1770743146005242, guid: ad1ccea03761b76468ad76ee8572f785, type: 2}
-  - {fileID: 1012563093018878, guid: 3497e751d164f084b8ec6080e949ba9a, type: 2}
-  - {fileID: 1689052497177572, guid: dcccfa5eed2a1cb4cb83019b4a392661, type: 2}
-  - {fileID: 1172031215200624, guid: c712c21ccbe01334c9781e60e632101d, type: 2}
-  - {fileID: 1051948606736246, guid: f0dc2d00edb4ad840a658c1dac4b2957, type: 2}
-  - {fileID: 1606025563144786, guid: e7eb20721039d56409bef7de99c8ab46, type: 2}
   gameSessionScriptPrefab: {fileID: 767005750}
   pickaxePricesScriptPrefab:
   - {fileID: 114513527522593558, guid: 623aee54823348a4baef996558e62c21, type: 2}
@@ -4056,7 +4060,12 @@ MonoBehaviour:
   - {fileID: 114605001981204886, guid: b504e5b23e688b34bbff9d79a0427659, type: 2}
   - {fileID: 114862487027825776, guid: 8e15301b2fabe7a4aad2c94144690fdd, type: 2}
   - {fileID: 114783290321161460, guid: e221fd34d90942448a1a394c85d898b3, type: 2}
+  pickaxeStatsScriptPrefab: []
   UpgradeButton: {fileID: 49688378}
+  OrePriceImage: {fileID: 0}
+  OreSprites: []
+  WoodPriceImage: {fileID: 0}
+  WoodSprites: []
 --- !u!4 &1861526243
 Transform:
   m_ObjectHideFlags: 0

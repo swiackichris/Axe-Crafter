@@ -12,14 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 0ea690a9e6c9c2441b5ccca4fd6ff14a
   - enabled: 1
-    path: Assets/Scenes/BattleSelectionScreen.unity
+    path: Assets/Scenes/ColorsScreen.unity
     guid: 55030bf9a0e030441b971829a62ac4a4
   - enabled: 1
     path: Assets/Scenes/MineSelectionScreen.unity
     guid: dc9c2eb695e5e0b48979700129acf6ab
-  - enabled: 1
-    path: Assets/Scenes/WoodSelectionScreen.unity
-    guid: 89d54c4500a5d164fb8e9822647b0ea8
   - enabled: 1
     path: Assets/Scenes/Crafting/Crafting Selection.unity
     guid: a261863dc6110c74ab0d933bea77b6d0
@@ -27,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Crafting/Pick Crafting Screen.unity
     guid: 8664dcb7955c43f4791f618cd0db5fcb
   - enabled: 1
-    path: Assets/Scenes/Crafting/Axe Crafting Screen.unity
+    path: Assets/Scenes/Crafting/Old Axe Crafting.unity
     guid: 409218f5be5f5084f97684a161b7ecf7
   - enabled: 1
     path: Assets/Scenes/Battle Levels/Battle0.unity
@@ -119,34 +116,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wood Levels/Wood9.unity
     guid: c771a279858a64b419e821f04166c9f9
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Crafting/Axe Crafting Screen.unity
+    guid: dca4c502c7a2c3e4b8177d7eb638043f
   m_configObjects: {}

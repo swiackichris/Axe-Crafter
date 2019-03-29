@@ -572,16 +572,17 @@ MonoBehaviour:
   - {fileID: 114782288210454104}
   MinedOreCounter: 05000000030000000200000005000000050000000500000005000000050000000500000005000000
   pickaxePricesScriptPrefab:
-  - {fileID: 114513527522593558, guid: 623aee54823348a4baef996558e62c21, type: 2}
-  - {fileID: 114513527522593558, guid: d8ccca71df7a01640a468400bbf38f98, type: 2}
-  - {fileID: 114338742600893016, guid: d35fa428cef335346949409b011270d0, type: 2}
-  - {fileID: 114298857500948766, guid: b0806a16b98e10849a0574899fa3fe1b, type: 2}
-  - {fileID: 114330783908788724, guid: f9aba3dd2721e5f4baaff9bd5b59d30e, type: 2}
-  - {fileID: 114798700549155716, guid: 1b5ca9aee8a00e84a965ba54e23f2867, type: 2}
-  - {fileID: 114035780978748678, guid: 580066116a7b4bb45a7367bc9e847ae7, type: 2}
-  - {fileID: 114605001981204886, guid: b504e5b23e688b34bbff9d79a0427659, type: 2}
-  - {fileID: 114862487027825776, guid: 8e15301b2fabe7a4aad2c94144690fdd, type: 2}
-  - {fileID: 114783290321161460, guid: e221fd34d90942448a1a394c85d898b3, type: 2}
+  - {fileID: 114704085067750246, guid: 3845c0590ea35c14584b7348d364955d, type: 2}
+  - {fileID: 114830390378093156, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
+  - {fileID: 114716582587012460, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
+  - {fileID: 114762057516129108, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
+  - {fileID: 114674093677806356, guid: c09217a46988e90489fd078f4c170c2c, type: 2}
+  - {fileID: 114645818684453906, guid: 59a5e359d733ce3419838fc8bc561f40, type: 2}
+  - {fileID: 114948862396208406, guid: af567f4c63b5e9c4a9edfd94cdb56b0e, type: 2}
+  - {fileID: 114514217864258742, guid: bd0e684ec7e6db84895a2fde3bac61ea, type: 2}
+  - {fileID: 114756646015694566, guid: 2a63bcbc1fff3864c911c8fdd04e9ff2, type: 2}
+  - {fileID: 114410762073025944, guid: ebc161018215c8844b18c45501847ea9, type: 2}
+  - {fileID: 114634650173249480, guid: 9506d9bc96085cf4eabfca087240fd65, type: 2}
   PickLevel: 0
   PickUpgradeCounter: 0
   WoodChoppedText:
@@ -597,22 +598,24 @@ MonoBehaviour:
   - {fileID: 114118349979470452}
   ChoppedWoodCounter: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   axePricesScriptPrefab:
-  - {fileID: 114214164309530942, guid: 55bb7f7857dd3e549a87cc44a66950f4, type: 2}
-  - {fileID: 114335642786404796, guid: 86e4383f5fe7b034c963eb2f6aeae167, type: 2}
-  - {fileID: 114551906389790790, guid: 0b2dc06b4a48d9645921b557c8b20fe9, type: 2}
-  - {fileID: 114805167077364876, guid: 5d05273734e4e1e47a7fe18233551e48, type: 2}
-  - {fileID: 114506255386460850, guid: 04840683c0d5caf4aac98ebe64693b5a, type: 2}
-  - {fileID: 114666316634407894, guid: 9fa1f39c25971d54db7a9dfc756bbdc0, type: 2}
-  - {fileID: 114896604875073136, guid: 43920f182298d5d46a9c65b525397761, type: 2}
-  - {fileID: 114921586130467628, guid: f3ad7493a4bac4045971342e60e0a503, type: 2}
-  - {fileID: 114855189283650478, guid: 1a191ef7a2b4ca94bbd65b7d851d1954, type: 2}
-  - {fileID: 114539311340273666, guid: 7e090c1d89bfa4840840bd6fa5c9bbf3, type: 2}
+  - {fileID: 114994385526073678, guid: c2eccd38c0cc7a04ebf4c419f4124418, type: 2}
+  - {fileID: 114860669217715476, guid: ea8323657b7c4a34da4a6b7c848b8767, type: 2}
+  - {fileID: 114037928906686822, guid: 6636591d8fac09b48b696d3df0e1c442, type: 2}
+  - {fileID: 114410673926957294, guid: 2c80880f881f54349b670603653675ab, type: 2}
+  - {fileID: 114289327117047574, guid: 8a0ac24594a828d45a44b1e866c70f0d, type: 2}
+  - {fileID: 114860849118083816, guid: 643d7bf017737754c8ce27ec79a56c1b, type: 2}
+  - {fileID: 114460568940968082, guid: 4b6c47cc72717f6409107087f635c96e, type: 2}
+  - {fileID: 114754534985180402, guid: 577e07806edcc0f45b9a9816a16a5b92, type: 2}
+  - {fileID: 114121744006559284, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 2}
+  - {fileID: 114821338936232476, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 2}
   AxeLevel: 0
   AxeUpgradeCounter: 0
   Gold: 0
   GoldText: {fileID: 114674112203791860}
   mineLevelManagerScriptPrefab: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
     type: 2}
+  forestLevelManagerScriptPrefab: {fileID: 0}
+  battleLevelManagerScriptPrefab: {fileID: 0}
   CurrentMineLevel: 2
   CurrentForestLevel: 0
   CurrentBattleLevel: 0

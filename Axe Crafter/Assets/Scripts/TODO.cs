@@ -1,18 +1,5 @@
 ﻿// TODO NOW:
 
-// Check tesla and spaceX programming jobs, what languages etc.
-
-// Make hand picture on your own green screen
-// Hand rotation when pressed needs to be fixed. (rotate prefab for that.)
-
-// Axe needs to appear on battle scene
-// - Use ore script from Pickaxe for that.
-
-// Graphics that need to be done:
-// - Buttons
-// - Fix GameSession for all scenes.
-// - Shop Scene, Menu etc
-
 // - Resource Required to buy new levels Button Graphics
 // - Add amount of resources required to buy new levels. - 
 
@@ -24,14 +11,16 @@
 // - Battle Scene Sound
 // - Sounds for each different monster? Just make a Axe Hit flesh sound instead
 
-// Should Item Sprites be 8x8 or 16x16?
-// Maybe it should be a combination of both?
-
-// After you finish everything and make sure PickCrafting is done properly copy the same for axe crafting.\
-
 // Remove unneccessary unused things from each scene, organize and name everything properly
 
+// Figure out how to make changing things easier across all the scenes at once
+// - you could make a prefab for each resourcemanager from each scene.
+
+// Copy pick crafting to make axe crafting
+
 // TODO MUCH LATER:
+
+// - Shop Scene, Menu etc could be improved using button template (just add wooden frame)
 
 // You dig first dirt to find a sharp stone
 // You use first sharp stone to cut first tree and make wooden shovel

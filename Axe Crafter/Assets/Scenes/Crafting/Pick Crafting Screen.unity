@@ -141,7 +141,7 @@ Transform:
   - {fileID: 1975118811}
   - {fileID: 523688774}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49688376
 GameObject:
@@ -3357,7 +3357,7 @@ MonoBehaviour:
   - {fileID: 1204630148}
   MinedOreCounter: 05000000050000000500000005000000050000000500000005000000050000000500000005000000
   pickaxePricesScriptPrefab:
-  - {fileID: 114335903639536254, guid: 414fd75fb5c59e34c82c3b784c51752c, type: 2}
+  - {fileID: 114704085067750246, guid: 3845c0590ea35c14584b7348d364955d, type: 2}
   - {fileID: 114830390378093156, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
   - {fileID: 114716582587012460, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
   - {fileID: 114762057516129108, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
@@ -3383,16 +3383,16 @@ MonoBehaviour:
   - {fileID: 208776819}
   ChoppedWoodCounter: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   axePricesScriptPrefab:
-  - {fileID: 114214164309530942, guid: 55bb7f7857dd3e549a87cc44a66950f4, type: 2}
-  - {fileID: 114335642786404796, guid: 86e4383f5fe7b034c963eb2f6aeae167, type: 2}
-  - {fileID: 114551906389790790, guid: 0b2dc06b4a48d9645921b557c8b20fe9, type: 2}
-  - {fileID: 114805167077364876, guid: 5d05273734e4e1e47a7fe18233551e48, type: 2}
-  - {fileID: 114506255386460850, guid: 04840683c0d5caf4aac98ebe64693b5a, type: 2}
-  - {fileID: 114666316634407894, guid: 9fa1f39c25971d54db7a9dfc756bbdc0, type: 2}
-  - {fileID: 114896604875073136, guid: 43920f182298d5d46a9c65b525397761, type: 2}
-  - {fileID: 114921586130467628, guid: f3ad7493a4bac4045971342e60e0a503, type: 2}
-  - {fileID: 114855189283650478, guid: 1a191ef7a2b4ca94bbd65b7d851d1954, type: 2}
-  - {fileID: 114539311340273666, guid: 7e090c1d89bfa4840840bd6fa5c9bbf3, type: 2}
+  - {fileID: 114994385526073678, guid: c2eccd38c0cc7a04ebf4c419f4124418, type: 2}
+  - {fileID: 114860669217715476, guid: ea8323657b7c4a34da4a6b7c848b8767, type: 2}
+  - {fileID: 114037928906686822, guid: 6636591d8fac09b48b696d3df0e1c442, type: 2}
+  - {fileID: 114410673926957294, guid: 2c80880f881f54349b670603653675ab, type: 2}
+  - {fileID: 114289327117047574, guid: 8a0ac24594a828d45a44b1e866c70f0d, type: 2}
+  - {fileID: 114860849118083816, guid: 643d7bf017737754c8ce27ec79a56c1b, type: 2}
+  - {fileID: 114460568940968082, guid: 4b6c47cc72717f6409107087f635c96e, type: 2}
+  - {fileID: 114754534985180402, guid: 577e07806edcc0f45b9a9816a16a5b92, type: 2}
+  - {fileID: 114121744006559284, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 2}
+  - {fileID: 114821338936232476, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 2}
   AxeLevel: 0
   AxeUpgradeCounter: 0
   Gold: 0
@@ -3415,7 +3415,7 @@ Transform:
   m_Children:
   - {fileID: 1716103779}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818148517
 GameObject:
@@ -4587,6 +4587,190 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4833343824738384, guid: e1772cf9144e3104badbcf00338bf5e4,
     type: 2}
   m_PrefabInternal: {fileID: 583832444}
+--- !u!1001 &1227099957
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 176.29039
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 406.65448
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradeLevelText
+      value: 
+      objectReference: {fileID: 651759104}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradePriceText.Array.data[0]
+      value: 
+      objectReference: {fileID: 229974982}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradePriceText.Array.data[1]
+      value: 
+      objectReference: {fileID: 2064564557}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradePriceText.Array.data[2]
+      value: 
+      objectReference: {fileID: 766654277}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradePriceText.Array.data[3]
+      value: 
+      objectReference: {fileID: 515411561}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickUpgradeGoldCostText
+      value: 
+      objectReference: {fileID: 1515562022}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: HardnessText
+      value: 
+      objectReference: {fileID: 424556537}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: ToolNameText
+      value: 
+      objectReference: {fileID: 1311962632}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: InsufficientMaterialsText
+      value: 
+      objectReference: {fileID: 1751725368}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: gameSessionScriptPrefab
+      value: 
+      objectReference: {fileID: 767005750}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: UpgradeButton
+      value: 
+      objectReference: {fileID: 49688378}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: OrePriceImage
+      value: 
+      objectReference: {fileID: 1768881464}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: WoodPriceImage
+      value: 
+      objectReference: {fileID: 818148519}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 1249467160944988, guid: aceb0dfd267314648b09c1abc21e2cd1,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 1299056131729664, guid: 61cac79e8a7c15445b2377941ce4df24,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[2]
+      value: 
+      objectReference: {fileID: 1768844486710138, guid: b22b4bac3c35ac440a7031d0ab3726fd,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[3]
+      value: 
+      objectReference: {fileID: 1296515781657424, guid: 5812781e4a50b764ebc8c26ac3c3986f,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[4]
+      value: 
+      objectReference: {fileID: 1013383273982760, guid: 09b30acdef5e4274eb8021888f6b4004,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[5]
+      value: 
+      objectReference: {fileID: 1094451517570810, guid: 2ac04fc75aa3b714f83904f78747943f,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[6]
+      value: 
+      objectReference: {fileID: 1300973556202678, guid: 1f85a7cf251b16544a8af462bc8c869d,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[7]
+      value: 
+      objectReference: {fileID: 1562337706498704, guid: 98f85766ca38df14d9bd899e104a02d0,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[8]
+      value: 
+      objectReference: {fileID: 1233154385609486, guid: e31af2245ee28a645869057d73591ac2,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[9]
+      value: 
+      objectReference: {fileID: 1710151803428086, guid: 8cd092eee6e9f494bb7751153be5b2ea,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: PickaxeSprite.Array.data[10]
+      value: 
+      objectReference: {fileID: 1115795091153972, guid: 851cbc28fe262ad4da05127e195edbf3,
+        type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: pickaxePricesScriptPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 114704085067750246, guid: 8627491873b0cae459f3db932d4a429e,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1233172234
 Prefab:
   m_ObjectHideFlags: 0
@@ -4655,16 +4839,15 @@ RectTransform:
   m_GameObject: {fileID: 1254373570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2118721908}
+  m_LocalScale: {x: 0.98000515, y: 0.98000515, z: 0.98000515}
+  m_Children: []
   m_Father: {fileID: 258607681}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 68.75, y: -216}
-  m_SizeDelta: {x: 60, y: 30}
+  m_AnchoredPosition: {x: 81.7, y: -215.69995}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254373572
 MonoBehaviour:
@@ -4737,8 +4920,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 989bf0a0fe3adca45846e836dedf88cb, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5098,7 +5281,7 @@ Transform:
   m_LocalScale: {x: 2.4718, y: 2.4718, z: 2.4718}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1489595891 stripped
 Transform:
@@ -5806,7 +5989,7 @@ Transform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1619746355
 GameObject:
@@ -6977,8 +7160,9 @@ MonoBehaviour:
 --- !u!1 &1861526241
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1379730462920004, guid: ed7da9a0951f6be4989f06566d45fe76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1227099957}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1861526243}
@@ -6993,8 +7177,9 @@ GameObject:
 --- !u!114 &1861526242
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1227099957}
   m_GameObject: {fileID: 1861526241}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7023,20 +7208,20 @@ MonoBehaviour:
   - Golden Pickaxe
   InsufficientMaterialsText: {fileID: 1751725368}
   PickaxeSprite:
-  - {fileID: 1249467160944988, guid: aceb0dfd267314648b09c1abc21e2cd1, type: 2}
-  - {fileID: 1299056131729664, guid: 61cac79e8a7c15445b2377941ce4df24, type: 2}
-  - {fileID: 1768844486710138, guid: b22b4bac3c35ac440a7031d0ab3726fd, type: 2}
-  - {fileID: 1296515781657424, guid: 5812781e4a50b764ebc8c26ac3c3986f, type: 2}
-  - {fileID: 1013383273982760, guid: 09b30acdef5e4274eb8021888f6b4004, type: 2}
-  - {fileID: 1094451517570810, guid: 2ac04fc75aa3b714f83904f78747943f, type: 2}
-  - {fileID: 1300973556202678, guid: 1f85a7cf251b16544a8af462bc8c869d, type: 2}
-  - {fileID: 1562337706498704, guid: 98f85766ca38df14d9bd899e104a02d0, type: 2}
-  - {fileID: 1233154385609486, guid: e31af2245ee28a645869057d73591ac2, type: 2}
-  - {fileID: 1710151803428086, guid: 8cd092eee6e9f494bb7751153be5b2ea, type: 2}
-  - {fileID: 1115795091153972, guid: 851cbc28fe262ad4da05127e195edbf3, type: 2}
+  - {fileID: 1035220567191852, guid: 8627491873b0cae459f3db932d4a429e, type: 2}
+  - {fileID: 1202548870658168, guid: 4e86d4105dfedac4787a24d3bd260b45, type: 2}
+  - {fileID: 1564577729681400, guid: 0c09440209e99fe4bb1ed189e71af6b2, type: 2}
+  - {fileID: 1119827596704564, guid: 046f200e984f272429987911472f5945, type: 2}
+  - {fileID: 1743823719771056, guid: 5c8ed38e68bc0f04999f216e56939ca7, type: 2}
+  - {fileID: 1688527668020474, guid: 26255d0fa470f904bbdb804780280066, type: 2}
+  - {fileID: 1728809752122808, guid: 1d8271514ca8ccf4986a03281cf8b5d7, type: 2}
+  - {fileID: 1828216688045398, guid: 21c2b37908d1e6742847809ae0717f47, type: 2}
+  - {fileID: 1668849104848004, guid: 66463702ab8f6d94b88add19c8af7607, type: 2}
+  - {fileID: 1064660372760696, guid: d9778746fed0e064f8f8d2621cf47bb8, type: 2}
+  - {fileID: 1229498634401472, guid: 132ff1cd6d4b74b4f9e334aa25f6550a, type: 2}
   gameSessionScriptPrefab: {fileID: 767005750}
   pickaxePricesScriptPrefab:
-  - {fileID: 114335903639536254, guid: 414fd75fb5c59e34c82c3b784c51752c, type: 2}
+  - {fileID: 114704085067750246, guid: 8627491873b0cae459f3db932d4a429e, type: 2}
   - {fileID: 114830390378093156, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
   - {fileID: 114716582587012460, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
   - {fileID: 114762057516129108, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
@@ -7048,7 +7233,7 @@ MonoBehaviour:
   - {fileID: 114410762073025944, guid: ebc161018215c8844b18c45501847ea9, type: 2}
   - {fileID: 114634650173249480, guid: 9506d9bc96085cf4eabfca087240fd65, type: 2}
   pickaxeStatsScriptPrefab:
-  - {fileID: 114928748476197548, guid: 414fd75fb5c59e34c82c3b784c51752c, type: 2}
+  - {fileID: 114291527572241616, guid: 3845c0590ea35c14584b7348d364955d, type: 2}
   - {fileID: 114949854120611554, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
   - {fileID: 114033701737275388, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
   - {fileID: 114486118313004212, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
@@ -7087,8 +7272,9 @@ MonoBehaviour:
 --- !u!4 &1861526243
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1227099957}
   m_GameObject: {fileID: 1861526241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 176.29039, y: 406.65448, z: 3.25}
@@ -7886,78 +8072,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4513375026910754, guid: 2c970cbbb5d029d4488d6d57e08dd687,
     type: 2}
   m_PrefabInternal: {fileID: 271517782}
---- !u!1 &2118721907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2118721908}
-  - component: {fileID: 2118721910}
-  - component: {fileID: 2118721909}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2118721908
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2118721907}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1254373571}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2118721909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2118721907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Axe
---- !u!222 &2118721910
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2118721907}
-  m_CullTransparentMesh: 0

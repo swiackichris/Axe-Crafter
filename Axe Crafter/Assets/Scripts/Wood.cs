@@ -53,7 +53,7 @@ public class Wood : MonoBehaviour {
     {
         wood = Instantiate(
         WoodPrefab,
-        new Vector2(9, 9), // Change later the position of new wood spawned to be posibly random
+        new Vector2(9, 13), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("wood = Instantiate");
     }
