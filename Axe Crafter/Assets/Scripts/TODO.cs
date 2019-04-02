@@ -1,24 +1,28 @@
 ﻿// TODO NOW:
 
-// - Resource Required to buy new levels Button Graphics
-// - Add amount of resources required to buy new levels. - 
+// Instantiate Axe in Battle Scene.
+// Add Crafting Sound in crafting - every time u press upgrade you hear crafting sound.
+// If you instantiate a monster/pickaxe/axe you could propably use transform.position of a prefab maybe?
 
-// Sound needed
-// - Pickaxe Sound
-// - Axe Sound
-// - Mine Scene Sound
-// - Forest Scene Sound
-// - Battle Scene Sound
+// Play Pickaxe/Axe/Battle sound every click is fine, but maybe you can click ore etc too often.
+
+// - Mine Scene Music
+// - Forest Scene Music
+// - Battle Scene Music
 // - Sounds for each different monster? Just make a Axe Hit flesh sound instead
+
+// Optimze a code: gamesessionscriptprefab.getpicklevel = CurrentPickLevel(). change long texts into functions.
 
 // Remove unneccessary unused things from each scene, organize and name everything properly
 
-// Figure out how to make changing things easier across all the scenes at once
-// - you could make a prefab for each resourcemanager from each scene.
+// Organize Place of Resources in Axe Crafting and Pickaxe Crafting.
+// Rename Long names to shorter ones.
 
-// Copy pick crafting to make axe crafting
+// Add whole game to google play.
 
 // TODO MUCH LATER:
+
+// - When monster is killed add death sound?
 
 // - Shop Scene, Menu etc could be improved using button template (just add wooden frame)
 
@@ -99,7 +103,8 @@
 
 // X. -1 Make a fluid rotation of pickaxe while pressing the button ( for example rotate 45 degrees during 1 second)
 
-// ADD gold to game Screen??
+// Figure out how to make changing things easier across all the scenes at once
+// - you could make a prefab for each resourcemanager from each scene.
 
 // X. You could make a screen made of 1x1 blocks and randomize script where you can pick stones and randomly some ore could appear in the same 1x1 place
 // https://www.planetminecraft.com/texture_pack/sampk-photo-realism-x512-hd/

@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour {
 
-    [SerializeField] private WoodStats woodStatsScriptPrefab;               // Should be the same as WoodPrefab
-    [SerializeField] private GameSession gameSessionStatsScriptPrefab;
-    [SerializeField] private AxeStats[] axeStatsScriptPrefabs;              // Should be the same as AxePrefab TODO these could be deleted
-
-    private int CurrentHealth;                                              // How much health currently chopped wood has
-    private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
-
+    [SerializeField] private WoodStats woodStats;                           // Should be the same as WoodPrefab
     [SerializeField] GameObject WoodPrefab;                                 // Wood prefab to be instatiated and chopped
+    [SerializeField] private GameSession gameSession;
+    [SerializeField] private AxeStats[] axeStats;                           // Should be the same as AxePrefab TODO these could be deleted
     [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
     GameObject wood;                                                        // Required for Button to know which object should be destroyed.
     GameObject axe;
+
+    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 0.05f;
+
+    private int CurrentHealth;                                              // How much health currently chopped wood has
+    private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
     bool isRotated = false;                                                 // Required for proper Axe animation
 
     private void Start()
     {
-        CurrentHealth = woodStatsScriptPrefab.GetWoodHealth();
-        CurrentAxeDamage = axeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()].GetAxeDamage();
+        CurrentHealth = woodStats.GetWoodHealth();
+        CurrentAxeDamage = axeStats[CurrentAxeLevel()].GetAxeDamage();
         WoodInstantiate();
         AxeInstantiate();
     }
@@ -31,6 +32,10 @@ public class Wood : MonoBehaviour {
     // Each function is attached to axe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void ChopWood(int i)
     {
+        // Plays random pickaxe sound
+        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
         // Rotates axe
         RotateTool();
 
@@ -62,7 +67,7 @@ public class Wood : MonoBehaviour {
     public void AxeInstantiate()
     {
         axe = Instantiate(
-        AxePrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()],
+        AxePrefabs[CurrentAxeLevel()],
         new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("axe = Instantiate");
@@ -83,7 +88,7 @@ public class Wood : MonoBehaviour {
         print("Destroy(wood)");
 
         // Resets health for new wood
-        CurrentHealth = woodStatsScriptPrefab.GetWoodHealth();
+        CurrentHealth = woodStats.GetWoodHealth();
         print("CurrentHealth = FullHealth");
 
         // Wait time before new wood spawns, so that it can't be damaged while it hasn't spawned
@@ -92,7 +97,7 @@ public class Wood : MonoBehaviour {
         yield return new WaitForSeconds(1);
 
         // Initializes axe damage after it has been reduced to 0
-        CurrentAxeDamage = axeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetAxeLevel()].GetAxeDamage();
+        CurrentAxeDamage = axeStats[CurrentAxeLevel()].GetAxeDamage();
 
         // Spawns wood
         WoodInstantiate();
@@ -104,5 +109,10 @@ public class Wood : MonoBehaviour {
         yield return new WaitForSeconds(0.05f);
         axe.transform.Rotate(0, 0, -45);
         isRotated = false;
+    }
+
+    public int CurrentAxeLevel()
+    {
+        return gameSession.GetAxeLevel();
     }
 }

@@ -54,6 +54,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickaxeDamage: 23
+  PickaxeSound:
+  - {fileID: 8300000, guid: c71420a1db9e0794c8bb0ab6153e4a70, type: 3}
+  - {fileID: 8300000, guid: 597da5d7fe26d71479ef2d690ad55975, type: 3}
+  - {fileID: 8300000, guid: 714264a70cf31dd489e1c3261b9616b5, type: 3}
+  - {fileID: 8300000, guid: 9c43512c6f1f3eb47823df3c076a2ed5, type: 3}
+  - {fileID: 8300000, guid: f4d8c386d2e7eb54492b3dc08f67c303, type: 3}
+  - {fileID: 8300000, guid: bae5292506b5887479af50453625337f, type: 3}
 --- !u!114 &114716582587012460
 MonoBehaviour:
   m_ObjectHideFlags: 1

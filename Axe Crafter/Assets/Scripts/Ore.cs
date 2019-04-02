@@ -5,25 +5,26 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
-    [SerializeField] private OreStats oreStatsScriptPrefab;                 // Should be the same as OrePrefab
-    [SerializeField] private GameSession gameSessionStatsScriptPrefab;
-    [SerializeField] private PickaxeStats[] pickaxeStatsScriptPrefabs;      // Should be the same as PickaxePrefab TODO these could be deleted
-
-    private int CurrentHealth;                                              // How much health currently mined ore has
-    private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore
-
+    [SerializeField] private OreStats oreStats;                 // Should be the same as OrePrefab
     [SerializeField] GameObject OrePrefab;                                  // Ore prefab to be instatiated and mined
+    [SerializeField] private GameSession gameSession;
+    [SerializeField] private PickaxeStats[] pickStats;      // Should be the same as PickaxePrefab TODO these could be deleted
     [SerializeField] GameObject [] PickaxePrefabs;                          // Pickaxe prefab to be instatiated and mined with
     GameObject ore;                                                         // Required for Button to know which object should be destroyed.
     GameObject pickaxe;
 
-    bool isRotated = false;                                                 // Reuqired for proper pickaxe animation
+    [SerializeField] [Range(0, 1)] float PickSoundVolume = 0.05f;
+
+    private int CurrentHealth;                                              // How much health currently mined ore has
+    private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore
+
+    bool isRotated = false;                                                  // Reuqired for proper pickaxe animation
 
     private void Start()
     {
         // You could possibly remove CurrentHealth and CurrentPickaxeDamage
-        CurrentHealth = oreStatsScriptPrefab.GetOreHealth();
-        CurrentPickaxeDamage = pickaxeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetPickLevel()].GetPickaxeDamage();
+        CurrentHealth = oreStats.GetOreHealth();
+        CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
         OreInstatiate();
         PickaxeInstatiate();
     }
@@ -32,6 +33,11 @@ public class Ore : MonoBehaviour {
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void MineOre(int i)
     {
+        // Plays random pickaxe sound
+        AudioSource.PlayClipAtPoint(pickStats[CurrentPickLevel()].GetPickaxeSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, PickSoundVolume);
+        // pickStats[CurrentPickLevel()].GetPickSoundArrayLength() - Old Code used instead of 5 but it doesn' work so far.
+
         // Rotates pickaxe
         RotateTool();
 
@@ -63,7 +69,7 @@ public class Ore : MonoBehaviour {
     public void PickaxeInstatiate()
     {
         pickaxe = Instantiate(
-        PickaxePrefabs[gameSessionStatsScriptPrefab.GetPickLevel()],
+        PickaxePrefabs[CurrentPickLevel()],
         new Vector2(14, 7), // Change later the position of new ore spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("pickaxe = Instantiate");
@@ -84,7 +90,7 @@ public class Ore : MonoBehaviour {
         print("Destroy(ore)");
 
         // Resets health for new ore
-        CurrentHealth = oreStatsScriptPrefab.GetOreHealth();
+        CurrentHealth = oreStats.GetOreHealth();
         print("CurrentHealth = FullHealth");
 
         // Wait time before new ore spawns, so that it can't be damaged while it hasn't spawned
@@ -93,7 +99,7 @@ public class Ore : MonoBehaviour {
         yield return new WaitForSeconds(1);
 
         // Initializes pick damage after it has been reduced to 0
-        CurrentPickaxeDamage = pickaxeStatsScriptPrefabs[gameSessionStatsScriptPrefab.GetPickLevel()].GetPickaxeDamage();
+        CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
 
         // Spawns ore
         OreInstatiate();
@@ -105,5 +111,10 @@ public class Ore : MonoBehaviour {
         yield return new WaitForSeconds(0.05f);
         pickaxe.transform.Rotate(0, 0, -45);
         isRotated = false;
+    }
+
+    public int CurrentPickLevel()
+    {
+        return gameSession.GetPickLevel();
     }
 }

@@ -10,6 +10,7 @@ public class BattleLevelManager : MonoBehaviour
     [SerializeField] Button[] BattleLevelsButton;
     [SerializeField] Button[] BattleLevelsResourceButton;
     [SerializeField] TextMeshProUGUI[] BattleResourceText;
+    [SerializeField] TextMeshProUGUI CurrentGoldText;
 
     [SerializeField] GameSession gameSessionScriptPrefab;
 
@@ -19,6 +20,8 @@ public class BattleLevelManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        CurrentGoldText.text = gameSessionScriptPrefab.GetCurrentGold().ToString();
+
         // Displays resources required text for next level
         DisplayBattleResourceText();
 
@@ -62,7 +65,7 @@ public class BattleLevelManager : MonoBehaviour
     void DisplayBattleResourceText()
     {
         BattleResourceText[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].text
-            = (gameSessionScriptPrefab.GetCurrentGold().ToString() + "/" + LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].ToString());
+            = (LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].ToString());
     }
 
     // Displays button to pay resources for next level

@@ -9,26 +9,30 @@ public class HealthBar : MonoBehaviour {
     // static public float CurrentHealth;                                   // Doesn't work with Int
     [SerializeField] public float CurrentHealth;
     [SerializeField] int CurrentAxe;
-    [SerializeField] AxeStats[] axeStatsScriptPrefab;
-    [SerializeField] MobStats mobStatsScriptPrefab;
-
-    [SerializeField] private GameSession gameSessionScriptPrefab;
-
+    [SerializeField] AxeStats[] axeStats;
+    [SerializeField] MobStats mobStats;
     [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
+
+    [SerializeField] private GameSession gameSession;
+    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 0.05f;
 
     bool CanAttack = true;
 
     private void Start()
     {
         // CurrentHealth initialisation
-        CurrentHealth = mobStatsScriptPrefab.GetMaxHealth();
+        CurrentHealth = mobStats.GetMaxHealth();
         MobInstatiate();
-        CurrentAxe = gameSessionScriptPrefab.GetAxeLevel();
+        CurrentAxe = CurrentAxeLevel();
     }
 
     public void UpdateHealth()
     {
+        // Plays random mob sound
+        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
         Attack();
         if (CurrentHealth <= -10)
         {
@@ -39,16 +43,14 @@ public class HealthBar : MonoBehaviour {
 
     private void EarnGoldAndReset()
     {
-        print("EarnGoldAndReset() Started"); // TODO Delete this
-
         // Adds gold after killing a monster
-        gameSessionScriptPrefab.CountGold();
+        gameSession.CountGold();
 
         // Resets health after monster has died so a new monster is at full health
-        CurrentHealth = mobStatsScriptPrefab.GetMaxHealth();
+        CurrentHealth = mobStats.GetMaxHealth();
 
         // Updates health amount on healthbar sprite to full health
-        healthBar.fillAmount = CurrentHealth / mobStatsScriptPrefab.GetMaxHealth();
+        healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
 
         StartCoroutine(DestroyAndSpawn());
     }
@@ -58,10 +60,10 @@ public class HealthBar : MonoBehaviour {
         if(CanAttack)
         {
             // Updates health
-            CurrentHealth -= axeStatsScriptPrefab[CurrentAxe].GetAxeDamage();
+            CurrentHealth -= axeStats[CurrentAxe].GetAxeDamage();
 
             // Updates health amount on healthbar sprite
-            healthBar.fillAmount = CurrentHealth / mobStatsScriptPrefab.GetMaxHealth();
+            healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
         }
     }
 
@@ -93,5 +95,10 @@ public class HealthBar : MonoBehaviour {
 
         // Spawns ore
         MobInstatiate();
+    }
+
+    public int CurrentAxeLevel()
+    {
+        return gameSession.GetAxeLevel();
     }
 }

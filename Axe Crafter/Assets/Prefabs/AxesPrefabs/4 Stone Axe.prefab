@@ -54,6 +54,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AxeDamage: 34
+  AxeSound:
+  - {fileID: 8300000, guid: 4930476467ce6f04b824d5c746a476b2, type: 3}
+  - {fileID: 8300000, guid: 12dc5c4df8732d5478f9a55e9b965563, type: 3}
+  - {fileID: 8300000, guid: db620e7a49d811245abc8a387c8d1fb2, type: 3}
+  - {fileID: 8300000, guid: 6ab1d0a99ccfbe247bdaf56ee029c10d, type: 3}
+  - {fileID: 8300000, guid: 37f7b9f4f0439894288010b7032edb21, type: 3}
+  - {fileID: 8300000, guid: acf2f096f652c9e4d9fd615029bae039, type: 3}
+  MobSound:
+  - {fileID: 8300000, guid: a8801bddc74a32043905677a530c664f, type: 3}
+  - {fileID: 8300000, guid: 492d6512ba0e5bc488aeb673d73e86b6, type: 3}
+  - {fileID: 8300000, guid: c26ee510b77b0ca4a99d3257bf84d626, type: 3}
+  - {fileID: 8300000, guid: fe399de1e521dc146b4e0ded266a6236, type: 3}
+  - {fileID: 8300000, guid: 3985d0320db0fd742a5ce5ac19219b64, type: 3}
+  - {fileID: 8300000, guid: 8b572d7f72b44ad4b9288a1a1842ed42, type: 3}
 --- !u!114 &114410673926957294
 MonoBehaviour:
   m_ObjectHideFlags: 1
