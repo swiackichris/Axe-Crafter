@@ -19,6 +19,7 @@ public class Ore : MonoBehaviour {
     private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore
 
     bool isRotated = false;                                                  // Reuqired for proper pickaxe animation
+    bool canRotate = true;
 
     private void Start()
     {
@@ -33,25 +34,27 @@ public class Ore : MonoBehaviour {
     // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void MineOre(int i)
     {
-        // Plays random pickaxe sound
-        AudioSource.PlayClipAtPoint(pickStats[CurrentPickLevel()].GetPickaxeSound
-            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, PickSoundVolume);
-        // pickStats[CurrentPickLevel()].GetPickSoundArrayLength() - Old Code used instead of 5 but it doesn' work so far.
-
-        // Rotates pickaxe
-        RotateTool();
-
-        // Rotates pickaxe to starting position
-        StartCoroutine(ResetToolRotation());
-
-        // Deducts ore health
-        CurrentHealth -= CurrentPickaxeDamage;
-        print("CurrentHealth=" +CurrentHealth);
-        if (CurrentHealth <= 0)
+        if (canRotate)
         {
-            // If ore is mined, add it
-            FindObjectOfType<GameSession>().CountMinedOre(i);
-            StartCoroutine(DestroyAndSpawn());
+            // Rotates axe
+            RotateTool();
+            canRotate = false;
+        }
+
+        if (isRotated)
+        {
+            // Rotates pickaxe to starting position
+            StartCoroutine(ResetToolRotation());
+
+            // Deducts ore health
+            CurrentHealth -= CurrentPickaxeDamage;
+            print("CurrentHealth=" + CurrentHealth);
+            if (CurrentHealth <= 0)
+            {
+                // If ore is mined, add it
+                FindObjectOfType<GameSession>().CountMinedOre(i);
+                StartCoroutine(DestroyAndSpawn());
+            }
         }
     }
 
@@ -108,9 +111,15 @@ public class Ore : MonoBehaviour {
     // Rotates pickaxe back to starting position
     IEnumerator ResetToolRotation()
     {
-        yield return new WaitForSeconds(0.05f);
-        pickaxe.transform.Rotate(0, 0, -45);
         isRotated = false;
+
+        // Plays random pickaxe sound
+        AudioSource.PlayClipAtPoint(pickStats[CurrentPickLevel()].GetPickaxeSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, PickSoundVolume);
+
+        yield return new WaitForSeconds(0.1f);
+        pickaxe.transform.Rotate(0, 0, -45);
+        canRotate = true;
     }
 
     public int CurrentPickLevel()

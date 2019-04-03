@@ -1,26 +1,23 @@
 ﻿// TODO NOW:
 
-// Instantiate Axe in Battle Scene.
-// Add Crafting Sound in crafting - every time u press upgrade you hear crafting sound.
-// If you instantiate a monster/pickaxe/axe you could propably use transform.position of a prefab maybe?
-
-// Play Pickaxe/Axe/Battle sound every click is fine, but maybe you can click ore etc too often.
-
-// - Mine Scene Music
-// - Forest Scene Music
-// - Battle Scene Music
-// - Sounds for each different monster? Just make a Axe Hit flesh sound instead
-
-// Optimze a code: gamesessionscriptprefab.getpicklevel = CurrentPickLevel(). change long texts into functions.
-
-// Remove unneccessary unused things from each scene, organize and name everything properly
-
-// Organize Place of Resources in Axe Crafting and Pickaxe Crafting.
-// Rename Long names to shorter ones.
-
 // Add whole game to google play.
 
 // TODO MUCH LATER:
+
+// Organize Place of Resources in Axe Crafting and Pickaxe Crafting.
+
+// Rename Long names to shorter ones.
+
+// Remove unneccessary unused things from each scene, organize and name everything properly
+
+// If you instantiate a monster/pickaxe/axe you could propably use transform.position of a prefab maybe?
+
+// Hardness needs to grow with upgrade level.
+// Should there be damage added?
+
+// Optimize long code into short functions
+
+// - No sound when Monster/Ore/Wood has disappeared.
 
 // - When monster is killed add death sound?
 

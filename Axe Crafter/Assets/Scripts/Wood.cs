@@ -19,6 +19,7 @@ public class Wood : MonoBehaviour {
     private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
     bool isRotated = false;                                                 // Required for proper Axe animation
+    bool canRotate = true;
 
     private void Start()
     {
@@ -32,24 +33,27 @@ public class Wood : MonoBehaviour {
     // Each function is attached to axe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void ChopWood(int i)
     {
-        // Plays random pickaxe sound
-        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
-            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
-
-        // Rotates axe
-        RotateTool();
-
-        // Rotates axe to starting position
-        StartCoroutine(ResetToolRotation());
-
-        // Deducts wood health
-        CurrentHealth -= CurrentAxeDamage;
-        print("CurrentHealth=" + CurrentHealth);
-        if (CurrentHealth <= 0)
+        if(canRotate)
         {
-            // If wood is mined, add it
-            FindObjectOfType<GameSession>().CountChoppedWood(i);
-            StartCoroutine(DestroyAndSpawn());
+            // Rotates axe
+            RotateTool();
+            canRotate = false;
+        }
+
+        if(isRotated)
+        {
+            // Rotates axe to starting position
+            StartCoroutine(ResetToolRotation());
+
+            // Deducts wood health
+            CurrentHealth -= CurrentAxeDamage;
+            print("CurrentHealth=" + CurrentHealth);
+            if (CurrentHealth <= 0)
+            {
+                // If wood is mined, add it
+                FindObjectOfType<GameSession>().CountChoppedWood(i);
+                StartCoroutine(DestroyAndSpawn());
+            }
         }
     }
 
@@ -106,9 +110,15 @@ public class Wood : MonoBehaviour {
     // Rotates axe back to starting position
     IEnumerator ResetToolRotation()
     {
-        yield return new WaitForSeconds(0.05f);
-        axe.transform.Rotate(0, 0, -45);
         isRotated = false;
+
+        // Plays random axe sound
+        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
+        yield return new WaitForSeconds(0.1f);
+        axe.transform.Rotate(0, 0, -45);
+        canRotate = true;
     }
 
     public int CurrentAxeLevel()

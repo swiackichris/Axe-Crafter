@@ -37,6 +37,9 @@ public class UpgradePick : MonoBehaviour
     [SerializeField] Image WoodPriceImage;
     [SerializeField] Sprite[] WoodSprites;
 
+    [SerializeField] AudioClip CraftingSound;
+    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 0.05f;
+
     int PARAMETER = 0; // Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
 
     private void Start()
@@ -69,6 +72,7 @@ public class UpgradePick : MonoBehaviour
     // Upgrade Button uses this function
     public void UpgradePickaxe()
     {
+        PlayUpgradeSound();
         IncreaseUpgradeCounter();
         RemovePickUpgradeCounterText();
         MaterialCost();
@@ -243,5 +247,10 @@ public class UpgradePick : MonoBehaviour
             // Disables button
             UpgradeButton.interactable = false;
         }
+    }
+
+    private void PlayUpgradeSound()
+    {
+        AudioSource.PlayClipAtPoint(CraftingSound, Camera.main.transform.position, CraftingSoundVolume);
     }
 }

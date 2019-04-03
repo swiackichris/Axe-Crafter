@@ -4768,6 +4768,11 @@ Prefab:
       value: 
       objectReference: {fileID: 114704085067750246, guid: 8627491873b0cae459f3db932d4a429e,
         type: 2}
+    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+        type: 2}
+      propertyPath: CraftingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dbb5ef2f07d5b994cb1a3647fa7a5f1b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
   m_IsPrefabAsset: 0
@@ -7269,6 +7274,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7542b5888027df24fac86236877e268b, type: 3}
   - {fileID: 21300000, guid: 68175c6489fbd5d44a1549b2dd90a8f0, type: 3}
   - {fileID: 21300000, guid: db6e0e2f12e5f9f4d8c0f864b4969373, type: 3}
+  CraftingSound: {fileID: 8300000, guid: dbb5ef2f07d5b994cb1a3647fa7a5f1b, type: 3}
+  CraftingSoundVolume: 0.05
 --- !u!4 &1861526243
 Transform:
   m_ObjectHideFlags: 0

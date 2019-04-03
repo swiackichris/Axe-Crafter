@@ -10,14 +10,18 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] public float CurrentHealth;
     [SerializeField] int CurrentAxe;
     [SerializeField] AxeStats[] axeStats;
+    [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
     [SerializeField] MobStats mobStats;
     [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
+    GameObject axe;
 
     [SerializeField] private GameSession gameSession;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 0.05f;
 
     bool CanAttack = true;
+    bool isRotated = false;
+    bool canRotate = true;
 
     private void Start()
     {
@@ -25,19 +29,29 @@ public class HealthBar : MonoBehaviour {
         CurrentHealth = mobStats.GetMaxHealth();
         MobInstatiate();
         CurrentAxe = CurrentAxeLevel();
+        AxeInstantiate();
     }
 
     public void UpdateHealth()
     {
-        // Plays random mob sound
-        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
-            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
-
-        Attack();
-        if (CurrentHealth <= -10)
+        if (canRotate)
         {
-            print("CurrentHealth <= -10"); // TODO Delete this
-            EarnGoldAndReset();
+            // Rotates axe
+            RotateTool();
+            canRotate = false;
+        }
+
+        if (isRotated)
+        {
+            // Rotates axe to starting position
+            StartCoroutine(ResetToolRotation());
+
+            Attack();
+            if (CurrentHealth <= -10)
+            {
+                print("CurrentHealth <= -10"); // TODO Delete this
+                EarnGoldAndReset();
+            }
         }
     }
 
@@ -95,6 +109,37 @@ public class HealthBar : MonoBehaviour {
 
         // Spawns ore
         MobInstatiate();
+    }
+
+    // Spawn currently owned axe at a position
+    public void AxeInstantiate()
+    {
+        axe = Instantiate(
+        AxePrefabs[CurrentAxeLevel()],
+        new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
+        Quaternion.identity) as GameObject;
+        print("axe = Instantiate");
+    }
+
+    // Rotates axe 45 degrees
+    public void RotateTool()
+    {
+        axe.transform.Rotate(0, 0, 45);
+        isRotated = true;
+    }
+
+    // Rotates axe back to starting position
+    IEnumerator ResetToolRotation()
+    {
+        isRotated = false;
+
+        // Plays random mob sound
+        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
+            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
+        yield return new WaitForSeconds(0.1f);
+        axe.transform.Rotate(0, 0, -45);
+        canRotate = true;
     }
 
     public int CurrentAxeLevel()

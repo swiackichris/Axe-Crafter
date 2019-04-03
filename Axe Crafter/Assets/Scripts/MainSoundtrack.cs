@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainSoundtrack : MonoBehaviour
 {
-
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
@@ -15,7 +14,5 @@ public class MainSoundtrack : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
     }
-
 }
