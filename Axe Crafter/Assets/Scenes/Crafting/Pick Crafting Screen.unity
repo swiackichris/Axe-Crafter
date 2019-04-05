@@ -179,11 +179,11 @@ RectTransform:
   - {fileID: 818148518}
   - {fileID: 1552820049}
   m_Father: {fileID: 258607681}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 16.4, y: -35.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 66.4, y: -85.5}
   m_SizeDelta: {x: 154.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &49688378
@@ -900,49 +900,6 @@ RectTransform:
   m_AnchoredPosition: {x: 228.7, y: -236.39998}
   m_SizeDelta: {x: 155.8, y: 48.05}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &212396446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1662255163451822, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 212396447}
-  - component: {fileID: 212396448}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &212396447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4900843357941366, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 212396446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -210.8647, y: 246.79906, z: 7.325292}
-  m_LocalScale: {x: 0.7653044, y: 0.7653044, z: 0.7653044}
-  m_Children: []
-  m_Father: {fileID: 1099896760}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &212396448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114923254019220036, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 212396446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3b8c288391b3d44bc7b14064005120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &215722888
 Prefab:
   m_ObjectHideFlags: 0
@@ -1251,9 +1208,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1099896760}
-  - {fileID: 1254373571}
   - {fileID: 49688377}
+  - {fileID: 1254373571}
+  - {fileID: 834009580}
   m_Father: {fileID: 872982071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3355,7 +3312,7 @@ MonoBehaviour:
   - {fileID: 1907039786}
   - {fileID: 315927261}
   - {fileID: 1204630148}
-  MinedOreCounter: 05000000050000000500000005000000050000000500000005000000050000000500000005000000
+  MinedOreCounter: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   pickaxePricesScriptPrefab:
   - {fileID: 114704085067750246, guid: 3845c0590ea35c14584b7348d364955d, type: 2}
   - {fileID: 114830390378093156, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
@@ -3529,6 +3486,133 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c68201980c63741afee89916e6ee33, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &832850235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1960314555928016, guid: 4c0650c777d95e5498109b8b81e88c9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834009580}
+  - component: {fileID: 832850238}
+  - component: {fileID: 832850237}
+  - component: {fileID: 832850236}
+  m_Layer: 5
+  m_Name: Back Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &832850236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114426202622238712, guid: 4c0650c777d95e5498109b8b81e88c9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832850235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 832850237}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &832850237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114266941338731318, guid: 4c0650c777d95e5498109b8b81e88c9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832850235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: dc7f9776ac4b94d83a2e7da93486ea33, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &832850238
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222966611977042898, guid: 4c0650c777d95e5498109b8b81e88c9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832850235}
+  m_CullTransparentMesh: 0
+--- !u!224 &834009580
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224846111930024636, guid: 4c0650c777d95e5498109b8b81e88c9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832850235}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9795924, y: 0.9795924, z: 0.9795924}
+  m_Children: []
+  m_Father: {fileID: 258607681}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -138.75, y: -220.12585}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &866758925
 Prefab:
   m_ObjectHideFlags: 0
@@ -3619,8 +3703,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 2
+  m_ReferenceResolution: {x: 337.5, y: 600}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -4021,134 +4105,6 @@ RectTransform:
   m_AnchoredPosition: {x: -76, y: -197.1}
   m_SizeDelta: {x: 155.8, y: 48.05}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1099896759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1307441345139304, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1099896760}
-  - component: {fileID: 1099896763}
-  - component: {fileID: 1099896762}
-  - component: {fileID: 1099896761}
-  m_Layer: 5
-  m_Name: Back Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1099896760
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224422483756714456, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1099896759}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98000515, y: 0.98000515, z: 0.98000515}
-  m_Children:
-  - {fileID: 212396447}
-  m_Father: {fileID: 258607681}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -183.15, y: -215.69995}
-  m_SizeDelta: {x: 40, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1099896761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114073939204164682, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1099896759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1099896762}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 212396448}
-        m_MethodName: LoadMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1099896762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114561704072947964, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1099896759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: dc7f9776ac4b94d83a2e7da93486ea33, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1099896763
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222985013622157466, guid: 4c0650c777d95e5498109b8b81e88c9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1099896759}
-  m_CullTransparentMesh: 0
 --- !u!1 &1107494764
 GameObject:
   m_ObjectHideFlags: 0
@@ -4594,187 +4550,105 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalPosition.x
       value: 176.29039
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalPosition.y
       value: 406.65448
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalPosition.z
       value: 3.25
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+    - target: {fileID: 4565614478508410, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradeLevelText
       value: 
       objectReference: {fileID: 651759104}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradePriceText.Array.data[0]
       value: 
       objectReference: {fileID: 229974982}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradePriceText.Array.data[1]
       value: 
       objectReference: {fileID: 2064564557}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradePriceText.Array.data[2]
       value: 
       objectReference: {fileID: 766654277}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradePriceText.Array.data[3]
       value: 
       objectReference: {fileID: 515411561}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: PickUpgradeGoldCostText
       value: 
       objectReference: {fileID: 1515562022}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: HardnessText
       value: 
       objectReference: {fileID: 424556537}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: ToolNameText
       value: 
       objectReference: {fileID: 1311962632}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: InsufficientMaterialsText
       value: 
       objectReference: {fileID: 1751725368}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: gameSessionScriptPrefab
       value: 
       objectReference: {fileID: 767005750}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: UpgradeButton
       value: 
       objectReference: {fileID: 49688378}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: OrePriceImage
       value: 
       objectReference: {fileID: 1768881464}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+    - target: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
         type: 2}
       propertyPath: WoodPriceImage
       value: 
       objectReference: {fileID: 818148519}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[0]
-      value: 
-      objectReference: {fileID: 1249467160944988, guid: aceb0dfd267314648b09c1abc21e2cd1,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[1]
-      value: 
-      objectReference: {fileID: 1299056131729664, guid: 61cac79e8a7c15445b2377941ce4df24,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[2]
-      value: 
-      objectReference: {fileID: 1768844486710138, guid: b22b4bac3c35ac440a7031d0ab3726fd,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[3]
-      value: 
-      objectReference: {fileID: 1296515781657424, guid: 5812781e4a50b764ebc8c26ac3c3986f,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[4]
-      value: 
-      objectReference: {fileID: 1013383273982760, guid: 09b30acdef5e4274eb8021888f6b4004,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[5]
-      value: 
-      objectReference: {fileID: 1094451517570810, guid: 2ac04fc75aa3b714f83904f78747943f,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[6]
-      value: 
-      objectReference: {fileID: 1300973556202678, guid: 1f85a7cf251b16544a8af462bc8c869d,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[7]
-      value: 
-      objectReference: {fileID: 1562337706498704, guid: 98f85766ca38df14d9bd899e104a02d0,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[8]
-      value: 
-      objectReference: {fileID: 1233154385609486, guid: e31af2245ee28a645869057d73591ac2,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[9]
-      value: 
-      objectReference: {fileID: 1710151803428086, guid: 8cd092eee6e9f494bb7751153be5b2ea,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: PickaxeSprite.Array.data[10]
-      value: 
-      objectReference: {fileID: 1115795091153972, guid: 851cbc28fe262ad4da05127e195edbf3,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: pickaxePricesScriptPrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 114704085067750246, guid: 8627491873b0cae459f3db932d4a429e,
-        type: 2}
-    - target: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
-        type: 2}
-      propertyPath: CraftingSound
-      value: 
-      objectReference: {fileID: 8300000, guid: dbb5ef2f07d5b994cb1a3647fa7a5f1b, type: 3}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed7da9a0951f6be4989f06566d45fe76, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 34925a068dfedc849aae51cfaac909da, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1233172234
 Prefab:
@@ -4851,7 +4725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 81.7, y: -215.69995}
+  m_AnchoredPosition: {x: 88.75, y: -220.12585}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254373572
@@ -5272,7 +5146,7 @@ SpriteRenderer:
   m_Size: {x: 2.79, y: 2.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1445159569
@@ -6552,8 +6426,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 2
+  m_ReferenceResolution: {x: 337.5, y: 600}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7162,134 +7036,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1861526241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1379730462920004, guid: ed7da9a0951f6be4989f06566d45fe76,
-    type: 2}
-  m_PrefabInternal: {fileID: 1227099957}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1861526243}
-  - component: {fileID: 1861526242}
-  m_Layer: 0
-  m_Name: UpgradePick
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1861526242
+--- !u!114 &1861526242 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114492258767186492, guid: ed7da9a0951f6be4989f06566d45fe76,
+  m_CorrespondingSourceObject: {fileID: 114569066743676678, guid: 34925a068dfedc849aae51cfaac909da,
     type: 2}
   m_PrefabInternal: {fileID: 1227099957}
-  m_GameObject: {fileID: 1861526241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64a4f374c453c34a9b14d99d25bf41e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickUpgradeLevelText: {fileID: 651759104}
-  PickUpgradePriceText:
-  - {fileID: 229974982}
-  - {fileID: 2064564557}
-  - {fileID: 766654277}
-  - {fileID: 515411561}
-  PickUpgradeGoldCostText: {fileID: 1515562022}
-  HardnessText: {fileID: 424556537}
-  ToolNameText: {fileID: 1311962632}
-  ToolName:
-  - Hand
-  - Wooden Shovel
-  - Clay Pickaxe
-  - Bone Pickaxe
-  - Stone Pickaxe
-  - Flint Pickaxe
-  - Aluminium Pickaxe
-  - Iron Pickaxe
-  - Silver Pickaxe
-  - Golden Pickaxe
-  InsufficientMaterialsText: {fileID: 1751725368}
-  PickaxeSprite:
-  - {fileID: 1035220567191852, guid: 8627491873b0cae459f3db932d4a429e, type: 2}
-  - {fileID: 1202548870658168, guid: 4e86d4105dfedac4787a24d3bd260b45, type: 2}
-  - {fileID: 1564577729681400, guid: 0c09440209e99fe4bb1ed189e71af6b2, type: 2}
-  - {fileID: 1119827596704564, guid: 046f200e984f272429987911472f5945, type: 2}
-  - {fileID: 1743823719771056, guid: 5c8ed38e68bc0f04999f216e56939ca7, type: 2}
-  - {fileID: 1688527668020474, guid: 26255d0fa470f904bbdb804780280066, type: 2}
-  - {fileID: 1728809752122808, guid: 1d8271514ca8ccf4986a03281cf8b5d7, type: 2}
-  - {fileID: 1828216688045398, guid: 21c2b37908d1e6742847809ae0717f47, type: 2}
-  - {fileID: 1668849104848004, guid: 66463702ab8f6d94b88add19c8af7607, type: 2}
-  - {fileID: 1064660372760696, guid: d9778746fed0e064f8f8d2621cf47bb8, type: 2}
-  - {fileID: 1229498634401472, guid: 132ff1cd6d4b74b4f9e334aa25f6550a, type: 2}
-  gameSessionScriptPrefab: {fileID: 767005750}
-  pickaxePricesScriptPrefab:
-  - {fileID: 114704085067750246, guid: 8627491873b0cae459f3db932d4a429e, type: 2}
-  - {fileID: 114830390378093156, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
-  - {fileID: 114716582587012460, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
-  - {fileID: 114762057516129108, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
-  - {fileID: 114674093677806356, guid: c09217a46988e90489fd078f4c170c2c, type: 2}
-  - {fileID: 114645818684453906, guid: 59a5e359d733ce3419838fc8bc561f40, type: 2}
-  - {fileID: 114948862396208406, guid: af567f4c63b5e9c4a9edfd94cdb56b0e, type: 2}
-  - {fileID: 114514217864258742, guid: bd0e684ec7e6db84895a2fde3bac61ea, type: 2}
-  - {fileID: 114756646015694566, guid: 2a63bcbc1fff3864c911c8fdd04e9ff2, type: 2}
-  - {fileID: 114410762073025944, guid: ebc161018215c8844b18c45501847ea9, type: 2}
-  - {fileID: 114634650173249480, guid: 9506d9bc96085cf4eabfca087240fd65, type: 2}
-  pickaxeStatsScriptPrefab:
-  - {fileID: 114291527572241616, guid: 3845c0590ea35c14584b7348d364955d, type: 2}
-  - {fileID: 114949854120611554, guid: 9029c3f18501fdc43bdf7a789c939ba3, type: 2}
-  - {fileID: 114033701737275388, guid: 25ec60569882e074ba53a9e7b3812e8f, type: 2}
-  - {fileID: 114486118313004212, guid: 07716efdfc8e74740bb492bbafc68982, type: 2}
-  - {fileID: 114615837727674376, guid: c09217a46988e90489fd078f4c170c2c, type: 2}
-  - {fileID: 114364607075313042, guid: 59a5e359d733ce3419838fc8bc561f40, type: 2}
-  - {fileID: 114120262915249178, guid: af567f4c63b5e9c4a9edfd94cdb56b0e, type: 2}
-  - {fileID: 114409477761655582, guid: bd0e684ec7e6db84895a2fde3bac61ea, type: 2}
-  - {fileID: 114685453062940690, guid: 2a63bcbc1fff3864c911c8fdd04e9ff2, type: 2}
-  - {fileID: 114488342462838158, guid: ebc161018215c8844b18c45501847ea9, type: 2}
-  - {fileID: 114130689220022184, guid: 9506d9bc96085cf4eabfca087240fd65, type: 2}
-  UpgradeButton: {fileID: 49688378}
-  OrePriceImage: {fileID: 1768881464}
-  OreSprites:
-  - {fileID: 21300000, guid: 448339ca3a8c2c54e8a3d3df5f9dece7, type: 3}
-  - {fileID: 21300000, guid: 40aea65963821b9408027cc8f06766f9, type: 3}
-  - {fileID: 21300000, guid: 0ac9be1507620104b967a8b15d12ab3e, type: 3}
-  - {fileID: 21300000, guid: 33d796951ff18654e8839b4438f0d85a, type: 3}
-  - {fileID: 21300000, guid: 9a61131304cfc904190da3f84f12e782, type: 3}
-  - {fileID: 21300000, guid: ae302c5e0669bd649bece82c626a3552, type: 3}
-  - {fileID: 21300000, guid: 543636552c35ed84bb6c15163135dc3f, type: 3}
-  - {fileID: 21300000, guid: aff6a4609649dca48914e233eafa186d, type: 3}
-  - {fileID: 21300000, guid: cbb6c01d06d2cd24b97d77fcfa1494b1, type: 3}
-  - {fileID: 21300000, guid: 87a7348fd5ee8bd4e85e43486bf149b2, type: 3}
-  WoodPriceImage: {fileID: 818148519}
-  WoodSprites:
-  - {fileID: 21300000, guid: 717cab301cc57cc4eae0502f1b0381be, type: 3}
-  - {fileID: 21300000, guid: a84a92afcff830848ad4fe018cb542f7, type: 3}
-  - {fileID: 21300000, guid: df063bd85feb59248a36cf326014faf0, type: 3}
-  - {fileID: 21300000, guid: 22d64e4989b05634eb8f290c2a307e5f, type: 3}
-  - {fileID: 21300000, guid: 1b2adc52de89da047bd41222cf48d3b3, type: 3}
-  - {fileID: 21300000, guid: a4d303407f85426488709d7ec1763ef4, type: 3}
-  - {fileID: 21300000, guid: 1b32d6a73b59e3145af5b3c9eb785dfe, type: 3}
-  - {fileID: 21300000, guid: 7542b5888027df24fac86236877e268b, type: 3}
-  - {fileID: 21300000, guid: 68175c6489fbd5d44a1549b2dd90a8f0, type: 3}
-  - {fileID: 21300000, guid: db6e0e2f12e5f9f4d8c0f864b4969373, type: 3}
-  CraftingSound: {fileID: 8300000, guid: dbb5ef2f07d5b994cb1a3647fa7a5f1b, type: 3}
-  CraftingSoundVolume: 0.05
---- !u!4 &1861526243
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4687991847265254, guid: ed7da9a0951f6be4989f06566d45fe76,
-    type: 2}
-  m_PrefabInternal: {fileID: 1227099957}
-  m_GameObject: {fileID: 1861526241}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 176.29039, y: 406.65448, z: 3.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907039783
 GameObject:
   m_ObjectHideFlags: 0

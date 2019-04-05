@@ -1,5 +1,16 @@
 ﻿// TODO NOW:
 
+// Crafting Buttons Anchor properly in the middle?
+// Put the prefab into all scenes
+// Make all manager prefabs once again
+
+// Leave black bars on sides
+// Fix all of the scenes and canvases.
+// Make a game session prefab that works across all the scenes and reset values.
+// Scale Screens to fit the resolution
+// Add less dark scenes?
+// Do all the minor fixes.
+
 // Add whole game to google play.
 
 // TODO MUCH LATER:
