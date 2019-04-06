@@ -1,15 +1,9 @@
 ﻿// TODO NOW:
 
-// Crafting Buttons Anchor properly in the middle?
-// Put the prefab into all scenes
-// Make all manager prefabs once again
+// Disable GameSession Texts in scenes where you don't need them.
+// Button Press Sounds
 
-// Leave black bars on sides
-// Fix all of the scenes and canvases.
-// Make a game session prefab that works across all the scenes and reset values.
-// Scale Screens to fit the resolution
-// Add less dark scenes?
-// Do all the minor fixes.
+// Add less dark scenes
 
 // Add whole game to google play.
 
@@ -36,6 +30,8 @@
 
 // You dig first dirt to find a sharp stone
 // You use first sharp stone to cut first tree and make wooden shovel
+
+// Make a game session prefab that works across all the scenes and reset values.
 
 // X. Add spawn points like in your spaceship project so that monsters/trees can randomly respawn on them
 

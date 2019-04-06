@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour {
     GameObject axe;
 
     [SerializeField] private GameSession gameSession;
-    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 0.05f;
+    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
     bool CanAttack = true;
     bool isRotated = false;

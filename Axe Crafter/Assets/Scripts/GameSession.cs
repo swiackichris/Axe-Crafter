@@ -86,18 +86,17 @@ public class GameSession : MonoBehaviour
 
     public void BuyPickaxe()
     {
-
         // For Ore Prices
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
-            if (MinedOreCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) 
-                && pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) >0)
+            if (MinedOreCounter[jj] >= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj) 
+                && pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj) >0)
             {
                 print("MinedOreCounter[jj]: " +MinedOreCounter[jj] +" -= " +pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) + " jj = " +jj);
                     
                 // Deducts materials
-                MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj);
+                MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj);
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();
@@ -108,13 +107,13 @@ public class GameSession : MonoBehaviour
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
-            if (ChoppedWoodCounter[jj] >= pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj)
-                && pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj) > 0)
+            if (ChoppedWoodCounter[jj] >= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj)
+                && pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj) > 0)
             {
                 print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj) + " jj = " + jj);
 
                 // Deducts materials
-                ChoppedWoodCounter[jj] -= pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj);
+                ChoppedWoodCounter[jj] -= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj);
 
                 // Updates material count as a string
                 WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
@@ -124,17 +123,16 @@ public class GameSession : MonoBehaviour
 
     public void BuyAxe()
     {
-
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
-            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetOreRequired(jj)
-                && axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) > 0)
+            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj)
+                && axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj) > 0)
             {
                 print("MinedOreCounter[jj]: " + MinedOreCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) + " jj = " + jj);
 
                 // Deducts materials
-                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel].GetOreRequired(jj);
+                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj);
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();
@@ -144,13 +142,13 @@ public class GameSession : MonoBehaviour
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
-            if (ChoppedWoodCounter[jj] >= axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj)
-                && axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj) > 0)
+            if (ChoppedWoodCounter[jj] >= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj)
+                && axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj) > 0)
             {
                 print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj) + " jj = " + jj);
 
                 // Deducts materials
-                ChoppedWoodCounter[jj] -= axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj);
+                ChoppedWoodCounter[jj] -= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj);
 
                 // Updates material count as a string
                 WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();

@@ -60,7 +60,7 @@ public class MineLevelManager : MonoBehaviour {
     void DisplayMineResourceText()
     {
         MineResourceText[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].text 
-            = (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetCurrentMineLevel() + 1).ToString() 
+            = (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetCurrentMineLevel()).ToString() 
             + "/" + LevelUnlockOre[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].ToString());
     }
 

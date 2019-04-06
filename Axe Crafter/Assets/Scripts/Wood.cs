@@ -13,7 +13,7 @@ public class Wood : MonoBehaviour {
     GameObject wood;                                                        // Required for Button to know which object should be destroyed.
     GameObject axe;
 
-    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 0.05f;
+    [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
     private int CurrentHealth;                                              // How much health currently chopped wood has
     private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood

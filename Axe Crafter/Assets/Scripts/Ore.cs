@@ -13,7 +13,7 @@ public class Ore : MonoBehaviour {
     GameObject ore;                                                         // Required for Button to know which object should be destroyed.
     GameObject pickaxe;
 
-    [SerializeField] [Range(0, 1)] float PickSoundVolume = 0.05f;
+    [SerializeField] [Range(0, 1)] float PickSoundVolume = 1f;
 
     private int CurrentHealth;                                              // How much health currently mined ore has
     private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore

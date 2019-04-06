@@ -38,7 +38,7 @@ public class UpgradePick : MonoBehaviour
     [SerializeField] Sprite[] WoodSprites;
 
     [SerializeField] AudioClip CraftingSound;
-    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 0.05f;
+    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;
 
     int PARAMETER = 0; // Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
 

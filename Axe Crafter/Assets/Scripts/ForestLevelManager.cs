@@ -61,7 +61,7 @@ public class ForestLevelManager : MonoBehaviour
     void DisplayForestResourceText()
     {
         ForestResourceText[gameSessionScriptPrefab.GetCurrentForestLevel() + 1].text
-            = (gameSessionScriptPrefab.GetChoppedWoodCounter(gameSessionScriptPrefab.GetCurrentForestLevel() + 1).ToString()
+            = (gameSessionScriptPrefab.GetChoppedWoodCounter(gameSessionScriptPrefab.GetCurrentForestLevel()).ToString()
             + "/" + LevelUnlockWood[gameSessionScriptPrefab.GetCurrentForestLevel() + 1].ToString());
     }
 

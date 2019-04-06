@@ -57,7 +57,7 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     // CRAFTING AXES
-    public void LoadAxeCraftingSCreen()
+    public void LoadAxeCraftingScreen()
     {
         SceneManager.LoadScene("Axe Crafting Screen");
     }
