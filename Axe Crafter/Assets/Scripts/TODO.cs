@@ -1,10 +1,6 @@
 ﻿// TODO NOW:
 
-// Disable GameSession Texts in scenes where you don't need them.
 // Button Press Sounds
-
-// Add less dark scenes
-
 // Add whole game to google play.
 
 // TODO MUCH LATER:
