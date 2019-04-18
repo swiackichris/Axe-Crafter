@@ -35,11 +35,8 @@ public class ForestLevelManager : MonoBehaviour
     public void PayForLevel(int i)
     {
         // If resources owned > resources required
-        if (gameSessionScriptPrefab.GetChoppedWoodCounter(i) > LevelUnlockWood[i])
+        if (gameSessionScriptPrefab.GetChoppedWoodCounter(i-1) >= LevelUnlockWood[i-1])
         {
-            // Deducts resources required for unlocking the level
-            gameSessionScriptPrefab.PayMaterialsForForestUnlock(i);
-
             // Enables the button
             ForestLevelsButton[i].interactable = true;
 
@@ -48,6 +45,9 @@ public class ForestLevelManager : MonoBehaviour
 
             // Disables upgrade cost text
             ForestResourceText[i].text = null;
+
+            // Deducts resources required for unlocking the level
+            gameSessionScriptPrefab.PayMaterialsForForestUnlock(i-1);
 
             // Displays resources required text for next level
             DisplayForestResourceText();
@@ -62,7 +62,7 @@ public class ForestLevelManager : MonoBehaviour
     {
         ForestResourceText[gameSessionScriptPrefab.GetCurrentForestLevel() + 1].text
             = (gameSessionScriptPrefab.GetChoppedWoodCounter(gameSessionScriptPrefab.GetCurrentForestLevel()).ToString()
-            + "/" + LevelUnlockWood[gameSessionScriptPrefab.GetCurrentForestLevel() + 1].ToString());
+            + "/" + LevelUnlockWood[gameSessionScriptPrefab.GetCurrentForestLevel()].ToString());
     }
 
     // Displays button to pay resources for next level

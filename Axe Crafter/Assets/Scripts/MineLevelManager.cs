@@ -34,11 +34,8 @@ public class MineLevelManager : MonoBehaviour {
     public void PayForLevel(int i)
     {
         // If resources owned > resources required
-        if (gameSessionScriptPrefab.GetMinedOreCounter(i) > LevelUnlockOre[i])
+        if (gameSessionScriptPrefab.GetMinedOreCounter(i-1) >= LevelUnlockOre[i-1])
         {
-            // Deducts resources required for unlocking the level
-            gameSessionScriptPrefab.PayMaterialsForMineUnlock(i);
-
             // Enables the button
             MineLevelsButton[i].interactable = true;
 
@@ -47,6 +44,9 @@ public class MineLevelManager : MonoBehaviour {
 
             // Disables upgrade cost text
             MineResourceText[i].text = null;
+
+            // Deducts resources required for unlocking the level
+            gameSessionScriptPrefab.PayMaterialsForMineUnlock(i-1);
 
             // Displays resources required text for next level
             DisplayMineResourceText();
@@ -61,7 +61,7 @@ public class MineLevelManager : MonoBehaviour {
     {
         MineResourceText[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].text 
             = (gameSessionScriptPrefab.GetMinedOreCounter(gameSessionScriptPrefab.GetCurrentMineLevel()).ToString() 
-            + "/" + LevelUnlockOre[gameSessionScriptPrefab.GetCurrentMineLevel() + 1].ToString());
+            + "/" + LevelUnlockOre[gameSessionScriptPrefab.GetCurrentMineLevel()].ToString());
     }
 
     // Displays button to pay resources for next level

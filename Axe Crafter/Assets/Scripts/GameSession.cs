@@ -176,20 +176,20 @@ public class GameSession : MonoBehaviour
 
     public void PayMaterialsForMineUnlock(int i)
     {
-        CurrentMineLevel += 1;
         MinedOreCounter[i] -= mineLevelManagerScriptPrefab.GetLevelUnlockOre(i);
+        CurrentMineLevel += 1;
     }
 
     public void PayMaterialsForForestUnlock(int i)
     {
-        CurrentForestLevel += 1;
         ChoppedWoodCounter[i] -= forestLevelManagerScriptPrefab.GetLevelUnlockWood(i);
+        CurrentForestLevel += 1;
     }   
 
     public void PayMaterialsForBattleUnlock(int i)
     {
-        CurrentBattleLevel += 1;
         Gold -= battleLevelManagerScriptPrefab.GetLevelUnlockGold(i);
+        CurrentBattleLevel += 1;
     }
 
     // Gold

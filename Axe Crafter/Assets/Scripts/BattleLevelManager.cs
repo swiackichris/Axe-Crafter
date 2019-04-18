@@ -39,11 +39,8 @@ public class BattleLevelManager : MonoBehaviour
     public void PayForLevel(int i)
     {
         // If resources owned > resources required
-        if (gameSessionScriptPrefab.GetCurrentGold() > LevelUnlockGold[i])
+        if (gameSessionScriptPrefab.GetCurrentGold() >= LevelUnlockGold[i-1])
         {
-            // Deducts resources required for unlocking the level
-            gameSessionScriptPrefab.PayMaterialsForBattleUnlock(i);
-
             // Enables the button
             BattleLevelsButton[i].interactable = true;
 
@@ -52,6 +49,9 @@ public class BattleLevelManager : MonoBehaviour
 
             // Disables upgrade cost text
             BattleResourceText[i].text = null;
+
+            // Deducts resources required for unlocking the level
+            gameSessionScriptPrefab.PayMaterialsForBattleUnlock(i-1);
 
             // Displays resources required text for next level
             DisplayBattleResourceText();
@@ -65,7 +65,7 @@ public class BattleLevelManager : MonoBehaviour
     void DisplayBattleResourceText()
     {
         BattleResourceText[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].text
-            = (LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].ToString());
+            = (LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel()].ToString());
     }
 
     // Displays button to pay resources for next level

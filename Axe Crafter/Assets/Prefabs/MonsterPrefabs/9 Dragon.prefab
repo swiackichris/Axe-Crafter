@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1102953913568348}
-  m_IsPrefabAsset: 1
 --- !u!1 &1102953913568348
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4894510993331524}
@@ -30,9 +20,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4894510993331524
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102953913568348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -41,31 +32,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114392982834939196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102953913568348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5086b1e80207594bbd2a131adf48588, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 128000
-  GoldReward: 65610
-  MobSound:
-  - {fileID: 8300000, guid: a8801bddc74a32043905677a530c664f, type: 3}
-  - {fileID: 8300000, guid: 492d6512ba0e5bc488aeb673d73e86b6, type: 3}
-  - {fileID: 8300000, guid: c26ee510b77b0ca4a99d3257bf84d626, type: 3}
-  - {fileID: 8300000, guid: fe399de1e521dc146b4e0ded266a6236, type: 3}
-  - {fileID: 8300000, guid: 3985d0320db0fd742a5ce5ac19219b64, type: 3}
-  - {fileID: 8300000, guid: 8b572d7f72b44ad4b9288a1a1842ed42, type: 3}
 --- !u!212 &212867112626286514
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102953913568348}
   m_Enabled: 1
   m_CastShadows: 0
@@ -75,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -95,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 6ef9c44f16344834e8c0e92ee313a10c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,3 +80,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114392982834939196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102953913568348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5086b1e80207594bbd2a131adf48588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 128000
+  GoldReward: 65610
+  MobSound:
+  - {fileID: 8300000, guid: a8801bddc74a32043905677a530c664f, type: 3}
+  - {fileID: 8300000, guid: 492d6512ba0e5bc488aeb673d73e86b6, type: 3}
+  - {fileID: 8300000, guid: c26ee510b77b0ca4a99d3257bf84d626, type: 3}
+  - {fileID: 8300000, guid: fe399de1e521dc146b4e0ded266a6236, type: 3}
+  - {fileID: 8300000, guid: 3985d0320db0fd742a5ce5ac19219b64, type: 3}
+  - {fileID: 8300000, guid: 8b572d7f72b44ad4b9288a1a1842ed42, type: 3}

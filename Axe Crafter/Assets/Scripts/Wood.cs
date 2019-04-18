@@ -10,6 +10,7 @@ public class Wood : MonoBehaviour {
     [SerializeField] private GameSession gameSession;
     [SerializeField] private AxeStats[] axeStats;                           // Should be the same as AxePrefab TODO these could be deleted
     [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
+    [SerializeField] ParticleSystem ChoppingParticle;
     GameObject wood;                                                        // Required for Button to know which object should be destroyed.
     GameObject axe;
 
@@ -18,6 +19,7 @@ public class Wood : MonoBehaviour {
     private int CurrentHealth;                                              // How much health currently chopped wood has
     private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
+    bool canChop = true;
     bool isRotated = false;                                                 // Required for proper Axe animation
     bool canRotate = true;
 
@@ -55,6 +57,16 @@ public class Wood : MonoBehaviour {
                 StartCoroutine(DestroyAndSpawn());
             }
         }
+
+        if (canChop)
+        {
+            // Plays a particle effect
+            Instantiate(ChoppingParticle, wood.transform.position, Quaternion.identity);
+
+            // Plays random axe sound
+            AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
+                (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+        }
     }
 
     // Spawn wood at a position
@@ -62,9 +74,11 @@ public class Wood : MonoBehaviour {
     {
         wood = Instantiate(
         WoodPrefab,
-        new Vector2(9, 13), // Change later the position of new wood spawned to be posibly random
+        new Vector2(RandomX(), RandomY()), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("wood = Instantiate");
+
+        wood.transform.localScale += new Vector3(RandomScale(), RandomScale(), 0);
     }
 
     // Spawn currently owned axe at a position
@@ -87,6 +101,8 @@ public class Wood : MonoBehaviour {
     // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
+        canChop = false;
+
         // Destroys wood created in void Start();
         Destroy(wood);
         print("Destroy(wood)");
@@ -105,6 +121,8 @@ public class Wood : MonoBehaviour {
 
         // Spawns wood
         WoodInstantiate();
+
+        canChop = true;
     }
 
     // Rotates axe back to starting position
@@ -112,17 +130,14 @@ public class Wood : MonoBehaviour {
     {
         isRotated = false;
 
-        // Plays random axe sound
-        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
-            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
-
         yield return new WaitForSeconds(0.1f);
         axe.transform.Rotate(0, 0, -45);
         canRotate = true;
     }
 
-    public int CurrentAxeLevel()
-    {
-        return gameSession.GetAxeLevel();
-    }
+    public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
+    public int RandomX() { return UnityEngine.Random.Range(4, 14); }
+    public int RandomY() { return UnityEngine.Random.Range(8, 16); }
+    public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
+
 }

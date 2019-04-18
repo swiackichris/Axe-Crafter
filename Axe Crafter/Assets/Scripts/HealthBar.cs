@@ -6,22 +6,22 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
 
     [SerializeField] Image healthBar;                                       // Health bar to appear above the monster in battle scene
-    // static public float CurrentHealth;                                   // Doesn't work with Int
     [SerializeField] public float CurrentHealth;
     [SerializeField] int CurrentAxe;
     [SerializeField] AxeStats[] axeStats;
     [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
     [SerializeField] MobStats mobStats;
     [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
+    [SerializeField] ParticleSystem BloodParticle;
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
     GameObject axe;
 
     [SerializeField] private GameSession gameSession;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    bool CanAttack = true;
-    bool isRotated = false;
+    bool canAttack = true;
     bool canRotate = true;
+    bool isRotated = false;
 
     private void Start()
     {
@@ -71,13 +71,20 @@ public class HealthBar : MonoBehaviour {
 
     private void Attack()
     {
-        if(CanAttack)
+        if(canAttack)
         {
             // Updates health
             CurrentHealth -= axeStats[CurrentAxe].GetAxeDamage();
 
             // Updates health amount on healthbar sprite
             healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
+
+            // Plays a particle effect
+            Instantiate(BloodParticle, mob.transform.position, Quaternion.identity);
+
+            // Plays random mob sound
+            AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
+                (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
         }
     }
 
@@ -100,12 +107,12 @@ public class HealthBar : MonoBehaviour {
         print("Destroy(mob)");
 
         // Code so you can't attack before new monster has spawned
-        CanAttack = false;
+        canAttack = false;
 
         // TODO you could randomize it in the future
         yield return new WaitForSeconds(1);
 
-        CanAttack = true;
+        canAttack = true;
 
         // Spawns ore
         MobInstatiate();
@@ -133,17 +140,10 @@ public class HealthBar : MonoBehaviour {
     {
         isRotated = false;
 
-        // Plays random mob sound
-        AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
-            (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
-
         yield return new WaitForSeconds(0.1f);
         axe.transform.Rotate(0, 0, -45);
         canRotate = true;
     }
 
-    public int CurrentAxeLevel()
-    {
-        return gameSession.GetAxeLevel();
-    }
+    public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
 }

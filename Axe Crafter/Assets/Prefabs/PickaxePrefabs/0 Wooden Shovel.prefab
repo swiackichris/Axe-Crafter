@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1202548870658168}
-  m_IsPrefabAsset: 1
 --- !u!1 &1202548870658168
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4292831631863944}
@@ -31,9 +21,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4292831631863944
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202548870658168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,44 +33,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114830390378093156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1202548870658168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1d13ae02b64004b8d3dd932134ca47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OreRequired: 0a000000000000000000000000000000000000000000000000000000000000000000000000000000
-  WoodRequired: 0a000000000000000000000000000000000000000000000000000000000000000000000000000000
-  GoldRequired: 10
---- !u!114 &114949854120611554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1202548870658168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5ef254057df884ba4238f8cef299ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickaxeDamage: 15
-  PickaxeSound:
-  - {fileID: 8300000, guid: a6f387859e60dba48960b23085f72543, type: 3}
-  - {fileID: 8300000, guid: 7338337160804224eb4e6a1c93a59042, type: 3}
-  - {fileID: 8300000, guid: 7a2427074f86b4c4d891fc82ea4f19a7, type: 3}
-  - {fileID: 8300000, guid: 7ab634c07aa0ce14c8c4df093fb65a34, type: 3}
-  - {fileID: 8300000, guid: a6f387859e60dba48960b23085f72543, type: 3}
-  - {fileID: 8300000, guid: 7338337160804224eb4e6a1c93a59042, type: 3}
 --- !u!212 &212228243184718370
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202548870658168}
   m_Enabled: 1
   m_CastShadows: 0
@@ -89,6 +48,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -121,3 +81,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114949854120611554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202548870658168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ef254057df884ba4238f8cef299ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickaxeDamage: 15
+  PickaxeSound:
+  - {fileID: 8300000, guid: a6f387859e60dba48960b23085f72543, type: 3}
+  - {fileID: 8300000, guid: 7338337160804224eb4e6a1c93a59042, type: 3}
+  - {fileID: 8300000, guid: 7a2427074f86b4c4d891fc82ea4f19a7, type: 3}
+  - {fileID: 8300000, guid: 7ab634c07aa0ce14c8c4df093fb65a34, type: 3}
+  - {fileID: 8300000, guid: a6f387859e60dba48960b23085f72543, type: 3}
+  - {fileID: 8300000, guid: 7338337160804224eb4e6a1c93a59042, type: 3}
+--- !u!114 &114830390378093156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202548870658168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1d13ae02b64004b8d3dd932134ca47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OreRequired: 0a000000000000000000000000000000000000000000000000000000000000000000000000000000
+  WoodRequired: 0a000000000000000000000000000000000000000000000000000000000000000000000000000000
+  GoldRequired: 30
