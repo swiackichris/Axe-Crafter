@@ -23,6 +23,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int AxeLevel = 0;                                          // Current axe level
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
+    [SerializeField] private MobStats[] mobStats;
     [SerializeField] int Gold = 0;                                              // Amount of gold owned
     [SerializeField] TextMeshProUGUI GoldText;                                  // Text to display amount of gold owned
 
@@ -217,10 +218,11 @@ public class GameSession : MonoBehaviour
     public int GetCurrentBattleLevel() { return CurrentBattleLevel; }
 
     // Increases gold owned by the amount dropped by a monster
-    public void CountGold()
+    public void CountGold(int i)
     {
-        Gold += FindObjectOfType<MobStats>().GetGoldReward();
-        print("Gold =" + Gold);
+        print(+Gold);
+        Gold += mobStats[i].GetGoldReward();
+        print(+Gold);
 
         // Updates amount of gold text
         GoldText.text = Gold.ToString();

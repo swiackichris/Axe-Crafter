@@ -13,15 +13,18 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] MobStats mobStats;
     [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
     [SerializeField] ParticleSystem BloodParticle;
+    [SerializeField] ParticleSystem DeadParticle;
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
     GameObject axe;
 
     [SerializeField] private GameSession gameSession;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    bool canAttack = true;
+    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canAnimate = false;
     bool canRotate = true;
-    bool isRotated = false;
+
+    private float RotationSpeed = 219f;
 
     private void Start()
     {
@@ -32,33 +35,27 @@ public class HealthBar : MonoBehaviour {
         AxeInstantiate();
     }
 
-    public void UpdateHealth()
+    private void Update()
     {
-        if (canRotate)
-        {
-            // Rotates axe
-            RotateTool();
-            canRotate = false;
-        }
+        ToolAnimation();
+    }
 
-        if (isRotated)
-        {
-            // Rotates axe to starting position
-            StartCoroutine(ResetToolRotation());
+    public void Attack(int i)
+    {
+        canAnimate = true;
 
-            Attack();
-            if (CurrentHealth <= -10)
-            {
-                print("CurrentHealth <= -10"); // TODO Delete this
-                EarnGoldAndReset();
-            }
+        Hit();
+
+        if (CurrentHealth <= -1)
+        {
+            EarnGoldAndReset(i);
         }
     }
 
-    private void EarnGoldAndReset()
+    private void EarnGoldAndReset(int i)
     {
         // Adds gold after killing a monster
-        gameSession.CountGold();
+        gameSession.CountGold(i);
 
         // Resets health after monster has died so a new monster is at full health
         CurrentHealth = mobStats.GetMaxHealth();
@@ -66,12 +63,15 @@ public class HealthBar : MonoBehaviour {
         // Updates health amount on healthbar sprite to full health
         healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
 
+        // Plays a particle effect
+        Instantiate(DeadParticle, mob.transform.position, Quaternion.identity);
+
         StartCoroutine(DestroyAndSpawn());
     }
 
-    private void Attack()
+    private void Hit()
     {
-        if(canAttack)
+        if(canHit)
         {
             // Updates health
             CurrentHealth -= axeStats[CurrentAxe].GetAxeDamage();
@@ -93,29 +93,27 @@ public class HealthBar : MonoBehaviour {
     {
         mob = Instantiate(
         MobPrefab,
-        new Vector2(9, 9), // Change later the position of new ore spawned to be posibly random
+        new Vector2(RandomPX(), RandomPY()), // Change later the position of new ore spawned to be posibly random
         Quaternion.identity) as GameObject;
-        print("ore = Instantiate");
+        print("mob = Instantiate");
+
+        mob.transform.localScale += new Vector3(RandomScale(), RandomScale(), 0);
     }
 
     IEnumerator DestroyAndSpawn()
     {
-        print("DestroyAndSpawn() Started"); // TODO Delete this
+        canHit = false;
 
-        // Destroys ore created in void Start();
+        // Destroys prefab created;
         Destroy(mob);
-        print("Destroy(mob)");
-
-        // Code so you can't attack before new monster has spawned
-        canAttack = false;
 
         // TODO you could randomize it in the future
-        yield return new WaitForSeconds(1);
-
-        canAttack = true;
+        yield return new WaitForSeconds(RandomSpawnTime());
 
         // Spawns ore
         MobInstatiate();
+
+        canHit = true;
     }
 
     // Spawn currently owned axe at a position
@@ -128,22 +126,34 @@ public class HealthBar : MonoBehaviour {
         print("axe = Instantiate");
     }
 
-    // Rotates axe 45 degrees
-    public void RotateTool()
+    private void ToolAnimation()
     {
-        axe.transform.Rotate(0, 0, 45);
-        isRotated = true;
-    }
+        if (canAnimate)
+        {
+            if (canRotate && axe.transform.rotation.eulerAngles.z <= 45)
+            {
+                axe.transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+                if (axe.transform.rotation.eulerAngles.z >= 45)
+                {
+                    canRotate = false;
+                }
+            }
 
-    // Rotates axe back to starting position
-    IEnumerator ResetToolRotation()
-    {
-        isRotated = false;
-
-        yield return new WaitForSeconds(0.1f);
-        axe.transform.Rotate(0, 0, -45);
-        canRotate = true;
+            if (!canRotate && axe.transform.rotation.eulerAngles.z >= 1)
+            {
+                axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
+                if (axe.transform.rotation.eulerAngles.z <= 1)
+                {
+                    canRotate = true;
+                    canAnimate = false;
+                }
+            }
+        }
     }
 
     public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
+    public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
+    public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
+    public int RandomPY() { return UnityEngine.Random.Range(2, 10); }
+    public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
 }

@@ -58,6 +58,9 @@ public class BattleLevelManager : MonoBehaviour
 
             // Displays button to pay resources for next level
             DisplayBattleResourceButton();
+
+            // Displays current gold
+            CurrentGoldText.text = gameSessionScriptPrefab.GetCurrentGold().ToString();
         }
     }
 

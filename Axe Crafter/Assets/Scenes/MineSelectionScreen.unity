@@ -5184,6 +5184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1289402209066424, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
+      propertyPath: m_Name
+      value: MineLevelManager
+      objectReference: {fileID: 0}
     - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
         type: 3}
       propertyPath: MineLevelsButton.Array.data[0]
@@ -5339,56 +5343,6 @@ PrefabInstance:
       propertyPath: gameSessionScriptPrefab
       value: 
       objectReference: {fileID: 1988490604}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[9]
-      value: 5120
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[8]
-      value: 2560
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[7]
-      value: 1280
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[6]
-      value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[5]
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[4]
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[3]
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[2]
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[1]
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
-        type: 3}
-      propertyPath: LevelUnlockOre.Array.data[0]
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4606485022396252, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.956642
@@ -5420,6 +5374,18 @@ PrefabInstance:
     - target: {fileID: 4606485022396252, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606485022396252, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606485022396252, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606485022396252, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 470ec52d01c4c1a449a8f454454310b6, type: 3}

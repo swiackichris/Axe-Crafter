@@ -5,63 +5,62 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
-    [SerializeField] private OreStats oreStats;                 // Should be the same as OrePrefab
-    [SerializeField] GameObject OrePrefab;                                  // Ore prefab to be instatiated and mined
+    [SerializeField] private OreStats oreStats;                 
+    [SerializeField] GameObject OrePrefab;                                  
     [SerializeField] private GameSession gameSession;
-    [SerializeField] private PickaxeStats[] pickStats;      // Should be the same as PickaxePrefab TODO these could be deleted
-    [SerializeField] GameObject [] PickaxePrefabs;                          // Pickaxe prefab to be instatiated and mined with
+    [SerializeField] private PickaxeStats[] pickStats;                      
+    [SerializeField] GameObject [] PickaxePrefabs;                          
     [SerializeField] ParticleSystem PickingParticle;
     GameObject ore;                                                         // Required for Button to know which object should be destroyed.
     GameObject pickaxe;
 
     [SerializeField] [Range(0, 1)] float PickSoundVolume = 1f;
 
-    private int CurrentHealth;                                              // How much health currently mined ore has
-    private int CurrentPickaxeDamage;                                       // How much damage we apply to currently mined ore
+    private int CurrentHealth;                                              // current ore health
+    private int CurrentPickaxeDamage;                                       // damage applied to ore
 
-    bool canMine = true;
-    bool isRotated = false;                                                  // Reuqired for proper pickaxe animation
+    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canAnimate = false;
     bool canRotate = true;
+
+    private float RotationSpeed = 219f;
 
 
     private void Start()
     {
-        // You could possibly remove CurrentHealth and CurrentPickaxeDamage
         CurrentHealth = oreStats.GetOreHealth();
         CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
         OreInstatiate();
         PickaxeInstatiate();
     }
 
-    // MINING
-    // Each function is attached to pickaxe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
+    private void Update()
+    {
+        ToolAnimation();
+    }
+
+    // Each function is attached to pickaxe in different scene, so that it is possible to count and save the amount of different types of ores mined.
     public void MineOre(int i)
     {
-        if (canRotate)
+        canAnimate = true;
+
+        Hit();
+
+        if (CurrentHealth <= 0)
         {
-            // Rotates axe
-            RotateTool();
-            canRotate = false;
+            // If ore is mined, add it
+            gameSession.CountMinedOre(i);
+            StartCoroutine(DestroyAndSpawn());
         }
+    }
 
-        if (isRotated)
+    private void Hit()
+    {
+        if (canHit)
         {
-            // Rotates pickaxe to starting position
-            StartCoroutine(ResetToolRotation());
-
-            // Deducts ore health
+            // Deduct ore health
             CurrentHealth -= CurrentPickaxeDamage;
-            print("CurrentHealth=" + CurrentHealth);
-            if (CurrentHealth <= 0)
-            {
-                // If ore is mined, add it
-                FindObjectOfType<GameSession>().CountMinedOre(i);
-                StartCoroutine(DestroyAndSpawn());
-            }
-        }
 
-        if (canMine)
-        {
             // Plays a particle effect
             Instantiate(PickingParticle, ore.transform.position, Quaternion.identity);
 
@@ -71,7 +70,7 @@ public class Ore : MonoBehaviour {
         }
     }
 
-    // Spawn ore at a position
+    // Spawn ore with a random scale and position
     public void OreInstatiate()
     {
         ore = Instantiate(
@@ -84,7 +83,7 @@ public class Ore : MonoBehaviour {
         ore.transform.Rotate(0, 0, RandomRotation());
     }
 
-    // Spawn currently owned pickaxe at a position
+    // Spawn currently owned pickaxe
     public void PickaxeInstatiate()
     {
         pickaxe = Instantiate(
@@ -94,31 +93,20 @@ public class Ore : MonoBehaviour {
         print("pickaxe = Instantiate");
     }
 
-    // Rotates pickaxe 45 degrees
-    public void RotateTool()
-    {
-        pickaxe.transform.Rotate(0, 0, 45);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, new Vector3(0,0,45), Time.deltaTime * 5f);
-        isRotated = true;
-    }
-
     // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
-        canMine = false;
+        canHit = false;
 
         // Destroys ore created in void Start();
         Destroy(ore);
-        print("Destroy(ore)");
 
         // Resets health for new ore
         CurrentHealth = oreStats.GetOreHealth();
-        print("CurrentHealth = FullHealth");
 
         // Wait time before new ore spawns, so that it can't be damaged while it hasn't spawned
-        // TODO you could randomize it in the future
         CurrentPickaxeDamage = 0;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(RandomSpawnTime());
 
         // Initializes pick damage after it has been reduced to 0
         CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
@@ -126,23 +114,39 @@ public class Ore : MonoBehaviour {
         // Spawns ore
         OreInstatiate();
 
-        canMine = true;
+        canHit = true;
     }
 
-    // Rotates pickaxe back to starting position
-    IEnumerator ResetToolRotation()
+    private void ToolAnimation()
     {
-        isRotated = false;
+        if (canAnimate)
+        {
+            if (canRotate && pickaxe.transform.rotation.eulerAngles.z <= 45)
+            {
+                pickaxe.transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+                if (pickaxe.transform.rotation.eulerAngles.z >= 45)
+                {
+                    canRotate = false;
+                }
+            }
 
-        yield return new WaitForSeconds(0.1f);
-        pickaxe.transform.Rotate(0, 0, -45);
-        canRotate = true;
+            if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 1)
+            {
+                pickaxe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
+                if (pickaxe.transform.rotation.eulerAngles.z <= 1)
+                {
+                    canRotate = true;
+                    canAnimate = false;
+                }
+            }
+        }
     }
 
     public int CurrentPickLevel() { return gameSession.GetPickLevel(); }
     public int RandomPX() { return UnityEngine.Random.Range(2, 16); }
     public int RandomPY() { return UnityEngine.Random.Range(4, 20); }
-    public float RandomScale() { return UnityEngine.Random.Range(-0.8f, 0.8f); }
+    public float RandomScale() { return UnityEngine.Random.Range(-0.75f, 0.75f); }
     public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
+    public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
 
 }

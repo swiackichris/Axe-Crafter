@@ -1,9 +1,7 @@
 ﻿// TODO NOW:
 
-// X. Fluid Rotation making has begin in Ore.cs
-// X. -1 Make a fluid rotation of pickaxe while pressing the button ( for example rotate 45 degrees during 1 second)
+// Sometimes tool rotates backwards infinitly
 
-// Instantiate 5 or more trees/ore as buttons and then you can press each one and each one has its own health.
 // Random Between 2 Gradients particles :)
 
 // X. Increase Pick Upgrade Cost by 10% per each level of upgrade from a standard cost, and to buy a nerw pickaxe the cost should be 10x of initial.
@@ -11,6 +9,8 @@
 // X. Add small randomization to the time, Possibly could add color randomization to make them rare etc.
 
 // X. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
+
+// X. Tool should smoothly travel towards a tree and attack when pressed?
 
 
 
@@ -21,14 +21,33 @@
 // X. Add Tool Hardness
 // Hardness needs to grow with upgrade level.
 
-// Small Blood Splatter when attacked big when dead
+// Big Blood Splatter Particle when monster is killed
 
 // Reset Game Session ore gather gold etc.
-
 // Beta Release The Game
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // OTHER IDEAS:
+
+// X. Instantiate 5 or more trees/ore as buttons and then you can press each one and each one has its own health.
 
 // X. Increase glow around a weapon, the higher the upgrade
 

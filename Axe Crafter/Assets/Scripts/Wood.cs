@@ -19,9 +19,11 @@ public class Wood : MonoBehaviour {
     private int CurrentHealth;                                              // How much health currently chopped wood has
     private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
-    bool canChop = true;
-    bool isRotated = false;                                                 // Required for proper Axe animation
+    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canAnimate = false;
     bool canRotate = true;
+
+    private float RotationSpeed = 219f;
 
     private void Start()
     {
@@ -31,35 +33,33 @@ public class Wood : MonoBehaviour {
         AxeInstantiate();
     }
 
-    // MINING
+    private void Update()
+    {
+        ToolAnimation();
+    }
+
     // Each function is attached to axe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
     public void ChopWood(int i)
     {
-        if(canRotate)
+        canAnimate = true;
+
+        Hit();
+
+        if (CurrentHealth <= 0)
         {
-            // Rotates axe
-            RotateTool();
-            canRotate = false;
+            // If wood is mined, add it
+            gameSession.CountMinedOre(i);
+            StartCoroutine(DestroyAndSpawn());
         }
+    }
 
-        if(isRotated)
+    private void Hit()
+    {
+        if (canHit)
         {
-            // Rotates axe to starting position
-            StartCoroutine(ResetToolRotation());
-
             // Deducts wood health
             CurrentHealth -= CurrentAxeDamage;
-            print("CurrentHealth=" + CurrentHealth);
-            if (CurrentHealth <= 0)
-            {
-                // If wood is mined, add it
-                FindObjectOfType<GameSession>().CountChoppedWood(i);
-                StartCoroutine(DestroyAndSpawn());
-            }
-        }
 
-        if (canChop)
-        {
             // Plays a particle effect
             Instantiate(ChoppingParticle, wood.transform.position, Quaternion.identity);
 
@@ -74,7 +74,7 @@ public class Wood : MonoBehaviour {
     {
         wood = Instantiate(
         WoodPrefab,
-        new Vector2(RandomX(), RandomY()), // Change later the position of new wood spawned to be posibly random
+        new Vector2(RandomPX(), RandomPY()), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("wood = Instantiate");
 
@@ -91,30 +91,20 @@ public class Wood : MonoBehaviour {
         print("axe = Instantiate");
     }
 
-    // Rotates axe 45 degrees
-    public void RotateTool()
-    {
-        axe.transform.Rotate(0, 0, 45);
-        isRotated = true;
-    }
-
     // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
     IEnumerator DestroyAndSpawn()
     {
-        canChop = false;
+        canHit = false;
 
         // Destroys wood created in void Start();
         Destroy(wood);
-        print("Destroy(wood)");
 
         // Resets health for new wood
         CurrentHealth = woodStats.GetWoodHealth();
-        print("CurrentHealth = FullHealth");
 
         // Wait time before new wood spawns, so that it can't be damaged while it hasn't spawned
-        // TODO you could randomize it in the future
         CurrentAxeDamage = 0;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(RandomSpawnTime());
 
         // Initializes axe damage after it has been reduced to 0
         CurrentAxeDamage = axeStats[CurrentAxeLevel()].GetAxeDamage();
@@ -122,22 +112,39 @@ public class Wood : MonoBehaviour {
         // Spawns wood
         WoodInstantiate();
 
-        canChop = true;
+        canHit = true;
     }
 
-    // Rotates axe back to starting position
-    IEnumerator ResetToolRotation()
+    private void ToolAnimation()
     {
-        isRotated = false;
+        if (canAnimate)
+        {
+            if (canRotate && axe.transform.rotation.eulerAngles.z <= 45)
+            {
+                axe.transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+                if (axe.transform.rotation.eulerAngles.z >= 45)
+                {
+                    canRotate = false;
+                }
+            }
 
-        yield return new WaitForSeconds(0.1f);
-        axe.transform.Rotate(0, 0, -45);
-        canRotate = true;
+            if (!canRotate && axe.transform.rotation.eulerAngles.z >= 1)
+            {
+                axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
+                if (axe.transform.rotation.eulerAngles.z <= 1)
+                {
+                    canRotate = true;
+                    canAnimate = false;
+                }
+            }
+        }
     }
 
     public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
-    public int RandomX() { return UnityEngine.Random.Range(4, 14); }
-    public int RandomY() { return UnityEngine.Random.Range(8, 16); }
+    public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
+    public int RandomPY() { return UnityEngine.Random.Range(8, 16); }
     public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
+    public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
+    public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
 
 }
