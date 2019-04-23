@@ -1,20 +1,17 @@
 ﻿// TODO NOW:
 
-// 1. Increase Pick Upgrade Cost by 10% per each level of upgrade from a standard cost
-// - Create array in Upgrade Pick to store upgrade level of each Pick
-// - Add that array to gameSession to save
-// - Add new button to choose between crafting and upgrading.
 
-// To buy a nerw pickaxe the cost should be 10x of initial upgrade.
+// 2. Hardness(Damage) needs to grow with upgrade level.
 
-
-// 2. Hardness needs to grow with upgrade level.
 // 3. Add a way to choose a weapon
+
 // 4. Add Random Damage Numbers Appearing when monster is hit
 
 // X. Tool should smoothly travel towards a tree or tool should travel where pressed, and then checked if pressed on an object? and attack when pressed?
 
 // X. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
+
+// - Make axe and pickaxe cost a little different - axe 2x wood 1x ore, pickaxe 2x ore 1x wood.
 
 // Sometimes tool rotates backwards infinitly
 // Reset Game Session ore gather gold etc.
@@ -40,6 +37,10 @@
 
 
 // OTHER IDEAS:
+
+// - Create array in UpgradeTool to store upgrade level of each Tool so that tools can be upgraded up to +infinity.
+// - Add that array to gameSession to save
+// - Add new button to choose between crafting and upgrading.
 
 // X. Add Tool Hardness
 

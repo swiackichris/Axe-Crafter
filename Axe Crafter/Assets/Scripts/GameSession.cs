@@ -24,7 +24,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
     [SerializeField] private MobStats[] mobStats;
-    [SerializeField] int Gold = 0;                                              // Amount of gold owned
+    [SerializeField] float Gold = 0;                                            // Amount of gold owned
     [SerializeField] TextMeshProUGUI GoldText;                                  // Text to display amount of gold owned
 
     // Level variables
@@ -35,12 +35,15 @@ public class GameSession : MonoBehaviour
     [SerializeField] int CurrentForestLevel = 0;
     [SerializeField] int CurrentBattleLevel = 0;
 
+    private int CraftToolMultiplier = 5;
+    private float UpgradeToolMultiplier = 1.05f;
+
 
     // Use this for initialization
     void Start()
     {
         // Initialization of displayed text
-        GoldText.text = Gold.ToString();
+        GoldText.text = Math.Round(Gold, 1).ToString();
 
         /// TODO if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
 
@@ -157,22 +160,20 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    // Deducts gold required for upgrade
     public void PayGoldForPickUpgrade()
     {
-        // Deducts gold required for upgrade
-        Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired();
-
-        // Updates amount of gold text
-        GoldText.text = Gold.ToString();
+        if (PickUpgradeCounter == 9) { Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired() * CraftToolMultiplier; }   
+        else { Gold -= pickaxePricesScriptPrefab[PickLevel].GetGoldRequired()* (float)Math.Pow(UpgradeToolMultiplier, PickUpgradeCounter); }  
+        GoldText.text = Math.Round(Gold, 1).ToString();
     }
 
+    // Deducts gold required for upgrade
     public void PayGoldForAxeUpgrade()
     {
-        // Deducts gold required for upgrade
-        Gold -= axePricesScriptPrefab[AxeLevel].GetGoldRequired();
-
-        // Updates amount of gold text
-        GoldText.text = Gold.ToString();
+        if (AxeUpgradeCounter == 9) { Gold -= axePricesScriptPrefab[AxeLevel].GetGoldRequired() * CraftToolMultiplier; }
+        else { Gold -= axePricesScriptPrefab[AxeLevel].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, AxeUpgradeCounter); }
+        GoldText.text = Math.Round(Gold, 1).ToString();
     }
 
     public void PayMaterialsForMineUnlock(int i)
@@ -194,7 +195,7 @@ public class GameSession : MonoBehaviour
     }
 
     // Gold
-    public int GetCurrentGold() { return Gold; }
+    public float GetCurrentGold() { return Gold; }
 
     // UpgradePick Class
     public int GetMinedOreCounter(int i) { return MinedOreCounter[i]; }
@@ -225,7 +226,7 @@ public class GameSession : MonoBehaviour
         print(+Gold);
 
         // Updates amount of gold text
-        GoldText.text = Gold.ToString();
+        GoldText.text = Math.Round(Gold, 1).ToString();
     }
 
     // DATA saving related below:
@@ -287,12 +288,13 @@ public class GameSession : MonoBehaviour
         public int[] MinedOreCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int PickUpgradeCounterData;
         public int PickLevelData;
+        
 
         public int[] ChoppedWoodCounterData = new int[10]; // 10 in array has to always be equal to MinedOreCounter.Length
         public int AxeUpgradeCounterData;
         public int AxeLevelData;
 
-        public int GoldData;
+        public float GoldData;
 
         public int CurrentMineLevelData;
         public int CurrentForestLevelData;
