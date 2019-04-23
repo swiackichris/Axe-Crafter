@@ -1,28 +1,22 @@
 ﻿// TODO NOW:
 
-// Sometimes tool rotates backwards infinitly
+// 1. Increase Pick Upgrade Cost by 10% per each level of upgrade from a standard cost
+// - Create array in Upgrade Pick to store upgrade level of each Pick
+// - Add that array to gameSession to save
+// - Add new button to choose between crafting and upgrading.
 
-// Random Between 2 Gradients particles :)
+// To buy a nerw pickaxe the cost should be 10x of initial upgrade.
 
-// X. Increase Pick Upgrade Cost by 10% per each level of upgrade from a standard cost, and to buy a nerw pickaxe the cost should be 10x of initial.
 
-// X. Add small randomization to the time, Possibly could add color randomization to make them rare etc.
+// 2. Hardness needs to grow with upgrade level.
+// 3. Add a way to choose a weapon
+// 4. Add Random Damage Numbers Appearing when monster is hit
+
+// X. Tool should smoothly travel towards a tree or tool should travel where pressed, and then checked if pressed on an object? and attack when pressed?
 
 // X. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
 
-// X. Tool should smoothly travel towards a tree and attack when pressed?
-
-
-
-// X. Add Random Damage Numbers Appearing when monster is hit
-
-// X. Add a way to choose a weapon
-
-// X. Add Tool Hardness
-// Hardness needs to grow with upgrade level.
-
-// Big Blood Splatter Particle when monster is killed
-
+// Sometimes tool rotates backwards infinitly
 // Reset Game Session ore gather gold etc.
 // Beta Release The Game
 
@@ -46,6 +40,10 @@
 
 
 // OTHER IDEAS:
+
+// X. Add Tool Hardness
+
+// X. Possibly could add ore different color/glow randomization to make them rare etc.
 
 // X. Instantiate 5 or more trees/ore as buttons and then you can press each one and each one has its own health.
 
