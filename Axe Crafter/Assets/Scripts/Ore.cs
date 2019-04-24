@@ -16,22 +16,26 @@ public class Ore : MonoBehaviour {
 
     [SerializeField] [Range(0, 1)] float PickSoundVolume = 1f;
 
-    private int CurrentHealth;                                              // current ore health
-    private int CurrentPickaxeDamage;                                       // damage applied to ore
+    private float CurrentHealth;                                              // current ore health
+    private float CurrentPickaxeDamage;                                     // damage applied to ore
 
-    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canHit = true;                                                     // required to stop mining when ore is depleted
     bool canAnimate = false;
     bool canRotate = true;
 
     private float RotationSpeed = 219f;
+    private float UpgradeToolMultiplier = 1.05f;
 
 
     private void Start()
     {
         CurrentHealth = oreStats.GetOreHealth();
-        CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
-        OreInstatiate();
-        PickaxeInstatiate();
+
+        // TODO Could possibly add Math.Round to round the number
+        CurrentPickaxeDamage = pickStats[gameSession.GetPickLevel()].GetPickaxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetPickUpgradeCounter());
+
+        OreInstantiate();
+        PickaxeInstantiate();
     }
 
     private void Update()
@@ -71,7 +75,7 @@ public class Ore : MonoBehaviour {
     }
 
     // Spawn ore with a random scale and position
-    public void OreInstatiate()
+    public void OreInstantiate()
     {
         ore = Instantiate(
         OrePrefab,
@@ -84,7 +88,7 @@ public class Ore : MonoBehaviour {
     }
 
     // Spawn currently owned pickaxe
-    public void PickaxeInstatiate()
+    public void PickaxeInstantiate()
     {
         pickaxe = Instantiate(
         PickaxePrefabs[CurrentPickLevel()],
@@ -109,10 +113,10 @@ public class Ore : MonoBehaviour {
         yield return new WaitForSeconds(RandomSpawnTime());
 
         // Initializes pick damage after it has been reduced to 0
-        CurrentPickaxeDamage = pickStats[CurrentPickLevel()].GetPickaxeDamage();
+        CurrentPickaxeDamage = pickStats[gameSession.GetPickLevel()].GetPickaxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetPickUpgradeCounter());
 
         // Spawns ore
-        OreInstatiate();
+        OreInstantiate();
 
         canHit = true;
     }

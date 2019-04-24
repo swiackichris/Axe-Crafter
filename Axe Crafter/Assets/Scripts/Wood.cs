@@ -16,19 +16,23 @@ public class Wood : MonoBehaviour {
 
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    private int CurrentHealth;                                              // How much health currently chopped wood has
-    private int CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
+    private float CurrentHealth;                                              // How much health currently chopped wood has
+    private float CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
     bool canHit = true;                                                    // required to stop mining when ore is depleted
     bool canAnimate = false;
     bool canRotate = true;
 
     private float RotationSpeed = 219f;
+    private float UpgradeToolMultiplier = 1.05f;
 
     private void Start()
     {
         CurrentHealth = woodStats.GetWoodHealth();
-        CurrentAxeDamage = axeStats[CurrentAxeLevel()].GetAxeDamage();
+
+        // TODO Could possibly add Math.Round to round the number
+        CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
+
         WoodInstantiate();
         AxeInstantiate();
     }
@@ -107,7 +111,7 @@ public class Wood : MonoBehaviour {
         yield return new WaitForSeconds(RandomSpawnTime());
 
         // Initializes axe damage after it has been reduced to 0
-        CurrentAxeDamage = axeStats[CurrentAxeLevel()].GetAxeDamage();
+        CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
 
         // Spawns wood
         WoodInstantiate();

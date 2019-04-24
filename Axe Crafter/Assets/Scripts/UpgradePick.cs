@@ -55,11 +55,7 @@ public class UpgradePick : MonoBehaviour
 
         DisplayUpgradeGoldCost();
 
-        // Initialises Tool name
-        ToolNameText.text = ToolName[gameSessionScriptPrefab.GetPickLevel()];
-
-        // Initialises Hardness text
-        HardnessText.text = pickaxeStatsScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetPickaxeDamage().ToString();
+        UpdatePickaxeTexts();
 
         // Removes text for +0 upgrade
         RemovePickUpgradeCounterText();
@@ -86,7 +82,7 @@ public class UpgradePick : MonoBehaviour
     public void UpdatePickaxeTexts()
     {
         ToolNameText.text = ToolName[gameSessionScriptPrefab.GetPickLevel()];
-        HardnessText.text = pickaxeStatsScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetPickaxeDamage().ToString();
+        HardnessText.text = Math.Round(pickaxeStatsScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetPickaxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetPickUpgradeCounter()), 1).ToString();
     }
 
     public void DestroyAndInstantiatePickaxe()

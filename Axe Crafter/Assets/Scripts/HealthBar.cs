@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +26,7 @@ public class HealthBar : MonoBehaviour {
     bool canRotate = true;
 
     private float RotationSpeed = 219f;
+    private float UpgradeToolMultiplier = 1.05f;
 
     private void Start()
     {
@@ -71,10 +73,10 @@ public class HealthBar : MonoBehaviour {
 
     private void Hit()
     {
-        if(canHit)
+        if (canHit)
         {
             // Updates health
-            CurrentHealth -= axeStats[CurrentAxe].GetAxeDamage();
+            CurrentHealth -= axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
 
             // Updates health amount on healthbar sprite
             healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();

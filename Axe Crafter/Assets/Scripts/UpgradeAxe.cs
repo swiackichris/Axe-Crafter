@@ -55,11 +55,7 @@ public class UpgradeAxe : MonoBehaviour
 
         DisplayUpgradeGoldCost();
 
-        // Initialises Tool name
-        ToolNameText.text = ToolName[gameSessionScriptPrefab.GetAxeLevel()];
-
-        // Initialises Hardness text
-        HardnessText.text = axeStatsScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetAxeDamage().ToString();
+        UpdateAxeTexts();
 
         // Removes text for +0 upgrade
         RemoveAxeUpgradeCounterText();
@@ -86,7 +82,7 @@ public class UpgradeAxe : MonoBehaviour
     public void UpdateAxeTexts()
     {
         ToolNameText.text = ToolName[gameSessionScriptPrefab.GetAxeLevel()];
-        HardnessText.text = axeStatsScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetAxeDamage().ToString();
+        HardnessText.text = Math.Round(axeStatsScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetAxeUpgradeCounter()), 1).ToString();
     }
 
     public void DestroyAndInstantiateAxe()

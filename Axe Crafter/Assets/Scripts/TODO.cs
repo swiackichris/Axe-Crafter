@@ -1,21 +1,13 @@
 ﻿// TODO NOW:
 
+// 2. Add Random Damage Numbers Appearing when monster is hit
+// Make the damage text fancy
 
-// 2. Hardness(Damage) needs to grow with upgrade level.
+// 7. Reset Game Session ore gather gold etc.
 
-// 3. Add a way to choose a weapon
+// 7.5 Backup whole project.
 
-// 4. Add Random Damage Numbers Appearing when monster is hit
-
-// X. Tool should smoothly travel towards a tree or tool should travel where pressed, and then checked if pressed on an object? and attack when pressed?
-
-// X. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
-
-// - Make axe and pickaxe cost a little different - axe 2x wood 1x ore, pickaxe 2x ore 1x wood.
-
-// Sometimes tool rotates backwards infinitly
-// Reset Game Session ore gather gold etc.
-// Beta Release The Game
+// 8. Beta Release The Game
 
 
 
@@ -37,6 +29,22 @@
 
 
 // OTHER IDEAS:
+
+// Make all the text look better.
+
+// Add a few more ideas before releasing full version.
+
+// 4. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
+
+// You can remove current damage from ore and wood because it doesnt exist in healthbar.
+
+// 6. Sometimes tool rotates backwards infinitly
+
+// 3. Tool should smoothly travel towards a tree or tool should travel where pressed, and then checked if pressed on an object? and attack when pressed?
+
+// Organize the code to make it as simple as possible, some functions could be put in gamesession etc.
+
+// X. Add a way to choose a weapon, make it worth it to upgrade previous weapon to +20 or something short term, but long term its should always be better to get a next weapon.
 
 // - Create array in UpgradeTool to store upgrade level of each Tool so that tools can be upgraded up to +infinity.
 // - Add that array to gameSession to save

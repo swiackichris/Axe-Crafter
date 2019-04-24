@@ -597,12 +597,12 @@ PrefabInstance:
     - target: {fileID: 3698981039333573952, guid: 36953d5e29b95a04b8f30975ec2f1a5d,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3698981039333573952, guid: 36953d5e29b95a04b8f30975ec2f1a5d,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3698981039333573952, guid: 36953d5e29b95a04b8f30975ec2f1a5d,
         type: 3}
@@ -614,6 +614,12 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114025120964584656, guid: 36953d5e29b95a04b8f30975ec2f1a5d,
+        type: 3}
+      propertyPath: FloatingTextPrefab
+      value: 
+      objectReference: {fileID: 8341168954257974315, guid: 8ee25aee7fc74164392f0df9093cdfe6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36953d5e29b95a04b8f30975ec2f1a5d, type: 3}
 --- !u!1 &1669641697
