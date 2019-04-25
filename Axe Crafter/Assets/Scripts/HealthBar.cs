@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour {
 
@@ -15,8 +16,10 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
     [SerializeField] ParticleSystem BloodParticle;
     [SerializeField] ParticleSystem DeadParticle;
+    [SerializeField] GameObject DamageText;
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
     GameObject axe;
+    GameObject dmgtxt;
 
     [SerializeField] private GameSession gameSession;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
@@ -30,6 +33,7 @@ public class HealthBar : MonoBehaviour {
 
     private void Start()
     {
+
         // CurrentHealth initialisation
         CurrentHealth = mobStats.GetMaxHealth();
         MobInstatiate();
@@ -76,7 +80,7 @@ public class HealthBar : MonoBehaviour {
         if (canHit)
         {
             // Updates health
-            CurrentHealth -= axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
+            CurrentHealth -= axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()) * RandomDamageMultiplier();
 
             // Updates health amount on healthbar sprite
             healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
@@ -87,6 +91,9 @@ public class HealthBar : MonoBehaviour {
             // Plays random mob sound
             AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetMobSound
                 (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
+            // Shows damage numbers
+            ShowDamageText();
         }
     }
 
@@ -123,9 +130,20 @@ public class HealthBar : MonoBehaviour {
     {
         axe = Instantiate(
         AxePrefabs[CurrentAxeLevel()],
-        new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
+        new Vector2(14, 7),
         Quaternion.identity) as GameObject;
         print("axe = Instantiate");
+    }
+
+    public void ShowDamageText()
+    {
+        dmgtxt = Instantiate(
+        DamageText,
+        new Vector2 (mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        Quaternion.identity,
+        transform);
+
+        dmgtxt.GetComponent<TextMesh>().text = Math.Round(axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()), 1).ToString();
     }
 
     private void ToolAnimation()
@@ -158,4 +176,7 @@ public class HealthBar : MonoBehaviour {
     public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
     public int RandomPY() { return UnityEngine.Random.Range(2, 10); }
     public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
+    public int RandomXOffset() { return UnityEngine.Random.Range(-1, 3); }
+    public int RandomYOffset() { return UnityEngine.Random.Range(2, 6); }
+    public float RandomDamageMultiplier() { return UnityEngine.Random.Range(0.5f, 1.5f); }
 }

@@ -288,7 +288,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 8b05012ae5d66a44e8f19bacbb60158e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -619,6 +619,12 @@ PrefabInstance:
       propertyPath: FloatingTextPrefab
       value: 
       objectReference: {fileID: 8341168954257974315, guid: 8ee25aee7fc74164392f0df9093cdfe6,
+        type: 3}
+    - target: {fileID: 114025120964584656, guid: 36953d5e29b95a04b8f30975ec2f1a5d,
+        type: 3}
+      propertyPath: DamageText
+      value: 
+      objectReference: {fileID: 8666992473889534393, guid: dd7b6c2c59d896e4da7c21edb77eaab3,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36953d5e29b95a04b8f30975ec2f1a5d, type: 3}

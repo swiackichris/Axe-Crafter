@@ -1,12 +1,5 @@
 ﻿// TODO NOW:
 
-// 2. Add Random Damage Numbers Appearing when monster is hit
-// Make the damage text fancy
-
-// 7. Reset Game Session ore gather gold etc.
-
-// 7.5 Backup whole project.
-
 // 8. Beta Release The Game
 
 
@@ -29,6 +22,10 @@
 
 
 // OTHER IDEAS:
+
+// Make the damage text fancy
+
+// Randomize Mob Health.
 
 // Make all the text look better.
 
