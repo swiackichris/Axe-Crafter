@@ -159,10 +159,10 @@ public class HealthBar : MonoBehaviour {
                 }
             }
 
-            if (!canRotate && axe.transform.rotation.eulerAngles.z >= 1)
+            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 5)
             {
                 axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z <= 1)
+                if (axe.transform.rotation.eulerAngles.z <= 5)
                 {
                     canRotate = true;
                     canAnimate = false;
@@ -177,6 +177,6 @@ public class HealthBar : MonoBehaviour {
     public int RandomPY() { return UnityEngine.Random.Range(2, 10); }
     public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
     public int RandomXOffset() { return UnityEngine.Random.Range(-1, 3); }
-    public int RandomYOffset() { return UnityEngine.Random.Range(2, 6); }
+    public int RandomYOffset() { return UnityEngine.Random.Range(4, 8); }
     public float RandomDamageMultiplier() { return UnityEngine.Random.Range(0.5f, 1.5f); }
 }

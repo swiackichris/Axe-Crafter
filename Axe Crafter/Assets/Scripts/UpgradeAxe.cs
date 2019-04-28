@@ -247,7 +247,7 @@ public class UpgradeAxe : MonoBehaviour
     private void DisplayUpgradeGoldCost()
     {
         if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 9) { AxeUpgradeGoldCostText.text = (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * CraftToolMultiplier).ToString(); }
-        else { AxeUpgradeGoldCostText.text = Math.Round(axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetAxeUpgradeCounter()), 1).ToString(); }
+        else { AxeUpgradeGoldCostText.text = Math.Round(axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetAxeUpgradeCounter()), 0).ToString(); }
     }
 
     private void DisableButtonDisplayText()

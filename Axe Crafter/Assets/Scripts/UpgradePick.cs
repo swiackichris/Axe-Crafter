@@ -247,7 +247,7 @@ public class UpgradePick : MonoBehaviour
     private void DisplayUpgradeGoldCost()
     {
         if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 9) { PickUpgradeGoldCostText.text = (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired()*CraftToolMultiplier).ToString(); }
-        else { PickUpgradeGoldCostText.text = Math.Round(pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetPickUpgradeCounter()), 1).ToString();  }
+        else { PickUpgradeGoldCostText.text = Math.Round(pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetPickUpgradeCounter()), 0).ToString();  }
     }
 
     private void DisableButtonDisplayText()

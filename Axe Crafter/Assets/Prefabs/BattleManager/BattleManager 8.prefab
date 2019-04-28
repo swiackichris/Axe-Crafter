@@ -75,6 +75,8 @@ MonoBehaviour:
     type: 3}
   DeadParticle: {fileID: 6705091996402577280, guid: 131e634cd104adc4dafc197cb39f672c,
     type: 3}
+  DamageText: {fileID: 8666992473889534393, guid: dd7b6c2c59d896e4da7c21edb77eaab3,
+    type: 3}
   gameSession: {fileID: 7859889712321511197}
   AxeSoundVolume: 1
 --- !u!1001 &4013362256655082006
@@ -142,26 +144,6 @@ PrefabInstance:
     - target: {fileID: 6573200505471475717, guid: 3acb0ec8d7279604c958158b0497dd84,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6352547292839497549, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6530483642278181577, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6530483642278181577, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6530483642278181577, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,

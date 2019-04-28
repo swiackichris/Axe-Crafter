@@ -1528,6 +1528,8 @@ MonoBehaviour:
   - {fileID: 1064660372760696, guid: ebc161018215c8844b18c45501847ea9, type: 3}
   PickingParticle: {fileID: 6705091996402577280, guid: 7562214f4800df44894351c7fbf0e31d,
     type: 3}
+  DamageText: {fileID: 8666992473889534393, guid: f7b69b7b01c742e49b7a77f351815564,
+    type: 3}
   PickSoundVolume: 0.05
 --- !u!1 &1298737964044322
 GameObject:
@@ -2109,6 +2111,7 @@ MonoBehaviour:
   - {fileID: 114821338936232476, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
   AxeLevel: 0
   AxeUpgradeCounter: 0
+  mobStats: []
   Gold: 0
   GoldText: {fileID: 114743031651375140}
   mineLevelManagerScriptPrefab: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,

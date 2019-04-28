@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,8 @@ public class BattleLevelManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CurrentGoldText.text = gameSessionScriptPrefab.GetCurrentGold().ToString();
+        // Displays current gold
+        CurrentGoldText.text = Math.Round(gameSessionScriptPrefab.GetCurrentGold(), 1).ToString();
 
         // Displays resources required text for next level
         DisplayBattleResourceText();
@@ -60,7 +62,7 @@ public class BattleLevelManager : MonoBehaviour
             DisplayBattleResourceButton();
 
             // Displays current gold
-            CurrentGoldText.text = gameSessionScriptPrefab.GetCurrentGold().ToString();
+            CurrentGoldText.text = Math.Round(gameSessionScriptPrefab.GetCurrentGold(), 1).ToString();
         }
     }
 
@@ -68,7 +70,7 @@ public class BattleLevelManager : MonoBehaviour
     void DisplayBattleResourceText()
     {
         BattleResourceText[gameSessionScriptPrefab.GetCurrentBattleLevel() + 1].text
-            = (LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel()].ToString());
+            = LevelUnlockGold[gameSessionScriptPrefab.GetCurrentBattleLevel()].ToString();
     }
 
     // Displays button to pay resources for next level

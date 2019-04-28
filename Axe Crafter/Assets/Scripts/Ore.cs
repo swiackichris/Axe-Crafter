@@ -11,8 +11,10 @@ public class Ore : MonoBehaviour {
     [SerializeField] private PickaxeStats[] pickStats;                      
     [SerializeField] GameObject [] PickaxePrefabs;                          
     [SerializeField] ParticleSystem PickingParticle;
+    [SerializeField] GameObject DamageText;
     GameObject ore;                                                         // Required for Button to know which object should be destroyed.
     GameObject pickaxe;
+    GameObject dmgtxt;
 
     [SerializeField] [Range(0, 1)] float PickSoundVolume = 1f;
 
@@ -71,6 +73,9 @@ public class Ore : MonoBehaviour {
             // Plays random pickaxe sound
             AudioSource.PlayClipAtPoint(pickStats[CurrentPickLevel()].GetPickaxeSound
                 (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, PickSoundVolume);
+
+            // Shows damage numbers
+            ShowDamageText();
         }
     }
 
@@ -95,6 +100,17 @@ public class Ore : MonoBehaviour {
         new Vector2(14, 7), // Change later the position of new ore spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("pickaxe = Instantiate");
+    }
+
+    public void ShowDamageText()
+    {
+        dmgtxt = Instantiate(
+        DamageText,
+        new Vector2(ore.transform.position.x + RandomXOffset(), ore.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        Quaternion.identity,
+        transform);
+
+        dmgtxt.GetComponent<TextMesh>().text = Math.Round(pickStats[gameSession.GetPickLevel()].GetPickaxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetPickUpgradeCounter()), 1).ToString();
     }
 
     // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.
@@ -134,10 +150,10 @@ public class Ore : MonoBehaviour {
                 }
             }
 
-            if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 1)
+            if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 5)
             {
                 pickaxe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (pickaxe.transform.rotation.eulerAngles.z <= 1)
+                if (pickaxe.transform.rotation.eulerAngles.z <= 5)
                 {
                     canRotate = true;
                     canAnimate = false;
@@ -149,8 +165,10 @@ public class Ore : MonoBehaviour {
     public int CurrentPickLevel() { return gameSession.GetPickLevel(); }
     public int RandomPX() { return UnityEngine.Random.Range(2, 16); }
     public int RandomPY() { return UnityEngine.Random.Range(4, 20); }
-    public float RandomScale() { return UnityEngine.Random.Range(-0.75f, 0.75f); }
+    public float RandomScale() { return UnityEngine.Random.Range(-0.33f, 0.33f); }
     public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
     public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
-
+    public int RandomXOffset() { return UnityEngine.Random.Range(-1, 3); }
+    public int RandomYOffset() { return UnityEngine.Random.Range(4, 8); }
+    public float RandomDamageMultiplier() { return UnityEngine.Random.Range(0.5f, 1.5f); }
 }

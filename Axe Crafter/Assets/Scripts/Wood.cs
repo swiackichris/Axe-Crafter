@@ -11,15 +11,17 @@ public class Wood : MonoBehaviour {
     [SerializeField] private AxeStats[] axeStats;                           // Should be the same as AxePrefab TODO these could be deleted
     [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
     [SerializeField] ParticleSystem ChoppingParticle;
+    [SerializeField] GameObject DamageText;
     GameObject wood;                                                        // Required for Button to know which object should be destroyed.
     GameObject axe;
+    GameObject dmgtxt;
 
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
     private float CurrentHealth;                                              // How much health currently chopped wood has
     private float CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
 
-    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canHit = true;                                                    // required to stop mining when wood is depleted
     bool canAnimate = false;
     bool canRotate = true;
 
@@ -52,7 +54,7 @@ public class Wood : MonoBehaviour {
         if (CurrentHealth <= 0)
         {
             // If wood is mined, add it
-            gameSession.CountMinedOre(i);
+            gameSession.CountChoppedWood(i);
             StartCoroutine(DestroyAndSpawn());
         }
     }
@@ -70,6 +72,9 @@ public class Wood : MonoBehaviour {
             // Plays random axe sound
             AudioSource.PlayClipAtPoint(axeStats[CurrentAxeLevel()].GetAxeSound
                 (UnityEngine.Random.Range(0, 5)), Camera.main.transform.position, AxeSoundVolume);
+
+            // Shows damage numbers
+            ShowDamageText();
         }
     }
 
@@ -93,6 +98,17 @@ public class Wood : MonoBehaviour {
         new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
         Quaternion.identity) as GameObject;
         print("axe = Instantiate");
+    }
+
+    public void ShowDamageText()
+    {
+        dmgtxt = Instantiate(
+        DamageText,
+        new Vector2(wood.transform.position.x + RandomXOffset(), wood.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        Quaternion.identity,
+        transform);
+
+        dmgtxt.GetComponent<TextMesh>().text = Math.Round(axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()), 1).ToString();
     }
 
     // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
@@ -132,10 +148,10 @@ public class Wood : MonoBehaviour {
                 }
             }
 
-            if (!canRotate && axe.transform.rotation.eulerAngles.z >= 1)
+            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 5)
             {
                 axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z <= 1)
+                if (axe.transform.rotation.eulerAngles.z <= 5)
                 {
                     canRotate = true;
                     canAnimate = false;
@@ -150,5 +166,8 @@ public class Wood : MonoBehaviour {
     public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
     public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
     public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
+    public int RandomXOffset() { return UnityEngine.Random.Range(-1, 3); }
+    public int RandomYOffset() { return UnityEngine.Random.Range(4, 8); }
+    public float RandomDamageMultiplier() { return UnityEngine.Random.Range(0.5f, 1.5f); }
 
 }

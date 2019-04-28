@@ -1516,6 +1516,7 @@ MonoBehaviour:
   - {fileID: 114821338936232476, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
   AxeLevel: 0
   AxeUpgradeCounter: 0
+  mobStats: []
   Gold: 0
   GoldText: {fileID: 114529071006989874}
   mineLevelManagerScriptPrefab: {fileID: 114235941495267572, guid: 470ec52d01c4c1a449a8f454454310b6,
@@ -4085,6 +4086,8 @@ MonoBehaviour:
   - {fileID: 1130686063722232, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 3}
   - {fileID: 1360643748511844, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
   ChoppingParticle: {fileID: 6705091996402577280, guid: b3fb87f5d7988ee47af9e6f4681f2bc1,
+    type: 3}
+  DamageText: {fileID: 8666992473889534393, guid: a64b5620755020a4ba69acc8ac4f60b6,
     type: 3}
   AxeSoundVolume: 0.05
 --- !u!1001 &1822595328885737900

@@ -1,13 +1,14 @@
 ﻿// TODO NOW:
-
-// 8. Beta Release The Game
-
+// Always reset game session before new builds.
 
 
 
+// Tools should be on top of mined ore/ chopped wood/ fought monster
 
 
-
+// Reset Game Session
+// Change icon in android menu
+// Beta Release with all the changes included, improve google play presentation.
 
 
 
@@ -23,19 +24,24 @@
 
 // OTHER IDEAS:
 
-// Make the damage text fancy
+// X should be replaced with an Arrow (Back Button) and Map Button would be main menu one.
+
+// 111 You could pay for seeds, plant them, in that place a tree would grow for X
+// 111 amount of time and if it wasn't cut down within X time from being adult to dead, it would collapse.
+// 111 A tree growth could be visible slowly increasing in scale from young tree to adult one.
+
+
+// Fix rotation problem, Sometimes tool rotates backwards infinitly
 
 // Randomize Mob Health.
 
-// Make all the text look better.
+// Instead of healthbar in ore/wood add fade away disappear effect with health decrease
+
+// Before adding anything make backup, organize your code as good as you can and make sure everything still works.
 
 // Add a few more ideas before releasing full version.
 
-// 4. Replace dark sprites for scenes, buttons in main menu etc, with sprites that are easily visible even on low brightness phone
-
 // You can remove current damage from ore and wood because it doesnt exist in healthbar.
-
-// 6. Sometimes tool rotates backwards infinitly
 
 // 3. Tool should smoothly travel towards a tree or tool should travel where pressed, and then checked if pressed on an object? and attack when pressed?
 
