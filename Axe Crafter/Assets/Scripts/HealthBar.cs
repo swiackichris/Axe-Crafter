@@ -28,13 +28,11 @@ public class HealthBar : MonoBehaviour {
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 219f;
+    private float RotationSpeed = 219f; // TODO this might be the cause of unlimited rotation bug
     private float UpgradeToolMultiplier = 1.05f;
 
     private void Start()
     {
-
-        // CurrentHealth initialisation
         CurrentHealth = mobStats.GetMaxHealth();
         MobInstatiate();
         CurrentAxe = CurrentAxeLevel();
@@ -43,6 +41,7 @@ public class HealthBar : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
         ToolAnimation();
     }
 
@@ -50,12 +49,10 @@ public class HealthBar : MonoBehaviour {
     {
         canAnimate = true;
 
-        Hit();
+        // Checks if position close to a monster is clicked
+        if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
-        if (CurrentHealth <= -1)
-        {
-            EarnGoldAndReset(i);
-        }
+        if (CurrentHealth <= -1) { EarnGoldAndReset(i); }
     }
 
     private void EarnGoldAndReset(int i)
@@ -96,6 +93,9 @@ public class HealthBar : MonoBehaviour {
             ShowDamageText();
         }
     }
+
+    private float HitCheckX() { return Mathf.Abs((Input.GetTouch(0).position.x / Screen.width * 18) - mob.transform.position.x); }
+    private float HitCheckY() { return Mathf.Abs((Input.GetTouch(0).position.y / Screen.height * 32) - mob.transform.position.y); }
 
     // Spawn ore at a position
     public void MobInstatiate()
@@ -173,9 +173,9 @@ public class HealthBar : MonoBehaviour {
 
     public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
     public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
-    public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
-    public int RandomPY() { return UnityEngine.Random.Range(2, 10); }
-    public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
+    public int RandomPX() { return UnityEngine.Random.Range(7, 12); }
+    public int RandomPY() { return UnityEngine.Random.Range(7, 12); }
+    public float RandomScale() { return UnityEngine.Random.Range(-0.2f, 0.2f); }
     public int RandomXOffset() { return UnityEngine.Random.Range(-1, 3); }
     public int RandomYOffset() { return UnityEngine.Random.Range(4, 8); }
     public float RandomDamageMultiplier() { return UnityEngine.Random.Range(0.5f, 1.5f); }

@@ -42,6 +42,7 @@ public class Ore : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.touchCount > 0) { pickaxe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
         ToolAnimation();
     }
 
@@ -50,7 +51,8 @@ public class Ore : MonoBehaviour {
     {
         canAnimate = true;
 
-        Hit();
+        // Checks if position close to a monster is clicked
+        if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
         if (CurrentHealth <= 0)
         {
@@ -78,6 +80,9 @@ public class Ore : MonoBehaviour {
             ShowDamageText();
         }
     }
+
+    private float HitCheckX() { return Mathf.Abs((Input.GetTouch(0).position.x / Screen.width * 18) - ore.transform.position.x); }
+    private float HitCheckY() { return Mathf.Abs((Input.GetTouch(0).position.y / Screen.height * 32) - ore.transform.position.y); }
 
     // Spawn ore with a random scale and position
     public void OreInstantiate()
@@ -163,8 +168,8 @@ public class Ore : MonoBehaviour {
     }
 
     public int CurrentPickLevel() { return gameSession.GetPickLevel(); }
-    public int RandomPX() { return UnityEngine.Random.Range(2, 16); }
-    public int RandomPY() { return UnityEngine.Random.Range(4, 20); }
+    public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
+    public int RandomPY() { return UnityEngine.Random.Range(6, 20); }
     public float RandomScale() { return UnityEngine.Random.Range(-0.33f, 0.33f); }
     public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
     public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }

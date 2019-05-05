@@ -1,19 +1,12 @@
 ﻿// TODO NOW:
-// Always reset game session before new builds.
 
-
-
-// Tools should be on top of mined ore/ chopped wood/ fought monster
-
+// Change icon in android menu
+// Improve google play presentation.
 
 // Reset Game Session
-// Change icon in android menu
-// Beta Release with all the changes included, improve google play presentation.
+// Remove Commented Code from HealthBar
 
-
-
-
-
+// Why Clicking on a sprite doesn't mine an object
 
 
 
@@ -23,6 +16,12 @@
 
 
 // OTHER IDEAS:
+
+// Make it so you can't damage a monster/ore/wood when the tool blade is hitting too far ahead.
+
+// Add a way to mute music
+
+// Beta release until you add enough content to add transactions and ads.
 
 // X should be replaced with an Arrow (Back Button) and Map Button would be main menu one.
 

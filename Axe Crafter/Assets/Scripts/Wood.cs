@@ -41,6 +41,7 @@ public class Wood : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
         ToolAnimation();
     }
 
@@ -49,7 +50,8 @@ public class Wood : MonoBehaviour {
     {
         canAnimate = true;
 
-        Hit();
+        // Checks if position close to a monster is clicked
+        if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
         if (CurrentHealth <= 0)
         {
@@ -77,6 +79,9 @@ public class Wood : MonoBehaviour {
             ShowDamageText();
         }
     }
+
+    private float HitCheckX() { return Mathf.Abs((Input.GetTouch(0).position.x / Screen.width * 18) - wood.transform.position.x); }
+    private float HitCheckY() { return Mathf.Abs((Input.GetTouch(0).position.y / Screen.height * 32) - wood.transform.position.y); }
 
     // Spawn wood at a position
     public void WoodInstantiate()
@@ -161,7 +166,7 @@ public class Wood : MonoBehaviour {
     }
 
     public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
-    public int RandomPX() { return UnityEngine.Random.Range(4, 14); }
+    public int RandomPX() { return UnityEngine.Random.Range(6, 14); }
     public int RandomPY() { return UnityEngine.Random.Range(8, 16); }
     public float RandomScale() { return UnityEngine.Random.Range(-0.25f, 0.25f); }
     public int RandomRotation() { return UnityEngine.Random.Range(0, 360); }
