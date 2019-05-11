@@ -17,7 +17,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int PickUpgradeCounter = 0;                                // Current pick upgrade level (max is +9 for each pick)
 
     // Axe variables
-    [SerializeField] TextMeshProUGUI[] WoodChoppedText;
+    [SerializeField] TextMeshProUGUI[] WoodChoppedText;                         // Displays amount of wood currently owned
     [SerializeField] int[] ChoppedWoodCounter;                                  // Amount of wood currently owned
     [SerializeField] private AxePrices[] axePricesScriptPrefab;                 // Temporary Solution
     [SerializeField] int AxeLevel = 0;                                          // Current axe level
@@ -176,18 +176,21 @@ public class GameSession : MonoBehaviour
         GoldText.text = Math.Round(Gold, 1).ToString();
     }
 
+    // Deducts ore for unlocking mine levels
     public void PayMaterialsForMineUnlock(int i)
     {
         MinedOreCounter[i] -= mineLevelManagerScriptPrefab.GetLevelUnlockOre(i);
         CurrentMineLevel += 1;
     }
 
+    // Deducts wood for unlocking forest levels
     public void PayMaterialsForForestUnlock(int i)
     {
         ChoppedWoodCounter[i] -= forestLevelManagerScriptPrefab.GetLevelUnlockWood(i);
         CurrentForestLevel += 1;
     }   
 
+    // Deducts gold for unlocking battle levels
     public void PayMaterialsForBattleUnlock(int i)
     {
         Gold -= battleLevelManagerScriptPrefab.GetLevelUnlockGold(i);

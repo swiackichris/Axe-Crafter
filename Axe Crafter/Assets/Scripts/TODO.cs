@@ -2,11 +2,11 @@
 
 // Reset Game Session every release.
 
+// Work on code making it as good as possible.
+
 // Use Sprite Masks to modify resource indicators in crafting. Put the sprites in little squares with rounded edges
 
 // Work a little more on visuals
-
-// Work on code making it as good as possible.
 
 
 

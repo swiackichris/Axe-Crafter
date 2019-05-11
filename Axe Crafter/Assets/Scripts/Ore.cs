@@ -12,38 +12,41 @@ public class Ore : MonoBehaviour {
     [SerializeField] GameObject [] PickaxePrefabs;                          
     [SerializeField] ParticleSystem PickingParticle;
     [SerializeField] GameObject DamageText;
-    GameObject ore;                                                         // Required for Button to know which object should be destroyed.
+    GameObject ore;                                                         
     GameObject pickaxe;
     GameObject dmgtxt;
 
     [SerializeField] [Range(0, 1)] float PickSoundVolume = 1f;
 
-    private float CurrentHealth;                                              // current ore health
-    private float CurrentPickaxeDamage;                                     // damage applied to ore
+    private float CurrentHealth;                                            
+    private float CurrentPickaxeDamage;                                     
 
-    bool canHit = true;                                                     // required to stop mining when ore is depleted
+    bool canHit = true;                                                     
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 219f;
+    private float RotationSpeed = 200f;
     private float UpgradeToolMultiplier = 1.05f;
 
 
     private void Start()
     {
         CurrentHealth = oreStats.GetOreHealth();
-
-        // TODO Could possibly add Math.Round to round the number
         CurrentPickaxeDamage = pickStats[gameSession.GetPickLevel()].GetPickaxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetPickUpgradeCounter());
-
         OreInstantiate();
         PickaxeInstantiate();
     }
 
     private void Update()
     {
-        if (Input.touchCount > 0) { pickaxe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
+        MoveToolOnTouch();
         ToolAnimation();
+    }
+
+    // Moves currently used tool to touch position
+    private void MoveToolOnTouch()
+    {
+        if (Input.touchCount > 0) { pickaxe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
     }
 
     // Each function is attached to pickaxe in different scene, so that it is possible to count and save the amount of different types of ores mined.
@@ -107,11 +110,12 @@ public class Ore : MonoBehaviour {
         print("pickaxe = Instantiate");
     }
 
+    // Shows damage numbers on screen
     public void ShowDamageText()
     {
         dmgtxt = Instantiate(
         DamageText,
-        new Vector2(ore.transform.position.x + RandomXOffset(), ore.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        new Vector2(ore.transform.position.x + RandomXOffset(), ore.transform.position.y + RandomYOffset()),
         Quaternion.identity,
         transform);
 
@@ -122,11 +126,7 @@ public class Ore : MonoBehaviour {
     IEnumerator DestroyAndSpawn()
     {
         canHit = false;
-
-        // Destroys ore created in void Start();
         Destroy(ore);
-
-        // Resets health for new ore
         CurrentHealth = oreStats.GetOreHealth();
 
         // Wait time before new ore spawns, so that it can't be damaged while it hasn't spawned
@@ -136,12 +136,11 @@ public class Ore : MonoBehaviour {
         // Initializes pick damage after it has been reduced to 0
         CurrentPickaxeDamage = pickStats[gameSession.GetPickLevel()].GetPickaxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetPickUpgradeCounter());
 
-        // Spawns ore
         OreInstantiate();
-
         canHit = true;
     }
 
+    // Animates tool on touch
     private void ToolAnimation()
     {
         if (canAnimate)
@@ -155,16 +154,12 @@ public class Ore : MonoBehaviour {
                 }
             }
 
-            if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 5)
+            if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 0)
             {
                 pickaxe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                print(pickaxe.transform.rotation.eulerAngles.z);
-                if (pickaxe.transform.rotation.eulerAngles.z <= 5 || pickaxe.transform.rotation.eulerAngles.z >= 180)
+                if (pickaxe.transform.rotation.eulerAngles.z <= 0 || pickaxe.transform.rotation.eulerAngles.z >= 180)
                 {
-                    // Set Z Rotation to 1;
-                    pickaxe.transform.eulerAngles = new Vector3(0, 0, 1);
-                    print(pickaxe.transform.rotation.eulerAngles.z);
-
+                    pickaxe.transform.eulerAngles = new Vector3(0, 0, 0);
                     canRotate = true;
                     canAnimate = false;
                 }

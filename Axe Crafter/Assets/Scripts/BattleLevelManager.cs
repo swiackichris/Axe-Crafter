@@ -8,10 +8,10 @@ using TMPro;
 public class BattleLevelManager : MonoBehaviour
 {
 
-    [SerializeField] Button[] BattleLevelsButton;
-    [SerializeField] Button[] BattleLevelsResourceButton;
-    [SerializeField] TextMeshProUGUI[] BattleResourceText;
-    [SerializeField] TextMeshProUGUI CurrentGoldText;
+    [SerializeField] Button[] BattleLevelsButton;                        
+    [SerializeField] Button[] BattleLevelsResourceButton;                   
+    [SerializeField] TextMeshProUGUI[] BattleResourceText;                     
+    [SerializeField] TextMeshProUGUI CurrentGoldText;                     
 
     [SerializeField] GameSession gameSessionScriptPrefab;
 
@@ -34,7 +34,7 @@ public class BattleLevelManager : MonoBehaviour
         {
             BattleLevelsButton[i].interactable = true;
             BattleLevelsResourceButton[i].interactable = false;
-            BattleResourceText[i].text = null; // You might want to delete this later
+            BattleResourceText[i].text = null; // TODO delete or keep
         }
     }
 
@@ -55,7 +55,7 @@ public class BattleLevelManager : MonoBehaviour
             // Deducts resources required for unlocking the level
             gameSessionScriptPrefab.PayMaterialsForBattleUnlock(i-1);
 
-            // Displays resources required text for next level
+            // Displays resources required for next level
             DisplayBattleResourceText();
 
             // Displays button to pay resources for next level

@@ -24,11 +24,11 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] private GameSession gameSession;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    bool canHit = true;                                                    // required to stop mining when ore is depleted
+    bool canHit = true;                                                     // Required to stop mining when ore is depleted
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 219f; // TODO this might be the cause of unlimited rotation bug
+    private float RotationSpeed = 200f;
     private float UpgradeToolMultiplier = 1.05f;
 
     private void Start()
@@ -41,8 +41,14 @@ public class HealthBar : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
+        MoveToolOnTouch();
         ToolAnimation();
+    }
+
+    // Moves currently used tool to touch position
+    private void MoveToolOnTouch()
+    {
+        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
     }
 
     public void Attack(int i)
@@ -69,6 +75,7 @@ public class HealthBar : MonoBehaviour {
         // Plays a particle effect
         Instantiate(DeadParticle, mob.transform.position, Quaternion.identity);
 
+        // Destroys mob prefab, waits and instantiates it again
         StartCoroutine(DestroyAndSpawn());
     }
 
@@ -112,20 +119,13 @@ public class HealthBar : MonoBehaviour {
     IEnumerator DestroyAndSpawn()
     {
         canHit = false;
-
-        // Destroys prefab created;
         Destroy(mob);
-
-        // TODO you could randomize it in the future
         yield return new WaitForSeconds(RandomSpawnTime());
-
-        // Spawns ore
         MobInstatiate();
-
         canHit = true;
     }
 
-    // Spawn currently owned axe at a position
+    // Spawns currently owned axe at a position
     public void AxeInstantiate()
     {
         axe = Instantiate(
@@ -135,19 +135,19 @@ public class HealthBar : MonoBehaviour {
         print("axe = Instantiate");
     }
 
+    // Shows damage numbers on screen
     public void ShowDamageText()
     {
         dmgtxt = Instantiate(
         DamageText,
-        new Vector2 (mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        new Vector2 (mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()),
         Quaternion.identity,
         transform);
 
         dmgtxt.GetComponent<TextMesh>().text = Math.Round(axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()), 1).ToString();
     }
 
-
-    // TODO this might possibly be improved
+    // Animates tool on touch
     private void ToolAnimation()
     {
         if (canAnimate)
@@ -161,16 +161,12 @@ public class HealthBar : MonoBehaviour {
                 }
             }
 
-            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 5)
+            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 0)
             {
                 axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                print(axe.transform.rotation.eulerAngles.z);
-                if (axe.transform.rotation.eulerAngles.z <= 5 || axe.transform.rotation.eulerAngles.z >= 180)
+                if (axe.transform.rotation.eulerAngles.z <= 0 || axe.transform.rotation.eulerAngles.z >= 180)
                 {
-                    // Set Z Rotation to 1;
-                    axe.transform.eulerAngles = new Vector3(0, 0, 1);
-                    print(axe.transform.rotation.eulerAngles.z);
-
+                    axe.transform.eulerAngles = new Vector3(0, 0, 0);
                     canRotate = true;
                     canAnimate = false;
                 }

@@ -5,44 +5,47 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour {
 
-    [SerializeField] private WoodStats woodStats;                           // Should be the same as WoodPrefab
-    [SerializeField] GameObject WoodPrefab;                                 // Wood prefab to be instatiated and chopped
+    [SerializeField] private WoodStats woodStats;                           
+    [SerializeField] GameObject WoodPrefab;                                 
     [SerializeField] private GameSession gameSession;
-    [SerializeField] private AxeStats[] axeStats;                           // Should be the same as AxePrefab TODO these could be deleted
-    [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
+    [SerializeField] private AxeStats[] axeStats;                           // TODO check if these could be deleted
+    [SerializeField] GameObject[] AxePrefabs;                               
     [SerializeField] ParticleSystem ChoppingParticle;
     [SerializeField] GameObject DamageText;
-    GameObject wood;                                                        // Required for Button to know which object should be destroyed.
+    GameObject wood;                                                        
     GameObject axe;
     GameObject dmgtxt;
 
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    private float CurrentHealth;                                              // How much health currently chopped wood has
-    private float CurrentAxeDamage;                                           // How much damage we apply to currently chopped wood
+    private float CurrentHealth;                                            
+    private float CurrentAxeDamage;                                         
 
-    bool canHit = true;                                                    // required to stop mining when wood is depleted
+    bool canHit = true;                                                     
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 219f;
+    private float RotationSpeed = 200f;
     private float UpgradeToolMultiplier = 1.05f;
 
     private void Start()
     {
         CurrentHealth = woodStats.GetWoodHealth();
-
-        // TODO Could possibly add Math.Round to round the number
         CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
-
         WoodInstantiate();
         AxeInstantiate();
     }
 
     private void Update()
     {
-        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
+        MoveToolOnTouch();
         ToolAnimation();
+    }
+
+    // Moves currently used tool to touch position
+    private void MoveToolOnTouch()
+    {
+        if (Input.touchCount > 0) { axe.transform.position = new Vector3(Input.GetTouch(0).position.x / Screen.width * 18, Input.GetTouch(0).position.y / Screen.height * 32, 0); }
     }
 
     // Each function is attached to axe in different scene/mine, so that it is possible to count and save the amount of different types of ores mined.
@@ -105,11 +108,12 @@ public class Wood : MonoBehaviour {
         print("axe = Instantiate");
     }
 
+    // Shows damage numbers on screen
     public void ShowDamageText()
     {
         dmgtxt = Instantiate(
         DamageText,
-        new Vector2(wood.transform.position.x + RandomXOffset(), wood.transform.position.y + RandomYOffset()), // TODO position needs a little tweaking
+        new Vector2(wood.transform.position.x + RandomXOffset(), wood.transform.position.y + RandomYOffset()),
         Quaternion.identity,
         transform);
 
@@ -120,11 +124,7 @@ public class Wood : MonoBehaviour {
     IEnumerator DestroyAndSpawn()
     {
         canHit = false;
-
-        // Destroys wood created in void Start();
         Destroy(wood);
-
-        // Resets health for new wood
         CurrentHealth = woodStats.GetWoodHealth();
 
         // Wait time before new wood spawns, so that it can't be damaged while it hasn't spawned
@@ -134,13 +134,11 @@ public class Wood : MonoBehaviour {
         // Initializes axe damage after it has been reduced to 0
         CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
 
-        // Spawns wood
         WoodInstantiate();
-
         canHit = true;
     }
 
-    // TODO this might possibly be improved
+    // Animates tool on touch
     private void ToolAnimation()
     {
         if (canAnimate)
@@ -154,16 +152,12 @@ public class Wood : MonoBehaviour {
                 }
             }
 
-            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 5)
+            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 0)
             {
                 axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                print(axe.transform.rotation.eulerAngles.z);
-                if (axe.transform.rotation.eulerAngles.z <= 5 || axe.transform.rotation.eulerAngles.z >= 180)
+                if (axe.transform.rotation.eulerAngles.z <= 0 || axe.transform.rotation.eulerAngles.z >= 180)
                 {
-                    // Set Z Rotation to 1;
-                    axe.transform.eulerAngles = new Vector3(0, 0, 1);
-                    print(axe.transform.rotation.eulerAngles.z);
-
+                    axe.transform.eulerAngles = new Vector3(0, 0, 0);
                     canRotate = true;
                     canAnimate = false;
                 }

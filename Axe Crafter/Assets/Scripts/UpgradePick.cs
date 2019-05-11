@@ -13,11 +13,11 @@ public class UpgradePick : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI PickUpgradeLevelText;                          // Displays current pick upgrade
     [SerializeField] TextMeshProUGUI[] PickUpgradePriceText;                        // Displays price required to ugprade pickaxe once upgrade hits +9
-    [SerializeField] TextMeshProUGUI PickUpgradeGoldCostText;
-    [SerializeField] TextMeshProUGUI HardnessText;
+    [SerializeField] TextMeshProUGUI PickUpgradeGoldCostText;                       // Displays current upgrade gold cost
+    [SerializeField] TextMeshProUGUI HardnessText;                                  // Displays current tool hardness
 
-    [SerializeField] TextMeshProUGUI ToolNameText;
-    [SerializeField] String[] ToolName;
+    [SerializeField] TextMeshProUGUI ToolNameText;                                  // Displays currently used tool name
+    [SerializeField] String[] ToolName;                                             // Array including names of tools
 
     [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
@@ -29,21 +29,21 @@ public class UpgradePick : MonoBehaviour
     [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;             // Pickaxe prefabs required to get their attributes
     [SerializeField] private PickaxeStats[] pickaxeStatsScriptPrefab;               // Pickaxe prefabs required to get their attributes
 
-    [SerializeField] Button UpgradeButton;
+    [SerializeField] Button UpgradeButton;                                          // UpgradeButton prefab
 
-    [SerializeField] Image OrePriceImage;
-    [SerializeField] Sprite[] OreSprites;
+    [SerializeField] Image OrePriceImage;                                           // Image required to display ore price
+    [SerializeField] Sprite[] OreSprites;                                           // Sprites to be displayed in price image
 
-    [SerializeField] Image WoodPriceImage;
-    [SerializeField] Sprite[] WoodSprites;
+    [SerializeField] Image WoodPriceImage;                                          // Image required to display wood price
+    [SerializeField] Sprite[] WoodSprites;                                          // Sprites to be displayed in price image
 
-    [SerializeField] AudioClip CraftingSound;
-    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;
+    [SerializeField] AudioClip CraftingSound;                                       // Crafting sound
+    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;                  // Crafting sound volume
 
     private int CraftToolMultiplier = 5;
     private float UpgradeToolMultiplier = 1.05f;
 
-    int PARAMETER = 0; // Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
+    int PARAMETER = 0; // TODO Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
 
     private void Start()
     {

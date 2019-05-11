@@ -27,7 +27,7 @@ public class MineLevelManager : MonoBehaviour {
         {
             MineLevelsButton[i].interactable = true;
             MineLevelsResourceButton[i].interactable = false;
-            MineResourceText[i].text = null; // You might want to delete this later
+            MineResourceText[i].text = null; // TODO You might want to delete this later
         }
     }
 

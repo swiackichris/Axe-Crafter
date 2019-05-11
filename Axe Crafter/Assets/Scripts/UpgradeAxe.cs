@@ -11,36 +11,36 @@ using UnityEngine.UI;
 
 public class UpgradeAxe : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI AxeUpgradeLevelText;                          // Displays current axe upgrade
-    [SerializeField] TextMeshProUGUI[] AxeUpgradePriceText;                        // Displays price required to ugprade axe once upgrade hits +9
-    [SerializeField] TextMeshProUGUI AxeUpgradeGoldCostText;
-    [SerializeField] TextMeshProUGUI HardnessText;
+    [SerializeField] TextMeshProUGUI AxeUpgradeLevelText;                           // Displays current axe upgrade
+    [SerializeField] TextMeshProUGUI[] AxeUpgradePriceText;                         // Displays price required to ugprade axe once upgrade hits +9
+    [SerializeField] TextMeshProUGUI AxeUpgradeGoldCostText;                        // Displays current upgrade gold cost
+    [SerializeField] TextMeshProUGUI HardnessText;                                  // Displays current tool hardness
 
-    [SerializeField] TextMeshProUGUI ToolNameText;
-    [SerializeField] String[] ToolName;
+    [SerializeField] TextMeshProUGUI ToolNameText;                                  // Displays currently used tool name
+    [SerializeField] String[] ToolName;                                             // Array including names of tools
 
     [SerializeField] TextMeshProUGUI InsufficientMaterialsText;                     // Displays "Insufficient Materials"
 
-    GameObject Axe;                                                             // Required to destroy axe sprites
+    GameObject Axe;                                                                 // Required to destroy axe sprites
 
-    [SerializeField] GameObject[] AxeSprite;                                    // Array of axe prefabs to instatiate
+    [SerializeField] GameObject[] AxeSprite;                                        // Array of axe prefabs to instatiate
 
     [SerializeField] private GameSession gameSessionScriptPrefab;                   // GameSession prefab required for it's attributes
-    [SerializeField] private AxePrices[] axePricesScriptPrefab;             // axe prefabs required to get their attributes
-    [SerializeField] private AxeStats[] axeStatsScriptPrefab;               // axe prefabs required to get their attributes
+    [SerializeField] private AxePrices[] axePricesScriptPrefab;                     // Axe prefabs required to get their attributes
+    [SerializeField] private AxeStats[] axeStatsScriptPrefab;                       // Axe prefabs required to get their attributes
 
-    [SerializeField] Button UpgradeButton;
+    [SerializeField] Button UpgradeButton;                                          // UpgradeButton prefab
 
-    [SerializeField] Image OrePriceImage;
-    [SerializeField] Sprite[] OreSprites;
+    [SerializeField] Image OrePriceImage;                                           // Image required to display ore price
+    [SerializeField] Sprite[] OreSprites;                                           // Sprites to be displayed in price image
 
-    [SerializeField] Image WoodPriceImage;
-    [SerializeField] Sprite[] WoodSprites;
+    [SerializeField] Image WoodPriceImage;                                          // Image required to display wood price
+    [SerializeField] Sprite[] WoodSprites;                                          // Sprites to be displayed in price image
 
-    [SerializeField] AudioClip CraftingSound;
-    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;
+    [SerializeField] AudioClip CraftingSound;                                       // Crafting sound
+    [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;                  // Crafting sound volume
 
-    int PARAMETER = 0; // Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
+    int PARAMETER = 0; // TODO Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
 
     private int CraftToolMultiplier = 5;
     private float UpgradeToolMultiplier = 1.05f;
