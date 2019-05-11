@@ -140,6 +140,7 @@ public class Wood : MonoBehaviour {
         canHit = true;
     }
 
+    // TODO this might possibly be improved
     private void ToolAnimation()
     {
         if (canAnimate)
@@ -156,8 +157,13 @@ public class Wood : MonoBehaviour {
             else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 5)
             {
                 axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z <= 5)
+                print(axe.transform.rotation.eulerAngles.z);
+                if (axe.transform.rotation.eulerAngles.z <= 5 || axe.transform.rotation.eulerAngles.z >= 180)
                 {
+                    // Set Z Rotation to 1;
+                    axe.transform.eulerAngles = new Vector3(0, 0, 1);
+                    print(axe.transform.rotation.eulerAngles.z);
+
                     canRotate = true;
                     canAnimate = false;
                 }

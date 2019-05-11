@@ -158,8 +158,13 @@ public class Ore : MonoBehaviour {
             if (!canRotate && pickaxe.transform.rotation.eulerAngles.z >= 5)
             {
                 pickaxe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (pickaxe.transform.rotation.eulerAngles.z <= 5)
+                print(pickaxe.transform.rotation.eulerAngles.z);
+                if (pickaxe.transform.rotation.eulerAngles.z <= 5 || pickaxe.transform.rotation.eulerAngles.z >= 180)
                 {
+                    // Set Z Rotation to 1;
+                    pickaxe.transform.eulerAngles = new Vector3(0, 0, 1);
+                    print(pickaxe.transform.rotation.eulerAngles.z);
+
                     canRotate = true;
                     canAnimate = false;
                 }

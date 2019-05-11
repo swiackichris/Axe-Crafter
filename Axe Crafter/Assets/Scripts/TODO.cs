@@ -1,12 +1,13 @@
 ﻿// TODO NOW:
 
-// Change icon in android menu
-// Improve google play presentation.
+// Reset Game Session every release.
 
-// Reset Game Session
-// Remove Commented Code from HealthBar
+// Use Sprite Masks to modify resource indicators in crafting. Put the sprites in little squares with rounded edges
 
-// Why Clicking on a sprite doesn't mine an object
+// Work a little more on visuals
+
+// Work on code making it as good as possible.
+
 
 
 
