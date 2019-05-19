@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 777063291001363298}
   - component: {fileID: 6120352692642097992}
   m_Layer: 5
-  m_Name: Pick Crafting Text
+  m_Name: PickCraftingTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Pick Crafting
+  m_text: 'Axe Crafting
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 306b07ed40fa80f46b24587f222f2ac1, type: 2}
   m_sharedMaterial: {fileID: 21219192757196648, guid: 306b07ed40fa80f46b24587f222f2ac1,
@@ -137,7 +139,7 @@ MonoBehaviour:
     textComponent: {fileID: 6120352692642097992}
     characterCount: 13
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1

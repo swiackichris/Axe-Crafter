@@ -45,7 +45,8 @@ public class GameSession : MonoBehaviour
         // Initialization of displayed text
         GoldText.text = Math.Round(Gold, 1).ToString();
 
-        /// TODO if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
+        // Checks if both arrays are of equal size, it's necessary to save properly.
+        // TODO uncomment if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
 
         // Checks if both arrays are of equal size, it's necessary to save properly.
         if (MinedOreCounter.Length != OreMinedText.Length) { Debug.LogError("MinedOreCounter.Length should be equal to OreMinedText.Length"); }

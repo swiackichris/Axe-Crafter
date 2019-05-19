@@ -44,12 +44,6 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.LoadScene("BattleSelectionScreen");
     }
 
-    // CRAFTING SELECTION
-    public void LoadCraftingSelection()
-    {
-        SceneManager.LoadScene("Crafting Selection");
-    }
-
     // CRAFTING PICKAXES
     public void LoadPickCraftingScreen()
     {

@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1001196186914377255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001196186914377253}
+  - component: {fileID: 1001196186914377252}
+  m_Layer: 0
+  m_Name: Upgrade Axe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001196186914377253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001196186914377255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 176.29039, y: 406.65448, z: 3.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001196186914377252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001196186914377255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74165a47f2ae266438f9363533b3efbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AxeUpgradeLevelText: {fileID: 0}
+  AxeUpgradePriceText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AxeUpgradeGoldCostText: {fileID: 0}
+  HardnessText: {fileID: 0}
+  ToolNameText: {fileID: 0}
+  ToolName:
+  - Stone
+  - Clay Axe
+  - Bone Axe
+  - Stone Axe
+  - Flint Axe
+  - Aluminium Axe
+  - Iron Axe
+  - Silver Axe
+  - Golden Axe
+  - Platinum Axe
+  InsufficientMaterialsText: {fileID: 0}
+  AxeSprite:
+  - {fileID: 1185586684066840, guid: 7bbe022dd8d75ad4c91509d4db0c8ad0, type: 3}
+  - {fileID: 1826718030452322, guid: 01bc0a33efd6f9b4f832f81092d1a6a5, type: 3}
+  - {fileID: 1016236700166820, guid: df3aa739b0b6491408333a1dbdb589d3, type: 3}
+  - {fileID: 1738813281025114, guid: 8d142d42ede48cc4bb40ede98532438e, type: 3}
+  - {fileID: 1502937147274802, guid: e4842db7920ba8543b4db8c3972f74a3, type: 3}
+  - {fileID: 1475736352178022, guid: 24806671b2f2e414eb267e2f6fe58878, type: 3}
+  - {fileID: 1381857346688530, guid: 4862281afc26b294181c068c23c2d1be, type: 3}
+  - {fileID: 1439974310633600, guid: 58bcf6af15e2e3946a8d9c905803cf25, type: 3}
+  - {fileID: 1130686063722232, guid: 931cd4c8e09f03e4aac72a49a634a386, type: 3}
+  - {fileID: 1360643748511844, guid: c191c9a2b5359594283349abad05c23d, type: 3}
+  gameSessionScriptPrefab: {fileID: 0}
+  axePricesScriptPrefab:
+  - {fileID: 114994385526073678, guid: c2eccd38c0cc7a04ebf4c419f4124418, type: 3}
+  - {fileID: 114860669217715476, guid: ea8323657b7c4a34da4a6b7c848b8767, type: 3}
+  - {fileID: 114037928906686822, guid: 6636591d8fac09b48b696d3df0e1c442, type: 3}
+  - {fileID: 114410673926957294, guid: 2c80880f881f54349b670603653675ab, type: 3}
+  - {fileID: 114289327117047574, guid: 8a0ac24594a828d45a44b1e866c70f0d, type: 3}
+  - {fileID: 114860849118083816, guid: 643d7bf017737754c8ce27ec79a56c1b, type: 3}
+  - {fileID: 114460568940968082, guid: 4b6c47cc72717f6409107087f635c96e, type: 3}
+  - {fileID: 114754534985180402, guid: 577e07806edcc0f45b9a9816a16a5b92, type: 3}
+  - {fileID: 114121744006559284, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 3}
+  - {fileID: 114821338936232476, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
+  axeStatsScriptPrefab:
+  - {fileID: 114518083718916348, guid: 7bbe022dd8d75ad4c91509d4db0c8ad0, type: 3}
+  - {fileID: 114314321603013480, guid: 01bc0a33efd6f9b4f832f81092d1a6a5, type: 3}
+  - {fileID: 114170746622392042, guid: df3aa739b0b6491408333a1dbdb589d3, type: 3}
+  - {fileID: 114342284758074168, guid: 8d142d42ede48cc4bb40ede98532438e, type: 3}
+  - {fileID: 114060362914895422, guid: e4842db7920ba8543b4db8c3972f74a3, type: 3}
+  - {fileID: 114447124444247818, guid: 24806671b2f2e414eb267e2f6fe58878, type: 3}
+  - {fileID: 114011925790059956, guid: 4862281afc26b294181c068c23c2d1be, type: 3}
+  - {fileID: 114745258121516038, guid: 58bcf6af15e2e3946a8d9c905803cf25, type: 3}
+  - {fileID: 114648726618616866, guid: 931cd4c8e09f03e4aac72a49a634a386, type: 3}
+  - {fileID: 114535099855760386, guid: c191c9a2b5359594283349abad05c23d, type: 3}
+  UpgradeButton: {fileID: 0}
+  OrePriceImage: {fileID: 0}
+  OreSprites:
+  - {fileID: 21300000, guid: 448339ca3a8c2c54e8a3d3df5f9dece7, type: 3}
+  - {fileID: 21300000, guid: 40aea65963821b9408027cc8f06766f9, type: 3}
+  - {fileID: 21300000, guid: 0ac9be1507620104b967a8b15d12ab3e, type: 3}
+  - {fileID: 21300000, guid: 33d796951ff18654e8839b4438f0d85a, type: 3}
+  - {fileID: 21300000, guid: 9a61131304cfc904190da3f84f12e782, type: 3}
+  - {fileID: 21300000, guid: ae302c5e0669bd649bece82c626a3552, type: 3}
+  - {fileID: 21300000, guid: 543636552c35ed84bb6c15163135dc3f, type: 3}
+  - {fileID: 21300000, guid: aff6a4609649dca48914e233eafa186d, type: 3}
+  - {fileID: 21300000, guid: cbb6c01d06d2cd24b97d77fcfa1494b1, type: 3}
+  - {fileID: 21300000, guid: 87a7348fd5ee8bd4e85e43486bf149b2, type: 3}
+  WoodPriceImage: {fileID: 0}
+  WoodSprites:
+  - {fileID: 21300000, guid: 717cab301cc57cc4eae0502f1b0381be, type: 3}
+  - {fileID: 21300000, guid: a84a92afcff830848ad4fe018cb542f7, type: 3}
+  - {fileID: 21300000, guid: df063bd85feb59248a36cf326014faf0, type: 3}
+  - {fileID: 21300000, guid: 22d64e4989b05634eb8f290c2a307e5f, type: 3}
+  - {fileID: 21300000, guid: 1b2adc52de89da047bd41222cf48d3b3, type: 3}
+  - {fileID: 21300000, guid: a4d303407f85426488709d7ec1763ef4, type: 3}
+  - {fileID: 21300000, guid: 1b32d6a73b59e3145af5b3c9eb785dfe, type: 3}
+  - {fileID: 21300000, guid: 7542b5888027df24fac86236877e268b, type: 3}
+  - {fileID: 21300000, guid: 68175c6489fbd5d44a1549b2dd90a8f0, type: 3}
+  - {fileID: 21300000, guid: db6e0e2f12e5f9f4d8c0f864b4969373, type: 3}
+  CraftingSound: {fileID: 8300000, guid: dbb5ef2f07d5b994cb1a3647fa7a5f1b, type: 3}
+  CraftingSoundVolume: 0.05

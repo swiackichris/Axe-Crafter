@@ -2,11 +2,13 @@
 
 // Reset Game Session every release.
 
-// Work on code making it as good as possible.
+// Figure out crafting selection
 
-// Use Sprite Masks to modify resource indicators in crafting. Put the sprites in little squares with rounded edges
+// 1. Work on Crafting screen until it's perfect.
 
-// Work a little more on visuals
+// If you haven't seen a resource it should be blacked out using color functions to change sprite color inside a sprite mask
+
+// Work on visuals until everything is perfect
 
 
 
@@ -17,6 +19,8 @@
 
 
 // OTHER IDEAS:
+
+// Could add button image changing to currently upgraded tool instead of showing whole tool in the craftin screen
 
 // Make it so you can't damage a monster/ore/wood when the tool blade is hitting too far ahead.
 
