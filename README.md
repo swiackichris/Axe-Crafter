@@ -1,4 +1,4 @@
-# ![Craft Clicker](https://play.google.com/apps/testing/com.R6DGames.CraftClicker)
+# [Craft Clicker](https://play.google.com/apps/testing/com.R6DGames.CraftClicker)
 
 Android crafting game, gather resources, upgrade your tools, fight bosses, unlock new levels. 
 I have decided to use as little assets as possible to further my skills. Most of the graphics are made by me, including all of the tools.
