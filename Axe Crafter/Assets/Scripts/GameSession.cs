@@ -131,13 +131,13 @@ public class GameSession : MonoBehaviour
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough supplies to upgrade
-            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj)
-                && axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj) > 0)
+            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj)
+                && axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj) > 0)
             {
                 print("MinedOreCounter[jj]: " + MinedOreCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) + " jj = " + jj);
 
                 // Deducts materials
-                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel+1].GetOreRequired(jj);
+                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj);
 
                 // Updates material count as a string
                 OreMinedText[jj].text = MinedOreCounter[jj].ToString();

@@ -54,7 +54,7 @@ public class Ore : MonoBehaviour {
     {
         canAnimate = true;
 
-        // Checks if position close to a monster is clicked
+        // Checks if position close to an object is clicked
         if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
         if (CurrentHealth <= 0)

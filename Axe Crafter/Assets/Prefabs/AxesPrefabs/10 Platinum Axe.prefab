@@ -58,6 +58,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -122,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OreRequired: 00000000000000000000000000000000000000000000000000000000000000003200000000000000
   WoodRequired: 00000000000000000000000000000000000000000000000000000000000000006400000000000000
-  GoldRequired: 10
+  GoldRequired: 196830

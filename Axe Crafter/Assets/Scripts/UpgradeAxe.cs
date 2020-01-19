@@ -41,6 +41,7 @@ public class UpgradeAxe : MonoBehaviour
     [SerializeField] [Range(0, 1)] float CraftingSoundVolume = 1f;                  // Crafting sound volume
 
     int PARAMETER = 0; // TODO Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
+    int maxAxeLevel = 9;
 
     private int CraftToolMultiplier = 5;
     private float UpgradeToolMultiplier = 1.05f;
@@ -111,7 +112,7 @@ public class UpgradeAxe : MonoBehaviour
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
                 // If resource price of a tool is bigger than 1, displays visual sprite of ore required.
-                if (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(jj) > 0)
+                if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(jj) > 0)
                 {
                     WoodPriceImage.overrideSprite = WoodSprites[jj];
                 }
@@ -125,7 +126,7 @@ public class UpgradeAxe : MonoBehaviour
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
                 // If resource price of a tool is bigger than 1, displays visual sprite of ore required.
-                if (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(jj) > 0)
+                if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(jj) > 0)
                 {
                     OrePriceImage.overrideSprite = OreSprites[jj];
                 }
@@ -147,7 +148,7 @@ public class UpgradeAxe : MonoBehaviour
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
-                    if (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(ii) > 0)
+                    if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(ii) > 0)
                     {
                         AxeUpgradePriceText[i].text = axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(ii).ToString();
                         print("ii: " + ii + " = " + axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(ii));
@@ -163,7 +164,7 @@ public class UpgradeAxe : MonoBehaviour
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
-                    if (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(ii) > 0)
+                    if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(ii) > 0)
                     {
                         AxeUpgradePriceText[i + 2].text = axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(ii).ToString();
                         print("ii: " + ii + " = " + axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(ii));
@@ -182,10 +183,13 @@ public class UpgradeAxe : MonoBehaviour
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough materials to perform an upgrade
-            if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(jj)
-                || gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(jj))
+            if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel)
             {
-                DisableButtonDisplayText();
+                if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetOreRequired(jj)
+                    || gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel() + 1].GetWoodRequired(jj))
+                {
+                    DisableButtonDisplayText();
+                }
             }
         }
     }
@@ -193,7 +197,7 @@ public class UpgradeAxe : MonoBehaviour
     // Possibly Change Function Name
     private void UpgradeAxeSprite()
     {
-        if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 10)
+        if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && gameSessionScriptPrefab.GetAxeUpgradeCounter() == 10)
         {
             // Pay Axe Cost
             gameSessionScriptPrefab.BuyAxe();
@@ -246,7 +250,7 @@ public class UpgradeAxe : MonoBehaviour
     // Initialises upgrade gold cost
     private void DisplayUpgradeGoldCost()
     {
-        if (gameSessionScriptPrefab.GetAxeUpgradeCounter() == 9) { AxeUpgradeGoldCostText.text = (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * CraftToolMultiplier).ToString(); }
+        if (gameSessionScriptPrefab.GetAxeLevel() < maxAxeLevel && gameSessionScriptPrefab.GetAxeUpgradeCounter() == 9) { AxeUpgradeGoldCostText.text = (axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * CraftToolMultiplier).ToString(); }
         else { AxeUpgradeGoldCostText.text = Math.Round(axePricesScriptPrefab[gameSessionScriptPrefab.GetAxeLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetAxeUpgradeCounter()), 0).ToString(); }
     }
 

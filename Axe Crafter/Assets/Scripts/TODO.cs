@@ -1,5 +1,10 @@
 ﻿// TODO NOW:
 
+// Congratulation screen on winning - do you want to continue playing ? Yes/No buttons
+// Try refactoring the code
+
+// Hand sprite has to be changed, now it doesn't even hit a thing.
+
 // Reset Game Session every release.
 
 // Figure out crafting selection
@@ -9,14 +14,6 @@
 // If you haven't seen a resource it should be blacked out using color functions to change sprite color inside a sprite mask
 
 // Work on visuals until everything is perfect
-
-
-
-
-
-
-
-
 
 // OTHER IDEAS:
 
@@ -127,97 +124,6 @@
 // MAKE PNG VERSION OF JUST RESOURCES THAT WOULD SWITCH ROTATION SIZE AND PLACE CREATION (RANDOMIZE)
 // THEY WOULD APPEAR ON TOP OF ALREADY CREATED EMPTY TEMPLATE
 
-
 /// GRAPHICS SHOULD BE PIXEL-ART MINECRAFT LIKE. POSSIBLY PICKAXES GLOW ETC SHOULD BE Better Graphics.
 /// POSSIBLY IN THE FUTURE MAKE IT POSSIBLE TO BUILD A HOME OUT OF THOSE RESOURCES.
 
-// MINES:
-// - Dirt (Level -1) - With Hand Low Quality stone
-// - Clay/Clay - With Shovel Clay
-// - Deep Dirt/Bone - With Clay Pickaxe Bone
-// - Stone - With Bone Pickaxe Stone
-// - Gravel/Flint - With Stone Pickaxe Flint
-// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
-// - Iron/Iron
-// - Silver/Silver
-// - Gold/Gold
-// - Platinum/Platinum
-// - Titanium/Titanium
-// - Diamond/Diamond
-
-// - You could copy paste resource types from albion and black desert online or other mmos as well
-
-/// Figure out where to put these
-// - Obsidian/Obsidian
-// - Emerald Pickaxe
-// - Gold
-// - Aluminium
-// - Iron
-// - Diamond
-// - Titanium
-// - Bismuth
-// - Silver
-// - Platinum
-// - Amethyst
-// - Ruby
-// - Saphhire
-
-// MONSTERS:
-// - You could copy paste from albion and black desert online or other mmos as well
-// THE MOST CLASSIC MONSTERS IN GAMES
-
-// - Cockroach
-// - Rat
-// - Snake
-// - Scorpion
-// - Tarantula
-// - Wolf
-// - Rhino
-// - Orc
-// - Golem
-// - Dragon
-
-// - Orc
-// - Troll
-// - Elf
-// - Dragon
-// - Zuk
-// - Wolf
-// - Swine
-// - Tiger
-// - Lion
-// - Elephant
-// - Hyaena
-// - Yeti
-
-// Pickaxes:
-// - Hand / Dirt
-// - Clay / Oak
-// - Bone / - Needs a Fix
-// - Stone /
-// - Gravel
-// - Alu
-// - Iron
-// - Silver
-// - Golden
-// - Platinum
-// - Titanium
-// - 
-
-// MINES:
-// - Dirt (Level -1) - With Hand Low Quality stone
-// - Clay/Clay - With Shovel Clay
-// - Deep Dirt/Bone - With Clay Pickaxe Bone
-// - Stone - With Bone Pickaxe Stone
-// - Gravel/Flint - With Stone Pickaxe Flint
-// - Aluminium/Aluminium - With Flint Pickaxe Aluminium
-
-// THINGS TO LEARN AFTER YOU FINISH THIS PROJECT:
-// - CODE STRUCTURE
-// - C# and C++ Course
-// - Unity Course
-
-// You could make repeatable levels like in Idle Heroes in Campaign with forests battle and mines.
-// Maybe you can find some monster graphics in unity free assets
-
-// Check maybe there are some tools online to pixelise graphics to make them look like minecraft

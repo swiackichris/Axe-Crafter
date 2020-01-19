@@ -57,6 +57,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -92,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5086b1e80207594bbd2a131adf48588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 128000
-  GoldReward: 196830
+  MaxHealth: 1000000
+  GoldReward: 500000
   MobSound:
   - {fileID: 8300000, guid: a8801bddc74a32043905677a530c664f, type: 3}
   - {fileID: 8300000, guid: 492d6512ba0e5bc488aeb673d73e86b6, type: 3}

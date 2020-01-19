@@ -44,13 +44,14 @@ public class UpgradePick : MonoBehaviour
     private float UpgradeToolMultiplier = 1.05f;
 
     int PARAMETER = 0; // TODO Needed to make a for function in DisplayUpgradePriceSprite and MaterialCost functions
+    int maxPickLevel = 10;
 
     private void Start()
     {
         // Spawning First Tool
         Pickaxe = Instantiate(PickaxeSprite[gameSessionScriptPrefab.GetPickLevel()], new Vector2(4, 16), Quaternion.identity) as GameObject;
 
-        // Loading ToolUpgradeCounter from a file
+        // Loading ToolUpgradeCounter from a file       
         PickUpgradeLevelText.text = gameSessionScriptPrefab.GetPickUpgradeCounter().ToString();
 
         DisplayUpgradeGoldCost();
@@ -111,7 +112,7 @@ public class UpgradePick : MonoBehaviour
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
                 // If resource price of a tool is bigger than 1, displays visual sprite of ore required.
-                if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(jj) > 0)
+                if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(jj) > 0)
                 {
                     WoodPriceImage.overrideSprite = WoodSprites[jj];
                 }
@@ -125,7 +126,7 @@ public class UpgradePick : MonoBehaviour
             for (int jj = PARAMETER; jj < 10; jj++) // Possibly add .Length method instead of 10 later
             {
                 // If resource price of a tool is bigger than 1, displays visual sprite of ore required.
-                if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(jj) > 0)
+                if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(jj) > 0)
                 {
                     OrePriceImage.overrideSprite = OreSprites[jj];
                 }
@@ -147,7 +148,7 @@ public class UpgradePick : MonoBehaviour
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
-                    if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(ii) > 0)
+                    if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(ii) > 0)
                     {
                         PickUpgradePriceText[i].text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(ii).ToString();
                         print("ii: " + ii + " = " + pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(ii));
@@ -163,7 +164,7 @@ public class UpgradePick : MonoBehaviour
             {
                 for (int ii = PARAMETER; ii < 10; ii++) // Possibly add .Length method instead of 10 later
                 {
-                    if (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(ii) > 0)
+                    if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(ii) > 0)
                     {
                         PickUpgradePriceText[i + 2].text = pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(ii).ToString();
                         print("ii: " + ii + " = " + pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(ii));
@@ -182,10 +183,13 @@ public class UpgradePick : MonoBehaviour
         for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
         {
             // Checks if we have enough materials to perform an upgrade
-            if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(jj)
-                || gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(jj))
+            if(gameSessionScriptPrefab.GetPickLevel() < maxPickLevel)
             {
-                DisableButtonDisplayText();
+                if (gameSessionScriptPrefab.GetMinedOreCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetOreRequired(jj)
+                    || gameSessionScriptPrefab.GetChoppedWoodCounter(jj) < pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel() + 1].GetWoodRequired(jj))
+                {
+                    DisableButtonDisplayText();
+                }
             }
         }
     }
@@ -193,7 +197,7 @@ public class UpgradePick : MonoBehaviour
     // Possibly Change Function Name
     private void UpgradePickaxeSprite()
     {
-        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 10)
+        if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && gameSessionScriptPrefab.GetPickUpgradeCounter() == 10)
         {
             // Pay Pickaxe Cost
             gameSessionScriptPrefab.BuyPickaxe();
@@ -246,7 +250,7 @@ public class UpgradePick : MonoBehaviour
     // Initialises upgrade gold cost
     private void DisplayUpgradeGoldCost()
     {
-        if (gameSessionScriptPrefab.GetPickUpgradeCounter() == 9) { PickUpgradeGoldCostText.text = (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired()*CraftToolMultiplier).ToString(); }
+        if (gameSessionScriptPrefab.GetPickLevel() < maxPickLevel && gameSessionScriptPrefab.GetPickUpgradeCounter() == 9) { PickUpgradeGoldCostText.text = (pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired()*CraftToolMultiplier).ToString(); }
         else { PickUpgradeGoldCostText.text = Math.Round(pickaxePricesScriptPrefab[gameSessionScriptPrefab.GetPickLevel()].GetGoldRequired() * (float)Math.Pow(UpgradeToolMultiplier, gameSessionScriptPrefab.GetPickUpgradeCounter()), 0).ToString();  }
     }
 
