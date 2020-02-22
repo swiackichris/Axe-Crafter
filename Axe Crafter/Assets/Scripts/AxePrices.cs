@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AxePrices : MonoBehaviour {
 
-    [SerializeField] int[] OreRequired;
-    [SerializeField] int[] WoodRequired;
+    [SerializeField] int[] OreRequired = null;
+    [SerializeField] int[] WoodRequired = null;
     [SerializeField] int GoldRequired = 10;
 
     public int GetOreRequired(int i) { return OreRequired[i]; }

@@ -6,13 +6,13 @@ using TMPro;
 
 public class MineLevelManager : MonoBehaviour {
 
-    [SerializeField] Button[] MineLevelsButton;
-    [SerializeField] Button[] MineLevelsResourceButton;
-    [SerializeField] TextMeshProUGUI[] MineResourceText;
+    [SerializeField] Button[] MineLevelsButton = null;
+    [SerializeField] Button[] MineLevelsResourceButton = null;
+    [SerializeField] TextMeshProUGUI[] MineResourceText = null;
 
-    [SerializeField] GameSession gameSessionScriptPrefab;
+    [SerializeField] GameSession gameSessionScriptPrefab = null;
 
-    [SerializeField] int[] LevelUnlockOre;
+    [SerializeField] int[] LevelUnlockOre = null;
 
     // Use this for initialization
     void Start()
@@ -27,7 +27,7 @@ public class MineLevelManager : MonoBehaviour {
         {
             MineLevelsButton[i].interactable = true;
             MineLevelsResourceButton[i].interactable = false;
-            MineResourceText[i].text = null; // TODO You might want to delete this later
+            MineResourceText[i].text = null;
         }
     }
 

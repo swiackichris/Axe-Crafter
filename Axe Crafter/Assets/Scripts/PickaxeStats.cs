@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickaxeStats : MonoBehaviour {
 
     [SerializeField] int PickaxeDamage = 10;
-    [SerializeField] AudioClip[] PickaxeSound;
+    [SerializeField] AudioClip[] PickaxeSound = null;
     int PickSoundArrayLength;
 
     public void Start()

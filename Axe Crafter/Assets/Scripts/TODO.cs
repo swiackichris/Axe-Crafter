@@ -1,21 +1,10 @@
 ﻿// TODO NOW:
 
-// Congratulation screen on winning - do you want to continue playing ? Yes/No buttons
-// Try refactoring the code
-
-// Hand sprite has to be changed, now it doesn't even hit a thing.
-
-// Reset Game Session every release.
-
-// Figure out crafting selection
-
-// 1. Work on Crafting screen until it's perfect.
-
-// If you haven't seen a resource it should be blacked out using color functions to change sprite color inside a sprite mask
-
-// Work on visuals until everything is perfect
+// Upload game and release it on google play.
 
 // OTHER IDEAS:
+
+// If you haven't seen a resource it should be blacked out using color functions to change sprite color inside a sprite mask
 
 // Could add button image changing to currently upgraded tool instead of showing whole tool in the craftin screen
 

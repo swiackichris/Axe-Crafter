@@ -5,8 +5,8 @@ using UnityEngine;
 public class AxeStats : MonoBehaviour {
 
     [SerializeField] int AxeDamage = 10;
-    [SerializeField] AudioClip[] AxeSound;        
-    [SerializeField] AudioClip[] MobSound;
+    [SerializeField] AudioClip[] AxeSound = null;        
+    [SerializeField] AudioClip[] MobSound = null;
     int AxeSoundArrayLength;
 
     public void Start()

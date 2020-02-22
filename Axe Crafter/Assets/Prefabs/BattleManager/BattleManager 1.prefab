@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3938146030156158066}
   CurrentHealth: 0
-  CurrentAxe: 0
   axeStats:
   - {fileID: 114518083718916348, guid: c2eccd38c0cc7a04ebf4c419f4124418, type: 3}
   - {fileID: 114314321603013480, guid: ea8323657b7c4a34da4a6b7c848b8767, type: 3}
@@ -59,26 +58,27 @@ MonoBehaviour:
   - {fileID: 114648726618616866, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 3}
   - {fileID: 114535099855760386, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
   AxePrefabs:
-  - {fileID: 1185586684066840, guid: c2eccd38c0cc7a04ebf4c419f4124418, type: 3}
-  - {fileID: 1826718030452322, guid: ea8323657b7c4a34da4a6b7c848b8767, type: 3}
-  - {fileID: 1016236700166820, guid: 6636591d8fac09b48b696d3df0e1c442, type: 3}
-  - {fileID: 1738813281025114, guid: 2c80880f881f54349b670603653675ab, type: 3}
-  - {fileID: 1502937147274802, guid: 8a0ac24594a828d45a44b1e866c70f0d, type: 3}
-  - {fileID: 1475736352178022, guid: 643d7bf017737754c8ce27ec79a56c1b, type: 3}
-  - {fileID: 1381857346688530, guid: 4b6c47cc72717f6409107087f635c96e, type: 3}
-  - {fileID: 1439974310633600, guid: 577e07806edcc0f45b9a9816a16a5b92, type: 3}
-  - {fileID: 1130686063722232, guid: 5af1183eb3ecd964eaacae43f2a5fbe4, type: 3}
-  - {fileID: 1360643748511844, guid: fb7990dd7f1d2984994e6759ded6d47d, type: 3}
+  - {fileID: 9104389563933230617, guid: 0b78e878c2f33fa48b3fb3a3566eab4f, type: 3}
+  - {fileID: 1373281785347181869, guid: dd804253eca5fe64c9819d585b82a7b6, type: 3}
+  - {fileID: 1848553902665596130, guid: 23ee5cf8e84cc904a9654444d28accb8, type: 3}
+  - {fileID: 125191616388652404, guid: 4146e44c26dd0b74c83c32cbd2167196, type: 3}
+  - {fileID: 6006309489780690241, guid: f1603a4f368e9b34ab06f38a55a3a70d, type: 3}
+  - {fileID: 441779938161590423, guid: b5c9d6a9e64ab2c4cbbb915b318160bc, type: 3}
+  - {fileID: 2773799097294180469, guid: 9f17e654ce1ad4e4f9a2dd9a2b796ac5, type: 3}
+  - {fileID: 4101374273388246877, guid: 17b17b63e7aa94949899488e1e37a3d3, type: 3}
+  - {fileID: 9141550513923185417, guid: a5c26af6f160fc8438772d3e619d6773, type: 3}
+  - {fileID: 8119744534360132945, guid: 8f33a4eea1086124289d3b17d2cafe45, type: 3}
   mobStats: {fileID: 114666942054391490, guid: 5c9669ec964196146839ba1783367f28, type: 3}
   MobPrefab: {fileID: 1429213027713346, guid: 5c9669ec964196146839ba1783367f28, type: 3}
   BloodParticle: {fileID: 6705091996402577280, guid: 1708b73007518394e8c7548412a39a51,
     type: 3}
   DeadParticle: {fileID: 6705091996402577280, guid: 131e634cd104adc4dafc197cb39f672c,
     type: 3}
-  DamageText: {fileID: 8666992473889534393, guid: dd7b6c2c59d896e4da7c21edb77eaab3,
+  DamageText: {fileID: 7515322662840234533, guid: dd7b6c2c59d896e4da7c21edb77eaab3,
     type: 3}
   gameSession: {fileID: 2832045088858663866}
   AxeSoundVolume: 1
+  animator: {fileID: 0}
 --- !u!1001 &9073857943069669041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +86,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4779332591347360}
     m_Modifications:
+    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 114411417397115838}
+    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6571567447797767383, guid: 3acb0ec8d7279604c958158b0497dd84,
         type: 3}
       propertyPath: m_Name
@@ -146,26 +166,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 114411417397115838}
-    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6531246249229031461, guid: 3acb0ec8d7279604c958158b0497dd84,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3acb0ec8d7279604c958158b0497dd84, type: 3}
 --- !u!4 &2797969784091547316 stripped
@@ -195,6 +195,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

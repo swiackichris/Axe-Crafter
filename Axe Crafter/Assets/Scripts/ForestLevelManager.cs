@@ -7,13 +7,13 @@ using TMPro;
 public class ForestLevelManager : MonoBehaviour
 {
 
-    [SerializeField] Button[] ForestLevelsButton;
-    [SerializeField] Button[] ForestLevelsResourceButton;
-    [SerializeField] TextMeshProUGUI[] ForestResourceText;
+    [SerializeField] Button[] ForestLevelsButton = null;
+    [SerializeField] Button[] ForestLevelsResourceButton = null;
+    [SerializeField] TextMeshProUGUI[] ForestResourceText = null;
 
-    [SerializeField] GameSession gameSessionScriptPrefab;
+    [SerializeField] GameSession gameSessionScriptPrefab = null;
 
-    [SerializeField] int[] LevelUnlockWood;
+    [SerializeField] int[] LevelUnlockWood = null;
 
     // Use this for initialization
     void Start()
@@ -28,7 +28,7 @@ public class ForestLevelManager : MonoBehaviour
         {
             ForestLevelsButton[i].interactable = true;
             ForestLevelsResourceButton[i].interactable = false;
-            ForestResourceText[i].text = null; // You might want to delete this later
+            ForestResourceText[i].text = null;
         }
     }
 

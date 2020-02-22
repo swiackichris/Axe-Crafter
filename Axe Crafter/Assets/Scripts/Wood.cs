@@ -2,36 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Wood : MonoBehaviour {
 
-    [SerializeField] private WoodStats woodStats;                           
-    [SerializeField] GameObject WoodPrefab;                                 
-    [SerializeField] private GameSession gameSession;
-    [SerializeField] private AxeStats[] axeStats;                           // TODO check if these could be deleted
-    [SerializeField] GameObject[] AxePrefabs;                               
-    [SerializeField] ParticleSystem ChoppingParticle;
-    [SerializeField] GameObject DamageText;
+    [SerializeField] private WoodStats woodStats = null;                           
+    [SerializeField] GameObject WoodPrefab = null;                                 
+    [SerializeField] private GameSession gameSession = null;
+    [SerializeField] private AxeStats[] axeStats = null;                           
+    [SerializeField] GameObject[] AxePrefabs = null;                               
+    [SerializeField] ParticleSystem ChoppingParticle = null;
+    [SerializeField] Transform DamageText = null;
     GameObject wood;                                                        
     GameObject axe;
-    GameObject dmgtxt;
 
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
-    private float CurrentHealth;                                            
-    private float CurrentAxeDamage;                                         
+    private float CurrentHealth;                                                                               
 
     bool canHit = true;                                                     
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 200f;
-    private float UpgradeToolMultiplier = 1.05f;
+    private readonly float RotationSpeed = 200f;
+    private readonly float UpgradeToolMultiplier = 1.05f;
+    private float DamageAmount = 0;
 
     private void Start()
     {
         CurrentHealth = woodStats.GetWoodHealth();
-        CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
         WoodInstantiate();
         AxeInstantiate();
     }
@@ -56,11 +55,12 @@ public class Wood : MonoBehaviour {
         // Checks if position close to a monster is clicked
         if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
-        if (CurrentHealth <= 0)
+        if (CurrentHealth <= -1)
         {
             // If wood is mined, add it
             gameSession.CountChoppedWood(i);
             StartCoroutine(DestroyAndSpawn());
+            CurrentHealth = woodStats.GetWoodHealth();
         }
     }
 
@@ -69,7 +69,8 @@ public class Wood : MonoBehaviour {
         if (canHit)
         {
             // Deducts wood health
-            CurrentHealth -= CurrentAxeDamage;
+            DamageAmount = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()) * RandomDamageMultiplier();
+            CurrentHealth -= DamageAmount;
 
             // Plays a particle effect
             Instantiate(ChoppingParticle, wood.transform.position, Quaternion.identity);
@@ -91,10 +92,8 @@ public class Wood : MonoBehaviour {
     {
         wood = Instantiate(
         WoodPrefab,
-        new Vector2(RandomPX(), RandomPY()), // Change later the position of new wood spawned to be posibly random
+        new Vector2(RandomPX(), RandomPY()),
         Quaternion.identity) as GameObject;
-        print("wood = Instantiate");
-
         wood.transform.localScale += new Vector3(RandomScale(), RandomScale(), 0);
     }
 
@@ -103,21 +102,20 @@ public class Wood : MonoBehaviour {
     {
         axe = Instantiate(
         AxePrefabs[CurrentAxeLevel()],
-        new Vector2(14, 7), // Change later the position of new wood spawned to be posibly random
+        new Vector2(14, 7),
         Quaternion.identity) as GameObject;
-        print("axe = Instantiate");
     }
 
     // Shows damage numbers on screen
     public void ShowDamageText()
     {
-        dmgtxt = Instantiate(
+        DamageText.GetComponent<TextMeshPro>().SetText(Math.Round(DamageAmount, 1).ToString());
+
+        Instantiate(
         DamageText,
         new Vector2(wood.transform.position.x + RandomXOffset(), wood.transform.position.y + RandomYOffset()),
         Quaternion.identity,
         transform);
-
-        dmgtxt.GetComponent<TextMesh>().text = Math.Round(axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()), 1).ToString();
     }
 
     // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
@@ -125,15 +123,7 @@ public class Wood : MonoBehaviour {
     {
         canHit = false;
         Destroy(wood);
-        CurrentHealth = woodStats.GetWoodHealth();
-
-        // Wait time before new wood spawns, so that it can't be damaged while it hasn't spawned
-        CurrentAxeDamage = 0;
         yield return new WaitForSeconds(RandomSpawnTime());
-
-        // Initializes axe damage after it has been reduced to 0
-        CurrentAxeDamage = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter());
-
         WoodInstantiate();
         canHit = true;
     }
@@ -143,21 +133,16 @@ public class Wood : MonoBehaviour {
     {
         if (canAnimate)
         {
-            if (canRotate && axe.transform.rotation.eulerAngles.z <= 45)
+            if (canRotate)
             {
-                axe.transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z >= 45)
-                {
-                    canRotate = false;
-                }
+                GameObject.FindGameObjectWithTag("ToolRotator").transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+                if (GameObject.FindGameObjectWithTag("ToolRotator").transform.rotation.eulerAngles.z > 45) { canRotate = false; }
             }
-
-            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 0)
+            else
             {
-                axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z <= 0 || axe.transform.rotation.eulerAngles.z >= 180)
+                GameObject.FindGameObjectWithTag("ToolRotator").transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
+                if (GameObject.FindGameObjectWithTag("ToolRotator").transform.rotation.eulerAngles.z < 15)
                 {
-                    axe.transform.eulerAngles = new Vector3(0, 0, 0);
                     canRotate = true;
                     canAnimate = false;
                 }

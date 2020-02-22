@@ -8,14 +8,14 @@ using TMPro;
 public class BattleLevelManager : MonoBehaviour
 {
 
-    [SerializeField] Button[] BattleLevelsButton;                        
-    [SerializeField] Button[] BattleLevelsResourceButton;                   
-    [SerializeField] TextMeshProUGUI[] BattleResourceText;                     
-    [SerializeField] TextMeshProUGUI CurrentGoldText;                     
+    [SerializeField] Button[] BattleLevelsButton = null;                        
+    [SerializeField] Button[] BattleLevelsResourceButton = null;                   
+    [SerializeField] TextMeshProUGUI[] BattleResourceText = null;                     
+    [SerializeField] TextMeshProUGUI CurrentGoldText = null;                     
 
-    [SerializeField] GameSession gameSessionScriptPrefab;
+    [SerializeField] GameSession gameSessionScriptPrefab = null;
 
-    [SerializeField] int[] LevelUnlockGold;
+    [SerializeField] int[] LevelUnlockGold = null;
 
 
     // Use this for initialization
@@ -34,7 +34,7 @@ public class BattleLevelManager : MonoBehaviour
         {
             BattleLevelsButton[i].interactable = true;
             BattleLevelsResourceButton[i].interactable = false;
-            BattleResourceText[i].text = null; // TODO delete or keep
+            BattleResourceText[i].text = null;
         }
     }
 

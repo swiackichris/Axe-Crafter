@@ -10,33 +10,34 @@ using System.IO;
 public class GameSession : MonoBehaviour
 {
     // Pickaxe variables
-    [SerializeField] TextMeshProUGUI[] OreMinedText;                            // Displays amount of ore currently owned
-    [SerializeField] int[] MinedOreCounter;                                     // Amount of ore currently owned
-    [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab;         // Temporary Solution
+    [SerializeField] TextMeshProUGUI[] OreMinedText = null;                            // Displays amount of ore currently owned
+    [SerializeField] int[] MinedOreCounter = null;                                     // Amount of ore currently owned
+    [SerializeField] private PickaxePrices[] pickaxePricesScriptPrefab = null;         // Temporary Solution
     [SerializeField] int PickLevel = 0;                                         // Current pick level
     [SerializeField] int PickUpgradeCounter = 0;                                // Current pick upgrade level (max is +9 for each pick)
 
     // Axe variables
-    [SerializeField] TextMeshProUGUI[] WoodChoppedText;                         // Displays amount of wood currently owned
-    [SerializeField] int[] ChoppedWoodCounter;                                  // Amount of wood currently owned
-    [SerializeField] private AxePrices[] axePricesScriptPrefab;                 // Temporary Solution
+    [SerializeField] TextMeshProUGUI[] WoodChoppedText = null;                         // Displays amount of wood currently owned
+    [SerializeField] int[] ChoppedWoodCounter = null;                                  // Amount of wood currently owned
+    [SerializeField] private AxePrices[] axePricesScriptPrefab = null;                 // Temporary Solution
     [SerializeField] int AxeLevel = 0;                                          // Current axe level
     [SerializeField] int AxeUpgradeCounter = 0;                                 // Cuyrrent axe upgrade level
 
-    [SerializeField] private MobStats[] mobStats;
+    [SerializeField] private MobStats[] mobStats = null;
     [SerializeField] float Gold = 0;                                            // Amount of gold owned
-    [SerializeField] TextMeshProUGUI GoldText;                                  // Text to display amount of gold owned
+    [SerializeField] TextMeshProUGUI GoldText = null;                                  // Text to display amount of gold owned
 
     // Level variables
-    [SerializeField] MineLevelManager mineLevelManagerScriptPrefab;
-    [SerializeField] ForestLevelManager forestLevelManagerScriptPrefab;
-    [SerializeField] BattleLevelManager battleLevelManagerScriptPrefab;
+    [SerializeField] MineLevelManager mineLevelManagerScriptPrefab = null;
+    [SerializeField] ForestLevelManager forestLevelManagerScriptPrefab = null;
+    [SerializeField] BattleLevelManager battleLevelManagerScriptPrefab = null;
     [SerializeField] int CurrentMineLevel = 0;
     [SerializeField] int CurrentForestLevel = 0;
     [SerializeField] int CurrentBattleLevel = 0;
+    [SerializeField] int DragonsKilled = 0;
 
-    private int CraftToolMultiplier = 5;
-    private float UpgradeToolMultiplier = 1.05f;
+    private readonly int CraftToolMultiplier = 5;
+    private readonly float UpgradeToolMultiplier = 1.05f;
 
 
     // Use this for initialization
@@ -46,9 +47,6 @@ public class GameSession : MonoBehaviour
         GoldText.text = Math.Round(Gold, 1).ToString();
 
         // Checks if both arrays are of equal size, it's necessary to save properly.
-        // TODO uncomment if (pickaxePricesScriptPrefab.Length != MinedOreCounter.Length) { Debug.LogError("pickaxePricesScriptPrefab.Length != MinedOreCounter.Length"); }
-
-        // Checks if both arrays are of equal size, it's necessary to save properly.
         if (MinedOreCounter.Length != OreMinedText.Length) { Debug.LogError("MinedOreCounter.Length should be equal to OreMinedText.Length"); }
 
         // Initialization of displayed text
@@ -56,8 +54,6 @@ public class GameSession : MonoBehaviour
         {
             OreMinedText[i].text = MinedOreCounter[i].ToString();
         }
-
-        /// TODO if (axePricesScriptPrefab.Length != ChoppedWoodCounter.Length) { Debug.LogError("axePricesScriptPrefab.Length != ChoppedWoodCounter.Length"); }
 
         // Checks if both arrays are of equal size, it's necessary to save properly.
         if (ChoppedWoodCounter.Length != WoodChoppedText.Length) { Debug.LogError("ChoppedWoodCounter.Length should be equal to WoodChoppedText.Length"); }
@@ -92,71 +88,63 @@ public class GameSession : MonoBehaviour
     public void BuyPickaxe()
     {
         // For Ore Prices
-        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int i = 0; i < 10; i++)
         {
             // Checks if we have enough supplies to upgrade
-            if (MinedOreCounter[jj] >= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj) 
-                && pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj) >0)
-            {
-                print("MinedOreCounter[jj]: " +MinedOreCounter[jj] +" -= " +pickaxePricesScriptPrefab[PickLevel].GetOreRequired(jj) + " jj = " +jj);
-                    
+            if (MinedOreCounter[i] >= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(i) 
+                && pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(i) >0)
+            {                    
                 // Deducts materials
-                MinedOreCounter[jj] -= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(jj);
+                MinedOreCounter[i] -= pickaxePricesScriptPrefab[PickLevel+1].GetOreRequired(i);
 
                 // Updates material count as a string
-                OreMinedText[jj].text = MinedOreCounter[jj].ToString();
+                OreMinedText[i].text = MinedOreCounter[i].ToString();
             }
         }
 
         // For Wood Prices
-        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int i = 0; i < 10; i++)
         {
             // Checks if we have enough supplies to upgrade
-            if (ChoppedWoodCounter[jj] >= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj)
-                && pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj) > 0)
+            if (ChoppedWoodCounter[i] >= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(i)
+                && pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(i) > 0)
             {
-                print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + pickaxePricesScriptPrefab[PickLevel].GetWoodRequired(jj) + " jj = " + jj);
-
                 // Deducts materials
-                ChoppedWoodCounter[jj] -= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(jj);
+                ChoppedWoodCounter[i] -= pickaxePricesScriptPrefab[PickLevel+1].GetWoodRequired(i);
 
                 // Updates material count as a string
-                WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
+                WoodChoppedText[i].text = ChoppedWoodCounter[i].ToString();
             }
         }
     }
 
     public void BuyAxe()
     {
-        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int i = 0; i < 10; i++)
         {
             // Checks if we have enough supplies to upgrade
-            if (MinedOreCounter[jj] >= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj)
-                && axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj) > 0)
+            if (MinedOreCounter[i] >= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(i)
+                && axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(i) > 0)
             {
-                print("MinedOreCounter[jj]: " + MinedOreCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetOreRequired(jj) + " jj = " + jj);
-
                 // Deducts materials
-                MinedOreCounter[jj] -= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(jj);
+                MinedOreCounter[i] -= axePricesScriptPrefab[AxeLevel + 1].GetOreRequired(i);
 
                 // Updates material count as a string
-                OreMinedText[jj].text = MinedOreCounter[jj].ToString();
+                OreMinedText[i].text = MinedOreCounter[i].ToString();
             }
         }
 
-        for (int jj = 0; jj < 10; jj++) // Possibly add .Length method instead of 10 later
+        for (int i = 0; i < 10; i++)
         {
             // Checks if we have enough supplies to upgrade
-            if (ChoppedWoodCounter[jj] >= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj)
-                && axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj) > 0)
+            if (ChoppedWoodCounter[i] >= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(i)
+                && axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(i) > 0)
             {
-                print("ChoppedWoodCounter[jj]: " + ChoppedWoodCounter[jj] + " -= " + axePricesScriptPrefab[AxeLevel].GetWoodRequired(jj) + " jj = " + jj);
-
                 // Deducts materials
-                ChoppedWoodCounter[jj] -= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(jj);
+                ChoppedWoodCounter[i] -= axePricesScriptPrefab[AxeLevel+1].GetWoodRequired(i);
 
                 // Updates material count as a string
-                WoodChoppedText[jj].text = ChoppedWoodCounter[jj].ToString();
+                WoodChoppedText[i].text = ChoppedWoodCounter[i].ToString();
             }
         }
     }
@@ -222,14 +210,13 @@ public class GameSession : MonoBehaviour
     public int GetCurrentForestLevel() { return CurrentForestLevel; }
     public int GetCurrentBattleLevel() { return CurrentBattleLevel; }
 
+    public int GetDragonsKilled() { return DragonsKilled; }
+    public void AddDragonsKilled() { DragonsKilled++; }
+
     // Increases gold owned by the amount dropped by a monster
     public void CountGold(int i)
     {
-        print(+Gold);
         Gold += mobStats[i].GetGoldReward();
-        print(+Gold);
-
-        // Updates amount of gold text
         GoldText.text = Math.Round(Gold, 1).ToString();
     }
 
@@ -238,7 +225,7 @@ public class GameSession : MonoBehaviour
     void OnDisable()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat"); // Creates a data file in DataPath with name specified in "XXX"
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat"); 
         PlayerData data = new PlayerData();
 
         for(int i=0; i<OreMinedText.Length; i++) { data.MinedOreCounterData[i] = MinedOreCounter[i]; }
@@ -255,6 +242,8 @@ public class GameSession : MonoBehaviour
         data.CurrentForestLevelData = CurrentForestLevel;
         data.CurrentBattleLevelData = CurrentBattleLevel;
 
+        data.DragonsKilledData = DragonsKilled;
+
         bf.Serialize(file, data);
         file.Close();
     }
@@ -265,8 +254,8 @@ public class GameSession : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) // checks if the file already exists, if it doesn't, it is created.
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open); // Opens a file to be used and Loaded.
-            PlayerData data = bf.Deserialize(file) as PlayerData; // You could also cast is as PlayerData by putting (PlayerData) in front like: PlayerData data = (PlayerData)bf.Deserialize(file);
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            PlayerData data = bf.Deserialize(file) as PlayerData;
             file.Close();
 
             for (int i = 0; i < OreMinedText.Length; i++) { MinedOreCounter[i] = data.MinedOreCounterData[i]; }
@@ -282,6 +271,8 @@ public class GameSession : MonoBehaviour
             CurrentMineLevel = data.CurrentMineLevelData;
             CurrentForestLevel = data.CurrentForestLevelData;
             CurrentBattleLevel = data.CurrentBattleLevelData;
+
+            DragonsKilled = data.DragonsKilledData;
         }
     }
 
@@ -303,5 +294,7 @@ public class GameSession : MonoBehaviour
         public int CurrentMineLevelData;
         public int CurrentForestLevelData;
         public int CurrentBattleLevelData;
+
+        public int DragonsKilledData;
     }
 }

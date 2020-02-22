@@ -3,39 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HealthBar : MonoBehaviour {
 
-    [SerializeField] Image healthBar;                                       // Health bar to appear above the monster in battle scene
+    [SerializeField] Image healthBar = null;                                // Health bar to appear above the monster in battle scene
     [SerializeField] public float CurrentHealth;
-    [SerializeField] int CurrentAxe;
-    [SerializeField] AxeStats[] axeStats;
-    [SerializeField] GameObject[] AxePrefabs;                               // Axe prefab to be instatiated and chopped with
-    [SerializeField] MobStats mobStats;
-    [SerializeField] GameObject MobPrefab;                                  // Mob prefab to be instatiated and mined
-    [SerializeField] ParticleSystem BloodParticle;
-    [SerializeField] ParticleSystem DeadParticle;
-    [SerializeField] GameObject DamageText;
+    [SerializeField] AxeStats[] axeStats = null;
+    [SerializeField] GameObject[] AxePrefabs = null;                        // Axe prefab to be instatiated and chopped with
+    [SerializeField] MobStats mobStats = null;
+    [SerializeField] GameObject MobPrefab = null;                           // Mob prefab to be instatiated and mined
+    [SerializeField] ParticleSystem BloodParticle = null;
+    [SerializeField] ParticleSystem DeadParticle = null;
+    [SerializeField] Transform DamageText = null;
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
     GameObject axe;
-    GameObject dmgtxt;
 
-    [SerializeField] private GameSession gameSession;
+    [SerializeField] private GameSession gameSession = null;
     [SerializeField] [Range(0, 1)] float AxeSoundVolume = 1f;
 
     bool canHit = true;                                                     // Required to stop mining when ore is depleted
     bool canAnimate = false;
     bool canRotate = true;
 
-    private float RotationSpeed = 200f;
-    private float UpgradeToolMultiplier = 1.05f;
+    private readonly float RotationSpeed = 200f;
+    private readonly float UpgradeToolMultiplier = 1.05f;
+    private float DamageAmount = 0;
 
     private void Start()
     {
         CurrentHealth = mobStats.GetMaxHealth();
         MobInstatiate();
-        CurrentAxe = CurrentAxeLevel();
         AxeInstantiate();
     }
 
@@ -58,7 +57,13 @@ public class HealthBar : MonoBehaviour {
         // Checks if position close to a monster is clicked
         if (HitCheckX() <= 5 && HitCheckY() <= 5) { Hit(); }
 
-        if (CurrentHealth <= -1) { EarnGoldAndReset(i); }
+        if (CurrentHealth <= -1 && SceneManager.GetActiveScene().name == "Battle9") 
+        {
+            EarnGoldAndReset(i);
+            if (gameSession.GetDragonsKilled() == 0) { OnVictory(); }
+            gameSession.AddDragonsKilled();
+        }
+        if (CurrentHealth <= -1 && SceneManager.GetActiveScene().name != "Battle9") { EarnGoldAndReset(i); }
     }
 
     private void EarnGoldAndReset(int i)
@@ -84,7 +89,8 @@ public class HealthBar : MonoBehaviour {
         if (canHit)
         {
             // Updates health
-            CurrentHealth -= axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()) * RandomDamageMultiplier();
+            DamageAmount = axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()) * RandomDamageMultiplier();
+            CurrentHealth -= DamageAmount;
 
             // Updates health amount on healthbar sprite
             healthBar.fillAmount = CurrentHealth / mobStats.GetMaxHealth();
@@ -104,15 +110,13 @@ public class HealthBar : MonoBehaviour {
     private float HitCheckX() { return Mathf.Abs((Input.GetTouch(0).position.x / Screen.width * 18) - mob.transform.position.x); }
     private float HitCheckY() { return Mathf.Abs((Input.GetTouch(0).position.y / Screen.height * 32) - mob.transform.position.y); }
 
-    // Spawn ore at a position
+    // Spawn at a position
     public void MobInstatiate()
     {
         mob = Instantiate(
         MobPrefab,
-        new Vector2(RandomPX(), RandomPY()), // Change later the position of new ore spawned to be posibly random
+        new Vector2(RandomPX(), RandomPY()),
         Quaternion.identity) as GameObject;
-        print("mob = Instantiate");
-
         mob.transform.localScale += new Vector3(RandomScale(), RandomScale(), 0);
     }
 
@@ -131,48 +135,46 @@ public class HealthBar : MonoBehaviour {
         axe = Instantiate(
         AxePrefabs[CurrentAxeLevel()],
         new Vector2(14, 7),
-        Quaternion.identity) as GameObject;
-        print("axe = Instantiate");
+        Quaternion.Euler(0,0,0)) as GameObject;
     }
 
     // Shows damage numbers on screen
     public void ShowDamageText()
     {
-        dmgtxt = Instantiate(
+        DamageText.GetComponent<TextMeshPro>().SetText(Math.Round(DamageAmount, 1).ToString());
+
+        Instantiate(
         DamageText,
         new Vector2 (mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()),
         Quaternion.identity,
         transform);
-
-        dmgtxt.GetComponent<TextMesh>().text = Math.Round(axeStats[gameSession.GetAxeLevel()].GetAxeDamage() * RandomDamageMultiplier() * (float)Math.Pow(UpgradeToolMultiplier, gameSession.GetAxeUpgradeCounter()), 1).ToString();
     }
 
-    // Animates tool on touch
     private void ToolAnimation()
     {
-        if (canAnimate)
+        if(canAnimate)
         {
-            if (canRotate && axe.transform.rotation.eulerAngles.z <= 45)
+            if (canRotate)
             {
-                axe.transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z >= 45)
-                {
-                    canRotate = false;
-                }
+                GameObject.FindGameObjectWithTag("ToolRotator").transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+                if (GameObject.FindGameObjectWithTag("ToolRotator").transform.rotation.eulerAngles.z > 45) { canRotate = false; }
             }
-
-            else if (!canRotate && axe.transform.rotation.eulerAngles.z >= 0)
+            else
             {
-                axe.transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
-                if (axe.transform.rotation.eulerAngles.z <= 0 || axe.transform.rotation.eulerAngles.z >= 180)
-                {
-                    axe.transform.eulerAngles = new Vector3(0, 0, 0);
+                GameObject.FindGameObjectWithTag("ToolRotator").transform.Rotate(Vector3.back * (RotationSpeed * Time.deltaTime));
+                if (GameObject.FindGameObjectWithTag("ToolRotator").transform.rotation.eulerAngles.z < 15) 
+                { 
                     canRotate = true;
                     canAnimate = false;
                 }
             }
         }
     }
+
+    // FADE ANIMATION FOR CREDITS
+    public Animator animator;
+    public void OnVictory() { animator.SetTrigger("FadeOut"); }
+    public void LoadCredits() { SceneManager.LoadScene("Credits"); }
 
     public int CurrentAxeLevel() { return gameSession.GetAxeLevel(); }
     public float RandomSpawnTime() { return UnityEngine.Random.Range(0.25f, 0.75f); }
