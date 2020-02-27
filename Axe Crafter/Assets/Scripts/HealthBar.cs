@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour {
     [SerializeField] GameObject MobPrefab = null;                           // Mob prefab to be instatiated and mined
     [SerializeField] ParticleSystem BloodParticle = null;
     [SerializeField] ParticleSystem DeadParticle = null;
-    [SerializeField] Transform DamageText = null;
+    [SerializeField] TextMeshPro DamageText = null;
     GameObject mob;                                                         // Required for to Respawn a mob after It has been killed
     GameObject axe;
 
@@ -141,13 +141,13 @@ public class HealthBar : MonoBehaviour {
     // Shows damage numbers on screen
     public void ShowDamageText()
     {
-        DamageText.GetComponent<TextMeshPro>().SetText(Math.Round(DamageAmount, 1).ToString());
+        DamageText.text = Math.Round(DamageAmount, 1).ToString();
 
         Instantiate(
         DamageText,
-        new Vector2 (mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()),
+        new Vector2(mob.transform.position.x + RandomXOffset(), mob.transform.position.y + RandomYOffset()),
         Quaternion.identity,
-        transform);
+        GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     private void ToolAnimation()

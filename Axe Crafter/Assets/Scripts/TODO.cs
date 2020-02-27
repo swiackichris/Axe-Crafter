@@ -1,6 +1,15 @@
 ﻿// TODO NOW:
 
-// Upload game and release it on google play.
+// You can only build and run to android device if there is no other version of it installed
+// Current problem on build and run, it always shows the same damage number, and it's only shown in battle.
+// It is instantiated because BM DMG TXT has 11.1 written in the prefab text.
+// See how it goes on mobile build now
+// Looks like the text isn't updated properly
+
+// We can see the texts but we can
+
+// DMGTEXTS of all 3 scene types wood mine and battle should spawn on canvas.
+// Current Solution to be checked and uploaded on google play: Change prefabs and put managers of levels inside gamesessions' canvas.
 
 // OTHER IDEAS:
 

@@ -12,7 +12,7 @@ public class Ore : MonoBehaviour {
     [SerializeField] private PickaxeStats[] pickStats = null;                      
     [SerializeField] GameObject [] PickaxePrefabs = null;                          
     [SerializeField] ParticleSystem PickingParticle = null;
-    [SerializeField] Transform DamageText = null;
+    [SerializeField] TextMeshPro DamageText = null;
     GameObject ore;                                                         
     GameObject pickaxe;
 
@@ -111,13 +111,13 @@ public class Ore : MonoBehaviour {
     // Shows damage numbers on screen
     public void ShowDamageText()
     {
-        DamageText.GetComponent<TextMeshPro>().SetText(Math.Round(DamageAmount, 1).ToString());
+        DamageText.text = Math.Round(DamageAmount, 1).ToString();
 
         Instantiate(
         DamageText,
         new Vector2(ore.transform.position.x + RandomXOffset(), ore.transform.position.y + RandomYOffset()),
         Quaternion.identity,
-        transform);
+        GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     // This coroutine destroys ore with 0 health, resets heaslth, and after 1 second spawns new ore. Also during 1 second period pickaxe damage is reset to 0.

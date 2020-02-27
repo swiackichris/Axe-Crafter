@@ -12,7 +12,7 @@ public class Wood : MonoBehaviour {
     [SerializeField] private AxeStats[] axeStats = null;                           
     [SerializeField] GameObject[] AxePrefabs = null;                               
     [SerializeField] ParticleSystem ChoppingParticle = null;
-    [SerializeField] Transform DamageText = null;
+    [SerializeField] TextMeshPro DamageText = null;
     GameObject wood;                                                        
     GameObject axe;
 
@@ -109,13 +109,13 @@ public class Wood : MonoBehaviour {
     // Shows damage numbers on screen
     public void ShowDamageText()
     {
-        DamageText.GetComponent<TextMeshPro>().SetText(Math.Round(DamageAmount, 1).ToString());
+        DamageText.text = Math.Round(DamageAmount, 1).ToString();
 
         Instantiate(
         DamageText,
         new Vector2(wood.transform.position.x + RandomXOffset(), wood.transform.position.y + RandomYOffset()),
         Quaternion.identity,
-        transform);
+        GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     // This coroutine destroys wood with 0 health, resets health, and after 1 second spawns new wood. Also during 1 second period axe damage is reset to 0.
