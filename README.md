@@ -1,4 +1,4 @@
-# [Craft Clicker](https://play.google.com/apps/testing/com.R6DGames.CraftClicker)
+# [Craft Clicker](https://play.google.com/store/apps/details?id=com.R6DGames.CraftClicker)
 
 ![](https://i.imgur.com/DhgMEUc.png)
 
